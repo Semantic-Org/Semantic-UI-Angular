@@ -1,0 +1,15 @@
+{
+  "name": "Semantic-UI-Angular",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Semantic-Org/Semantic-UI-Angular",
+  "authors": [
+    ""
+  ],
+  "description": "AngularJS directives to support Semantic-UI modules",
+  "keywords": [
+    "angularjs",
+    "directives",
+    "semantic-ui"
+  ],
+  "license": "MIT"
+}
