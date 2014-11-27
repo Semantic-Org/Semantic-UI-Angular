@@ -1,0 +1,41 @@
+{
+  "name": "Semantic-UI-Angular",
+  "version": "0.0.1",
+  "description": "AngularJS directives to support Semantic-UI modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Semantic-Org/Semantic-UI-Angular.git"
+  },
+  "keywords": [
+    "angularjs",
+    "directives",
+    "semantic-ui"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Semantic-Org/Semantic-UI-Angular/issues"
+  },
+  "homepage": "https://github.com/Semantic-Org/Semantic-UI-Angular",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-jshint": "^1.9.0",
+    "gulp-load-plugins": "^0.7.1",
+    "jasmine-core": "^2.1.2",
+    "jshint-stylish": "^1.0.0",
+    "karma": "^0.12.28",
+    "karma-chrome-launcher": "^0.1.5",
+    "karma-jasmine": "^0.3.1",
+    "karma-phantomjs-launcher": "^0.1.4"
+  },
+  "dependencies": {
+    "angular": "^1.3.4",
+    "angular-mocks": "^1.3.4",
+    "jquery": "^2.1.1",
+    "semantic-ui": "^0.19.3"
+  }
+}
