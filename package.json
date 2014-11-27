@@ -1,0 +1,24 @@
+{
+  "name": "Semantic-UI-Angular",
+  "version": "0.0.1",
+  "description": "AngularJS directives to support Semantic-UI modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Semantic-Org/Semantic-UI-Angular.git"
+  },
+  "keywords": [
+    "angularjs",
+    "directives",
+    "semantic-ui"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Semantic-Org/Semantic-UI-Angular/issues"
+  },
+  "homepage": "https://github.com/Semantic-Org/Semantic-UI-Angular"
+}
