@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Semantic-Org/Semantic-UI-Angular/issues"
   },
-  "homepage": "https://github.com/Semantic-Org/Semantic-UI-Angular"
+  "homepage": "https://github.com/Semantic-Org/Semantic-UI-Angular",
+  "devDependencies": {
+    "gulp": "^3.8.10"
+  }
 }
