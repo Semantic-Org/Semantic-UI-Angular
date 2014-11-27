@@ -4,5 +4,6 @@
 .grunt
 /node_modules
 /dist
+/lib
 *-SNAPSHOT*
 
