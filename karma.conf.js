@@ -15,6 +15,7 @@ module.exports = function(config) {
       'lib/jquery/dist/jquery.js',
       'lib/semantic-ui/dist/semantic.js',
       'lib/angular/angular.js',
+      'lib/angular-mocks/angular-mocks.js',
       'src/**/*.js',
       'src/**/*.spec.js'
     ],
