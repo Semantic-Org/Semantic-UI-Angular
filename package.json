@@ -24,6 +24,7 @@
   "devDependencies": {
     "gulp": "^3.8.10",
     "gulp-jshint": "^1.9.0",
+    "gulp-load-plugins": "^0.7.1",
     "jshint-stylish": "^1.0.0"
   }
 }
