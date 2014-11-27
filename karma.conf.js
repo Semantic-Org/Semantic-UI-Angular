@@ -12,10 +12,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'lib/jquery/dist/jquery.js',
-      'lib/semantic-ui/dist/semantic.js',
-      'lib/angular/angular.js',
-      'lib/angular-mocks/angular-mocks.js',
+      'node_modules/jquery/dist/jquery.js',
+      'node_modules/angular/angular.js',
+      'node_modules/angular-mocks/angular-mocks.js',
       'src/**/*.js',
       'src/**/*.spec.js'
     ],
