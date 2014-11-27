@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/Semantic-Org/Semantic-UI-Angular",
   "devDependencies": {
-    "gulp": "^3.8.10"
+    "gulp": "^3.8.10",
+    "gulp-jshint": "^1.9.0",
+    "jshint-stylish": "^1.0.0"
   }
 }
