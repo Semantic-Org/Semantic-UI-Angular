@@ -5,6 +5,7 @@ var plugins = require('gulp-load-plugins')();
 var karma = require('karma').server;
 var Dgeni = require('dgeni');
 var runSequence = require("run-sequence");
+var es = require('event-stream');
 
 gulp.task('jshint', function() {
   return gulp.src('src/**/*.js')
@@ -21,8 +22,16 @@ gulp.task('dgeni', function() {
 });
 
 gulp.task('docs-assets', function() {
-  return gulp.src('docs/config/assets/**/*')
+  var semanticAssets = gulp.src('docs/config/assets/**/*')
     .pipe(gulp.dest('dist/docs/lib'));
+
+  var angularAssets = gulp.src('node_modules/angular/**/*')
+    .pipe(gulp.dest('dist/docs/lib/angular'));
+
+  var docsApp = gulp.src('docs/app/**/*')
+    .pipe(gulp.dest('dist/docs/app'));
+
+  return es.concat(docsApp, semanticAssets, angularAssets);
 });
 
 gulp.task('clean-build', function(done) {
