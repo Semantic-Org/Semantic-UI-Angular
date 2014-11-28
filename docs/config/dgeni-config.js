@@ -21,7 +21,7 @@ module.exports = new Package('dgeni-demo', [
     {include: 'docs/content/**/*.ngdoc', basePath: 'docs/content'}
   ];
 
-  writeFilesProcessor.outputFolder = 'build/docs';
+  writeFilesProcessor.outputFolder = 'dist/docs';
 })
 
 .config(function(templateFinder, templateEngine) {

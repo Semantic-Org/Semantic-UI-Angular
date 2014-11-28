@@ -1,12 +1,32 @@
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
+var del = require('del');
 var plugins = require('gulp-load-plugins')();
 var karma = require('karma').server;
+var Dgeni = require('dgeni');
+var runSequence = require("run-sequence");
 
 gulp.task('jshint', function() {
   return gulp.src('src/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
+});
+
+gulp.task('dgeni', function() {
+  var dgeni = new Dgeni([require('./docs/config/dgeni-config.js')]);
+  return dgeni.generate().catch(function(error) {
+    console.error(error);
+    process.exit(1);
+  });
+});
+
+gulp.task('docs-assets', function() {
+  return gulp.src('docs/config/assets/**/*')
+    .pipe(gulp.dest('dist/docs/lib'));
+});
+
+gulp.task('clean-build', function(done) {
+  del(['./dist'], done);
 });
 
 gulp.task('test', ['jshint'], function(done) {
@@ -25,6 +45,10 @@ gulp.task('test-dev', ['jshint'], function(done) {
   }, done);
 });
 
-gulp.task('default', ['jshint'], function() {
+gulp.task('docs', function(cb) {
+  runSequence('clean-build', ['dgeni', 'docs-assets'], cb);
+});
 
+gulp.task('default', ['jshint'], function(cb) {
+  runSequence(['jshint', 'docs'], cb);
 });
