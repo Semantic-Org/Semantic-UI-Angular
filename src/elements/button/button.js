@@ -6,7 +6,9 @@ angular
 
   .directive('smButton', smButton);
 
-  function smButton() {
+  smButton['$inject'] = ['$animate'];
+
+  function smButton($animate) {
     return {
       restrict:'E',
       replace: true,
@@ -15,7 +17,7 @@ angular
       link: function(scope, element, attrs, ctrl, transclude) {
         var node = element[0];
 
-        transclude(function(nodes) {
+        transclude(scope, function(nodes) {
           element.append(nodes);
         });
 
@@ -23,7 +25,7 @@ angular
           scope.$watch(attrs.ngDisabled, function(isDisabled) {
             element.attr('tabindex', isDisabled ? -1 : 0);
             if (isDisabled) {
-              element.addClass('disabled');
+              $animate.addClass(element, 'disabled');
             }
           });
         }
@@ -34,7 +36,7 @@ angular
 
         scope.$watch(attrs.ngDisabled, function(isDisabled) {
           if (isDisabled) {
-            element.addClass('disabled');
+            $animate.addClass(element, 'disabled');
           }
         });
       }
