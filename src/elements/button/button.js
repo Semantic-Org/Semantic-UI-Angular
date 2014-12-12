@@ -6,16 +6,18 @@ angular
 
   .directive('smButton', smButton);
 
-  function smButton(ariaHelper) {
+  function smButton() {
     return {
       restrict:'E',
       replace: true,
       transclude: true,
       template: setTemplate,
-      link: function(scope, element, attrs) {
-        var btnHasTextContent, node;
+      link: function(scope, element, attrs, ctrl, transclude) {
+        var node = element[0];
 
-        node = element[0];
+        transclude(function(nodes) {
+          element.append(nodes);
+        });
 
         if (isAnchorBtn(attrs)) {
           scope.$watch(attrs.ngDisabled, function(isDisabled) {
@@ -26,9 +28,8 @@ angular
           });
         }
 
-        btnHasTextContent = node.textContent.trim();
-        if (!btnHasTextContent) {
-          ariaHelper.hasAttribute(node, 'aria-label');
+        if (attrs.ariaLabel === void 0) {
+          element.attr('aria-label', node.textContent.trim());
         }
 
         scope.$watch(attrs.ngDisabled, function(isDisabled) {
@@ -40,14 +41,14 @@ angular
     };
 
     function isAnchorBtn(attrs) {
-      return angular.isDefined(attrs.href) || angular.isDefined(attrs.ngHref)
+      return attrs.href !== void 0 || attrs.ngHref !== void 0 || attrs.xlinkHref !== void 0;
     }
 
     function setTemplate(element, attrs) {
       if (isAnchorBtn(attrs)) {
-        return '<a class="ui button" ng-transclude></a>'
+        return '<a class="ui button"></a>';
       } else {
-        return '<button class="ui button" ng-transclude></button>'
+        return '<button class="ui button"></button>';
       }
     }
   }
