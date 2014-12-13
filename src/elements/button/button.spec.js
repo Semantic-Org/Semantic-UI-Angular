@@ -61,13 +61,6 @@ describe('Semantic-UI: Elements - smButton', function() {
     var smButton = $compile('<sm-button>Button</sm-button>')($scope);
     $scope.$digest();
 
-    expect(smButton[0].textContent).toBe('Button');
-  });
-
-  it('has to copy attributes on the directive to the replaces template', function() {
-    var smButton = $compile('<sm-button my-attr>Button</sm-button>')($scope);
-    $scope.$digest();
-
-    expect(smButton[0].hasAttribute('my-attr')).toBe(true);
+    expect(smButton.text()).toBe('Button');
   });
 });
