@@ -6,7 +6,7 @@ angular
 
   .directive('smButton', smButton);
 
-  smButton['$inject'] = ['$animate'];
+  smButton.$inject = ['$animate'];
 
   function smButton($animate) {
     return {
