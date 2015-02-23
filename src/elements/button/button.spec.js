@@ -63,4 +63,11 @@ describe('Semantic-UI: Elements - smButton', function() {
 
     expect(smButton.text()).toBe('Button');
   });
+
+  it('does not have to create sibling scope', function() {
+    var smButton = $compile('<sm-button>Button</sm-button>')($scope);
+    $scope.$digest();
+
+    expect($scope).toBe(smButton.scope());
+  });
 });

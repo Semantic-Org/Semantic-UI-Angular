@@ -1,5 +1,6 @@
 Semantic-UI-Angular
 ===================
+[![Build Status](https://travis-ci.org/Semantic-Org/Semantic-UI-Angular.svg)](https://travis-ci.org/Semantic-Org/Semantic-UI-Angular)
 [![Dependency Status](https://david-dm.org/Semantic-Org/Semantic-UI-Angular.svg)](https://david-dm.org/Semantic-Org/Semantic-UI-Angular)
 [![devDependency Status](https://david-dm.org/Semantic-Org/Semantic-UI-Angular/dev-status.svg)](https://david-dm.org/Semantic-Org/Semantic-UI-Angular#info=devDependencies)
 
