@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="semantic.ui.angular.radioButtons">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Semantic-UI Demo page</title>
+    <link rel="stylesheet" href="../../../../docs/config/assets/semantic-ui/semantic.css"/>
+</head>
+<body ng-controller="RadioButtonsCtrl">
+<h1>Semantic-UI</h1>
+<div class="ui buttons">
+    <div class="ui button">One</div>
+    <div class="ui button">Two</div>
+    <div class="ui button">Three</div>
+</div>
+
+<h1>Angular-Semantic-UI</h1>
+<h3>ng-model value is: {{ radio.value }}</h3>
+<sm-radio-group ng-model="radio.value">
+    <sm-radio-button value="1">One</sm-radio-button>
+    <sm-radio-button value="2">Two</sm-radio-button>
+    <sm-radio-button value="3">Three</sm-radio-button>
+</sm-radio-group>
+
+
+<script src="../../../../node_modules/angular/angular.js"></script>
+<script src="../../../../node_modules/angular-aria/angular-aria.js"></script>
+<script src="../../../../src/elements/radioButton/radioButton.js"></script>
+
+
+<script src="radioButtons.module.js"></script>
+</body>
+</html>

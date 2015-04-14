@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="semantic.ui.angular.buttons">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Semantic-UI Demo page</title>
+    <link rel="stylesheet" href="../../../../docs/config/assets/semantic-ui/semantic.css"/>
+</head>
+<body>
+
+
+<sm-button>Generic Button</sm-button>
+
+<sm-button class="blue">Styled button</sm-button>
+<sm-button aria-label="aria_btn">Aria generic Button</sm-button>
+<sm-button ng-disabled="true">Disabled button</sm-button>
+<sm-button href="http://google.com">Go to Google</sm-button>
+<sm-button aria-label="no content"></sm-button>
+
+
+<script src="../../../../node_modules/angular/angular.js"></script>
+<script src="../../../../node_modules/angular-aria/angular-aria.js"></script>
+<script src="../../../../src/elements/button/button.js"></script>
+
+<script src="buttons.module.js"></script>
+</body>
+</html>
