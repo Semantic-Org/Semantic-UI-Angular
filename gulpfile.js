@@ -22,8 +22,8 @@ gulp.task('dgeni', function() {
 });
 
 gulp.task('docs-assets', function() {
-  var semanticAssets = gulp.src('docs/config/assets/**/*')
-    .pipe(gulp.dest('dist/docs/lib'));
+  var semanticAssets = gulp.src('node_modules/semantic-ui-css/**/*')
+    .pipe(gulp.dest('dist/docs/lib/semantic-ui-css'));
 
   var angularAssets = gulp.src('node_modules/angular/**/*')
     .pipe(gulp.dest('dist/docs/lib/angular'));

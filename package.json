@@ -45,6 +45,7 @@
     "angular-aria": "^1.3.13",
     "angular-mocks": "^1.3.13",
     "jquery": "^2.1.3",
-    "semantic-ui": "1.0.1"
+    "npm": "^2.7.6",
+    "semantic-ui-css": "^1.11.7"
   }
 }
