@@ -43,7 +43,7 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
 
     $scope.$digest();
 
-    expect(angular.element(smCheckbox[0].children[0]).hasClass('toggle')).toBeTruthy();
+    expect(angular.element(smCheckbox[0]).hasClass('toggle')).toBeTruthy();
   });
 
   it('should support the \'slider\' attribute', function() {
@@ -51,7 +51,7 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
 
     $scope.$digest();
 
-    expect(angular.element(smCheckbox[0].children[0]).hasClass('slider')).toBeTruthy();
+    expect(angular.element(smCheckbox[0]).hasClass('slider')).toBeTruthy();
   });
 
   it('should honour ng-disabled', function() {
@@ -65,7 +65,7 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
 
     $newScope.$digest();
 
-    expect(smCheckbox[0].children[0].children[0].disabled).toBeFalsy();
+    expect(smCheckbox[0].children[0].disabled).toBeFalsy();
 
     $newScope.isDisabled = true;
 
@@ -77,10 +77,10 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
     $newScope.$digest();
 
     // inner checkbox should be disabled
-    expect(smCheckbox[0].children[0].children[0].disabled).toBeTruthy();
+    expect(smCheckbox[0].children[0].disabled).toBeTruthy();
 
     // ...and thus still checked
-    expect(smCheckbox[0].children[0].children[0].checked).toBeTruthy();
+    expect(smCheckbox[0].children[0].checked).toBeTruthy();
 
   });
 
@@ -89,12 +89,12 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
     var smCheckbox = $compile('<sm-checkbox ng-model="isChecked">Checkbox</sm-checkbox>')($newScope);
     $newScope.$digest();
 
-    expect(smCheckbox[0].children[0].children[0].checked).toBeFalsy();
+    expect(smCheckbox[0].children[0].checked).toBeFalsy();
 
     $newScope.isChecked = true;
     $newScope.$digest();
 
-    expect(smCheckbox[0].children[0].children[0].checked).toBeTruthy();
+    expect(smCheckbox[0].children[0].checked).toBeTruthy();
   });
 
 });

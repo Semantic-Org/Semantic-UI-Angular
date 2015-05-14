@@ -11,6 +11,7 @@
       restrict: 'E',
       require: '?ngModel',
       transclude: true,
+      replace: true,
       scope: {
         ngDisabled: '='
       },
@@ -31,10 +32,10 @@
         }
 
         if (attrs.toggle !== void 0) {
-          angular.element(element[0].firstChild).addClass('toggle');
+          angular.element(element).addClass('toggle');
         }
         else if (attrs.slider !== void 0) {
-          angular.element(element[0].firstChild).addClass('slider');
+          angular.element(element).addClass('slider');
         }
 
         if (attrs.ariaLabel === void 0) {
