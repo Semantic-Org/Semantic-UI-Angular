@@ -15,7 +15,7 @@
       scope: {
         ngDisabled: '='
       },
-      template: '<div class="ui checkbox" ng-class="{ checked: isChecked }">' +
+      template: '<div class="ui checkbox">' +
                   '<input type="checkbox" ng-disabled="ngDisabled" ng-checked="isChecked">' +
                   '<label ng-transclude></label>' +
                 '</div>',
