@@ -57,17 +57,20 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
   it('should honour ng-disabled', function() {
     var $newScope = $rootScope.$new();
 
-    $newScope.isChecked = true;
+    $newScope.opts = { 
+      checked: true,
+      disabled: false
+    };
 
     var smCheckbox = $compile(
-      '<sm-checkbox ng-model="isChecked" ng-disabled="isDisabled">Checkbox</sm-checkbox>'
+      '<sm-checkbox ng-model="opts.checked" ng-disabled="opts.disabled">Checkbox</sm-checkbox>'
     )($newScope);
 
     $newScope.$digest();
 
     expect(smCheckbox[0].children[0].disabled).toBeFalsy();
 
-    $newScope.isDisabled = true;
+    $newScope.opts.disabled = true;
 
     $newScope.$digest();
 
@@ -86,15 +89,34 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
 
   it('should honour ng-model', function() {
     var $newScope = $rootScope.$new();
-    var smCheckbox = $compile('<sm-checkbox ng-model="isChecked">Checkbox</sm-checkbox>')($newScope);
+
+    $newScope.opts = { 
+      checked: false
+    };
+
+    var smCheckbox = $compile('<sm-checkbox ng-model="opts.checked">Checkbox</sm-checkbox>')($newScope);
     $newScope.$digest();
 
     expect(smCheckbox[0].children[0].checked).toBeFalsy();
 
-    $newScope.isChecked = true;
+    $newScope.opts.checked = true;
     $newScope.$digest();
 
     expect(smCheckbox[0].children[0].checked).toBeTruthy();
   });
 
+  it('should write \'checked\' change back to scope', function() {
+    var $newScope = $rootScope.$new();
+    $newScope.opts = { checked: false };
+    var smCheckbox = $compile('<sm-checkbox ng-model="opts.checked">Checkbox</sm-checkbox>')($newScope);
+    $newScope.$digest();
+
+    expect(smCheckbox[0].children[0].checked).toBeFalsy();
+
+    angular.element(smCheckbox[0]).click();
+
+    $newScope.$digest();
+
+    expect($newScope.opts.checked).toBeTruthy();
+  });
 });

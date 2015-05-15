@@ -12,24 +12,30 @@
       require: '?ngModel',
       transclude: true,
       replace: true,
-      scope: {
-        ngDisabled: '='
-      },
       template: '<div class="ui checkbox">' +
-                  '<input type="checkbox" ng-disabled="ngDisabled" ng-checked="isChecked">' +
+                  '<input type="checkbox">' +
                   '<label ng-transclude></label>' +
                 '</div>',
 
       link: function(scope, element, attrs, ngModel) {
 
+        var checked = false;
+        var disabled = false;
+        var input = angular.element(element).find('input');
 
         element.on('click', toggleFn);
 
         if (ngModel) {
           ngModel.$render = function() { 
-            scope.isChecked = ngModel.$viewValue;
+            checked = ngModel.$viewValue;
+            input.attr('checked', checked);
           };
         }
+        scope.$watch(attrs.ngDisabled, function(val) {
+          disabled = val || false;
+          input.attr('disabled', disabled);
+        });
+
 
         if (attrs.toggle !== void 0) {
           angular.element(element).addClass('toggle');
@@ -44,11 +50,12 @@
 
         function toggleFn() {
 
-          if (scope.ngDisabled) { return; }
+          if (disabled) { return; }
 
-          scope.isChecked = !scope.isChecked;
+          checked = !checked;
+          input.attr('checked', checked);
           if (ngModel) {
-            ngModel.$setViewValue(scope.isChecked);
+            ngModel.$setViewValue(checked);
           }
           scope.$apply();
         }

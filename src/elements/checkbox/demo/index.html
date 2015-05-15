@@ -9,19 +9,19 @@
 
     <div class="ui form">
       <div class="field">
-        <sm-checkbox ng-model="isDisabled">Fields Disabled</sm-checkbox>
+        <sm-checkbox ng-model="opts.disabled">Fields Disabled</sm-checkbox>
       </div>
       <div class="field">
-        <sm-checkbox ng-model="isChecked">Toggle Fields</sm-checkbox>
+        <sm-checkbox ng-model="opts.checked">Toggle Fields</sm-checkbox>
       </div>
       <div class="field">
-        <sm-checkbox toggle ng-disabled="isDisabled" ng-model="isChecked">Field 1</sm-checkbox>
+        <sm-checkbox toggle ng-disabled="opts.disabled" ng-model="opts.checked">Field 1</sm-checkbox>
       </div>
       <div class="field">
-        <sm-checkbox slider ng-disabled="isDisabled" ng-model="isChecked">Field 2</sm-checkbox>
+        <sm-checkbox slider ng-disabled="opts.disabled" ng-model="opts.checked">Field 2</sm-checkbox>
       </div>
       <div class="field">
-        <sm-checkbox ng-disabled="isDisabled" ng-model="isChecked">Field 3</sm-checkbox>
+        <sm-checkbox ng-disabled="opts.disabled" ng-model="opts.checked">Field 3</sm-checkbox>
       </div>
     </div>
 

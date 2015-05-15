@@ -7,8 +7,10 @@
             'ngAria'
         ]).run(function($rootScope) {
 
-          $rootScope.isDisabled = false;
-          $rootScope.isChecked = true;
+          $rootScope.opts = { 
+            disabled: true, 
+            checked: true
+          };
 
         });
 
