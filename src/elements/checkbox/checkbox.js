@@ -23,7 +23,7 @@
       link: function(scope, element, attrs, ngModel) {
 
 
-        element.bind('click', toggleFn);
+        element.on('click', toggleFn);
 
         if (ngModel) {
           ngModel.$render = function() { 
