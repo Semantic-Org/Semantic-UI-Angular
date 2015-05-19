@@ -6,7 +6,7 @@
 
     .directive('smCheckbox', smCheckbox);
 
-  function smCheckbox() {
+  function smCheckbox($animate) {
     return {
       restrict: 'E',
       require: '?ngModel',
@@ -29,12 +29,15 @@
 
         element.on('click', toggleFn);
 
-        if (ngModel) {
-          ngModel.$render = function() { 
-            checked = ngModel.$viewValue;
-            input.attr('checked', checked);
-          };
+        if (!ngModel) {
+          throw new Error('Semantic-UI-Angular: The \'smCheckbox\' directive requires a \'ng-model\' value');
         }
+
+        ngModel.$render = function() { 
+          checked = ngModel.$viewValue;
+          input.attr('checked', checked);
+        };
+
         scope.$watch(attrs.ngDisabled, function(val) {
           disabled = val || false;
           input.attr('disabled', disabled);
@@ -58,12 +61,9 @@
 
           checked = !checked;
           input.attr('checked', checked);
-          if (ngModel) {
-            ngModel.$setViewValue(checked);
-          }
+          ngModel.$setViewValue(checked);
           scope.$apply();
         }
-
       }
     };
 

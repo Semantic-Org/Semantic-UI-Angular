@@ -17,13 +17,8 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
     expect(smCheckbox.text()).toBe('Checkbox');
   });
 
-  it('should work without `ng-model` set', function() {
-    $compile('<sm-checkbox>Checkbox</sm-checkbox>')($scope);
-    $scope.$digest();
-  });
-
   it('should support custom aria-label arribute', function() {
-    var smCheckbox = $compile('<sm-checkbox aria-label="my lame checkbox">Checkbox</sm-checkbox>')($scope);
+    var smCheckbox = $compile('<sm-checkbox aria-label="my lame checkbox" ng-model="opts.checked">Checkbox</sm-checkbox>')($scope);
 
     $scope.$digest();
 
@@ -31,7 +26,7 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
   });
 
   it('should support fallback aria-label arribute', function() {
-    var smCheckbox = $compile('<sm-checkbox>Checkbox</sm-checkbox>')($scope);
+    var smCheckbox = $compile('<sm-checkbox ng-model="opts.checked">Checkbox</sm-checkbox>')($scope);
 
     $scope.$digest();
 
@@ -39,7 +34,7 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
   });
 
   it('should support the \'toggle\' attribute', function() {
-    var smCheckbox = $compile('<sm-checkbox toggle>Checkbox</sm-checkbox>')($scope);
+    var smCheckbox = $compile('<sm-checkbox toggle ng-model="opts.checked">Checkbox</sm-checkbox>')($scope);
 
     $scope.$digest();
 
@@ -47,7 +42,7 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
   });
 
   it('should support the \'slider\' attribute', function() {
-    var smCheckbox = $compile('<sm-checkbox slider>Checkbox</sm-checkbox>')($scope);
+    var smCheckbox = $compile('<sm-checkbox slider ng-model="opts.checked">Checkbox</sm-checkbox>')($scope);
 
     $scope.$digest();
 
