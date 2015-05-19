@@ -14,14 +14,18 @@
       replace: true,
       template: '<div class="ui checkbox">' +
                   '<input type="checkbox">' +
-                  '<label ng-transclude></label>' +
+                  '<label></label>' +
                 '</div>',
 
-      link: function(scope, element, attrs, ngModel) {
+      link: function(scope, element, attrs, ngModel, transclude) {
 
         var checked = false;
         var disabled = false;
         var input = angular.element(element).find('input');
+
+        transclude(function(nodes) {
+          angular.element(element).find('label').append(nodes);
+        });
 
         element.on('click', toggleFn);
 
