@@ -116,7 +116,7 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
     expect($newScope.opts.checked).toBeTruthy();
   });
 
-  it('should tranclude a transclusion directive', function() {
+  it('should tranclude an element transclusion directive', function() {
     var $newScope = $rootScope.$new();
     
     $newScope.opts = { checked: true };
