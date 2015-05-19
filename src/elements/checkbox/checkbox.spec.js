@@ -18,7 +18,8 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
   });
 
   it('should support custom aria-label arribute', function() {
-    var smCheckbox = $compile('<sm-checkbox aria-label="my lame checkbox" ng-model="opts.checked">Checkbox</sm-checkbox>')($scope);
+    var smCheckbox = $compile('<sm-checkbox aria-label="my lame checkbox" ' +
+      'ng-model="opts.checked">Checkbox</sm-checkbox>')($scope);
 
     $scope.$digest();
 
@@ -114,4 +115,33 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
 
     expect($newScope.opts.checked).toBeTruthy();
   });
+
+  it('should tranclude a transclusion directive', function() {
+    var $newScope = $rootScope.$new();
+    
+    $newScope.opts = { checked: true };
+    
+    var smCheckbox = $compile('<sm-checkbox ng-model="opts.checked">' +
+      '<div ng-if="opts.checked">Checked</div></sm-checkbox>')($newScope);
+
+    $newScope.$digest();
+
+    expect(smCheckbox.find('label').find('div').length).toBe(1);
+  });
+
+  it('should honour ng-repeat', function() {
+    var $newScope = $rootScope.$new();
+    
+    $newScope.opts = { checked: true };
+    $newScope.repeatLabels = ['first', 'second'];
+    
+    var smCheckbox = $compile('<div><sm-checkbox ng-repeat="label in repeatLabels" ng-model="opts.checked">' +
+      '<div ng-if="opts.checked">{{label}}</div></sm-checkbox></div>')($newScope);
+
+    $newScope.$digest();
+
+    expect(smCheckbox.find('label')[0].textContent).toBe('first');
+    expect(smCheckbox.find('label')[1].textContent).toBe('second');
+  });
+
 });
