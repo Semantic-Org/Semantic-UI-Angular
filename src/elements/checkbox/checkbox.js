@@ -21,10 +21,10 @@
 
         var checked = false;
         var disabled = false;
-        var input = angular.element(element).find('input');
+        var input = element.find('input');
 
         transclude(function(nodes) {
-          angular.element(element).find('label').append(nodes);
+          element.find('label').append(nodes);
         });
 
         element.on('click', toggleFn);
@@ -42,10 +42,10 @@
 
 
         if (attrs.toggle !== void 0) {
-          angular.element(element).addClass('toggle');
+          element.addClass('toggle');
         }
         else if (attrs.slider !== void 0) {
-          angular.element(element).addClass('slider');
+          element.addClass('slider');
         }
 
         if (attrs.ariaLabel === void 0) {
