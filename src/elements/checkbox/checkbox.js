@@ -23,7 +23,7 @@
         var disabled = false;
         var input = element.find('input');
 
-        transclude(function(nodes) {
+        transclude(scope, function(nodes) {
           element.find('label').append(nodes);
         });
 
