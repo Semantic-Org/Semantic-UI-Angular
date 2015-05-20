@@ -6,4 +6,24 @@ Semantic-UI-Angular
 [![Dependency Status](https://david-dm.org/Semantic-Org/Semantic-UI-Angular.svg)](https://david-dm.org/Semantic-Org/Semantic-UI-Angular)
 [![devDependency Status](https://david-dm.org/Semantic-Org/Semantic-UI-Angular/dev-status.svg)](https://david-dm.org/Semantic-Org/Semantic-UI-Angular#info=devDependencies)
 
-Status: **Work in Progress** (migration from https://github.com/caitp/angular-semantic)
+Status
+------
+
+**Work in Progress**
+
+Current progress:
+-----------------
+At this moment we have following directives:
+
+ - sm-button;
+ - sm-checkbox;
+ - sm-divider;
+ - sm-radio-group and sm-radio-button;
+ - sm-rating.
+
+TODOs:
+-----
+
+ - Create generic directives to cover common use cases.
+ - Create a documentation generation.
+ - Update project up to Angular 1.4 (ES6/TS - under discussion)
