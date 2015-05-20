@@ -7,18 +7,20 @@
       max: 5,
       stateActive: null,
       stateHover: null,
-      stateHoverParent: null
+      stateHoverParent: null,
+      type: 'star',
+      size: ''
     })
     .directive('smRating', smRating);
 
   var template =
-    '<div ng-mouseleave="reset()" ng-keydown="onKeydown($event)" tabindex="0" role="slider"' +
-      'aria-valuemin="0" aria-valuemax="{{range.length}}" aria-valuenow="{{value}}"' +
-      'class="ui rating" ng-class="hoverValue > -1 && (stateHoverParent || \'selected\')">' +
-      '<i ng-repeat="r in range track by $index" ng-mouseenter="enter($index + 1)" ng-click="rate($index + 1)"' +
+    '<div ng-mouseleave="ctrl.reset()" ng-keydown="ctrl.onKeydown($event)" tabindex="0" role="slider"' +
+      'aria-valuemin="0" aria-valuemax="{{ctrl.range.length}}" aria-valuenow="{{ctrl.value}}"' +
+      'class="ui rating" ng-class="ctrl.hoverValue > -1 && (ctrl.stateHoverParent || \'selected\')">' +
+      '<i ng-repeat="r in ctrl.range track by $index" ng-mouseenter="ctrl.enter($index + 1)" ng-click="ctrl.rate($index + 1)"' +
         'class="icon" ng-class="[' +
-          '($index < value && (r.stateActive || \'active\')) || \'\',' +
-          '($index < hoverValue && (r.stateHover || \'selected\')) || \'\']">' +
+          '($index < ctrl.value && (r.stateActive || \'active\')) || \'\',' +
+          '($index < ctrl.hoverValue && (r.stateHover || \'selected\')) || \'\']">' +
       '</i>' +
     '</div>';
 
@@ -33,13 +35,12 @@
         onLeave: '&'
       },
       controller: smRatingController,
+      controllerAs: 'ctrl',
+      bindToController: true,
       template: template,
       link: function(scope, element, attrs, ctrls) {
         var ratingCtrl = ctrls[0], ngModelCtrl = ctrls[1];
-        ratingCtrl.init(ngModelCtrl);
-
-        element.addClass(/(star|heart)/.test(attrs.type) ? attrs.type : 'star');
-        element.addClass(/(mini|tiny|small|large|huge|massive)/.test(attrs.size) ? attrs.size : '');
+        ratingCtrl.init(ngModelCtrl, element);
       }
     };
   }
@@ -47,65 +48,80 @@
   smRatingController.$inject = ['$scope', '$attrs', 'ratingConfig'];
 
   function smRatingController($scope, $attrs, ratingConfig) {
-    var ngModelCtrl  = { $setViewValue: angular.noop };
-
-    this.init = function(ngModelCtrl_) {
-      ngModelCtrl = ngModelCtrl_;
-      ngModelCtrl.$render = this.render;
-
-      ngModelCtrl.$formatters.push(function(value) {
-        if (angular.isNumber(value) && value << 0 !== value) {
-          value = Math.round(value);
-        }
-        return value;
-      });
-
-      this.stateActive = angular.isDefined($attrs.stateActive) ? $scope.$parent.$eval($attrs.stateActive) : ratingConfig.stateActive;
-      this.stateHover = angular.isDefined($attrs.stateHover) ? $scope.$parent.$eval($attrs.stateHover) : ratingConfig.stateHover;
-
-      $scope.stateHoverParent = angular.isDefined($attrs.stateHoverParent) ? $scope.$parent.$eval($attrs.stateHoverParent) : ratingConfig.stateHoverParent;
-
-      var ratingStates = angular.isDefined($attrs.ratingStates) ? $scope.$parent.$eval($attrs.ratingStates) :
-                          new Array( angular.isDefined($attrs.max) ? $scope.$parent.$eval($attrs.max) : ratingConfig.max );
-      $scope.range = this.buildTemplateObjects(ratingStates);
-    };
-
-    this.buildTemplateObjects = function(states) {
-      for (var i = 0, n = states.length; i < n; i++) {
-        states[i] = angular.extend({ index: i }, { stateActive: this.stateActive, stateHover: this.stateHover }, states[i]);
-      }
-      return states;
-    };
-
-    $scope.rate = function(value) {
-      if (!$scope.readonly && value >= 0 && value <= $scope.range.length ) {
-        ngModelCtrl.$setViewValue(value);
-        ngModelCtrl.$render();
-      }
-    };
-
-    $scope.enter = function(value) {
-      if (!$scope.readonly) {
-        $scope.hoverValue = value;
-      }
-      $scope.onHover({value: value});
-    };
-
-    $scope.reset = function() {
-      $scope.hoverValue = -1;
-      $scope.onLeave();
-    };
-
-    $scope.onKeydown = function(evt) {
-      if (/(37|38|39|40)/.test(evt.which)) {
-        evt.preventDefault();
-        evt.stopPropagation();
-        $scope.rate($scope.value + (evt.which === 38 || evt.which === 39 ? 1 : -1));
-      }
-    };
-
-    this.render = function() {
-      $scope.value = ngModelCtrl.$viewValue;
-    };
+    this.ngModelCtrl  = { $setViewValue: angular.noop };
+    this.$scope = $scope;
+    this.$attrs = $attrs;
+    this.ratingConfig = ratingConfig;
   }
+
+  smRatingController.prototype.init = function(ngModelCtrl_, element) {
+    var _this = this;
+
+    element.addClass(angular.isDefined(this.$attrs.type) ? this.$attrs.type : this.ratingConfig.type);
+    element.addClass(angular.isDefined(this.$attrs.size) ? this.$attrs.size : this.ratingConfig.size);
+
+    this.ngModelCtrl = ngModelCtrl_;
+    this.ngModelCtrl.$render = function() {
+      _this.value = _this.ngModelCtrl.$viewValue;
+    };
+
+    this.ngModelCtrl.$formatters.push(function(value) {
+      if (angular.isNumber(value) && value << 0 !== value) {
+        value = Math.round(value);
+      }
+      return value;
+    });
+
+    this.stateActive = this.evalAttribute('stateActive');
+    this.stateHover = this.evalAttribute('stateHover');
+    this.stateHoverParent = this.evalAttribute('stateHoverParent');
+
+    this.ratingStates = this.evalAttribute('ratingStates', new Array(this.evalAttribute('max')));
+    this.range = this.buildTemplateObjects();
+  };
+
+  smRatingController.prototype.buildTemplateObjects = function() {
+    var states = this.ratingStates;
+    for (var i = 0, n = states.length; i < n; i++) {
+      states[i] = angular.extend({ index: i }, { stateActive: this.stateActive, stateHover: this.stateHover }, states[i]);
+    }
+    return states;
+  };
+
+  smRatingController.prototype.rate = function(value) {
+    if (!this.readonly && value >= 0 && value <= this.range.length ) {
+      this.ngModelCtrl.$setViewValue(value);
+      this.ngModelCtrl.$render();
+    }
+  };
+
+  smRatingController.prototype.enter = function(value) {
+    if (!this.readonly) {
+      this.hoverValue = value;
+    }
+    this.onHover({value: value});
+  };
+
+  smRatingController.prototype.reset = function() {
+    this.hoverValue = -1;
+    this.onLeave();
+  };
+
+  smRatingController.prototype.onKeydown = function(evt) {
+    if (/(37|38|39|40)/.test(evt.which)) {
+      evt.preventDefault();
+      evt.stopPropagation();
+      this.rate(this.value + (evt.which === 38 || evt.which === 39 ? 1 : -1));
+    }
+  };
+
+  smRatingController.prototype.render = function() {
+    console.log(this.ngModelCtrl);
+    this.value = this.ngModelCtrl.$viewValue;
+  };
+
+  smRatingController.prototype.evalAttribute = function(name, defaultValue) {
+    return angular.isDefined(this.$attrs[name]) ? this.$scope.$parent.$eval(this.$attrs[name]) : this.ratingConfig[name] || defaultValue;
+  };
+
 })();

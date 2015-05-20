@@ -274,6 +274,8 @@ describe('Semantic-UI: Elements - smRating', function() {
       ratingConfig.stateActive = 'on';
       ratingConfig.stateHover = 'float';
       ratingConfig.stateHoverParent = 'float-parent';
+      ratingConfig.type = 'heart';
+      ratingConfig.size = 'massive';
       element = $compile('<sm-rating ng-model="rate"></sm-rating>')($rootScope);
       $rootScope.$digest();
       getStar(7).trigger('mouseover');
@@ -287,25 +289,34 @@ describe('Semantic-UI: Elements - smRating', function() {
       expect(getStars().length).toBe(10);
     });
 
-    it('should change icon states', function () {
+    it('should change icon states', function() {
       expect(getStateActive('on')).toEqual([true, true, true, true, true, false, false, false, false, false]);
 
       expect(getStateHover('float', 'float-parent')).toEqual([true, true, true, true, true, true, true, false, false, false, true]);
     });
+
+    it('should update rating type', function() {
+      expect(element.hasClass('heart')).toBe(true);
+    });
+
+    it('should update rating size', function() {
+      expect(element.hasClass('massive')).toBe(true);
+    });
+
   });
 
-  it('shows heart icon when attribute type is set', function() {
-    element = $compile('<sm-rating ng-model="rate" type="heart"></sm-rating>')($rootScope);
-    $rootScope.$digest();
-
-    expect(element.hasClass('heart')).toBe(true);
-  });
-
-  it('shows heart icon when attribute type is invalid', function() {
-    element = $compile('<sm-rating ng-model="rate" type="potato"></sm-rating>')($rootScope);
+  it('shows star icon when attribute type is invalid', function() {
+    element = $compile('<sm-rating ng-model="rate"></sm-rating>')($rootScope);
     $rootScope.$digest();
 
     expect(element.hasClass('star')).toBe(true);
+  });
+
+  it('shows icon type when attribute type is specified', function() {
+    element = $compile('<sm-rating ng-model="rate" type="potato"></sm-rating>')($rootScope);
+    $rootScope.$digest();
+
+    expect(element.hasClass('potato')).toBe(true);
   });
 
   it('change size when attribute size is set', function() {
@@ -315,11 +326,11 @@ describe('Semantic-UI: Elements - smRating', function() {
     expect(element.hasClass('massive')).toBe(true);
   });
 
-  it('should not change size when attribute size is invalid', function() {
-    element = $compile('<sm-rating ng-model="rate" size="sobig"></sm-rating>')($rootScope);
+  it('should change size when attribute size is specified', function() {
+    element = $compile('<sm-rating ng-model="rate" size="huge"></sm-rating>')($rootScope);
     $rootScope.$digest();
 
-    expect(element.hasClass('sobig')).toBe(false);
+    expect(element.hasClass('huge')).toBe(true);
   });
 
 });
