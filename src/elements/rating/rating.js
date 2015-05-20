@@ -13,6 +13,10 @@
     })
     .directive('smRating', smRating);
 
+  /*
+   * TODO(mxth): do not rely on ngRepeat
+   * TODO(mxth): do not rely on ngClass
+   */
   var template =
     '<div ng-mouseleave="ctrl.reset()" ng-keydown="ctrl.onKeydown($event)" tabindex="0" role="slider"' +
       'aria-valuemin="0" aria-valuemax="{{ctrl.range.length}}" aria-valuenow="{{ctrl.value}}"' +
@@ -116,7 +120,6 @@
   };
 
   smRatingController.prototype.render = function() {
-    console.log(this.ngModelCtrl);
     this.value = this.ngModelCtrl.$viewValue;
   };
 
