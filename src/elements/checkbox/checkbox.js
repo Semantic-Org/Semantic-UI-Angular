@@ -6,7 +6,7 @@
 
     .directive('smCheckbox', smCheckbox);
 
-  function smCheckbox($animate) {
+  function smCheckbox() {
     return {
       restrict: 'E',
       require: '?ngModel',
