@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="demo">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="../../../../node_modules/semantic-ui-css/semantic.css"/>
+  <style>
+    body {
+      padding: 2em;
+    }
+  </style>
+</head>
+<body ng-controller="VideoDemoCtrl">
+
+  <div class="ui stackable centered grid">
+    <div class="row">
+      <div class="six wide column">
+        <h1 class="ui header">Default</h1>
+        <sm-video source="youtube" data-id="O6ROCaLvMnQ" placeholder="http://placekitten.com/601/300" pr-theme="light" options="options"></sm-video>
+      </div>
+    </div>
+    <div class="row">
+      <div class="six wide column">
+        <h1 class="ui header">Use Dailymotion generator</h1>
+        <sm-video source="dailymotion" data-id="xsr67x"></sm-video>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../../../node_modules/angular/angular.js"></script>
+  <script src="demo.js"></script>
+  <script src="../generator.js"></script>
+  <script src="../video.js"></script>
+</body>
+</html>
