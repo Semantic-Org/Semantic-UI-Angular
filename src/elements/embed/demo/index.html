@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="demo">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="../../../../node_modules/semantic-ui-css/semantic.css"/>
+  <style>
+    body {
+      padding: 2em;
+    }
+  </style>
+</head>
+<body ng-controller="EmbedDemoCtrl as ctrl">
+
+  <div class="ui stackable centered grid">
+    <div class="row">
+      <div class="nine wide column">
+        <h1 class="ui header">YouTube</h1>
+        <sm-embed source="youtube" data-id="O6ROCaLvMnQ" placeholder="http://placekitten.com/601/300" pr-theme="light" options="ctrl.options"
+                  on-ready="ctrl.onReady($player)" pr-enablejsapi="1"></sm-embed>
+      </div>
+    </div>
+    <div class="row">
+      <div class="nine wide column">
+        <button class="ui button" ng-click="ctrl.youtube.player.playVideo()" ng-disabled="!ctrl.youtube">Play</button>
+        <button class="ui button" ng-click="ctrl.youtube.player.pauseVideo()" ng-disabled="!ctrl.youtube">Pause</button>
+        <div class="ui label">{{ctrl.youtube.currentTime.toFixed(2)}} / {{ctrl.youtube.duration}}</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="nine wide column">
+        <h1 class="ui header">Vimeo</h1>
+        <sm-embed url="https://vimeo.com/37328349" on-ready="ctrl.onVimeoReady($player)"></sm-embed>
+      </div>
+    </div>
+    <div class="row">
+      <div class="nine wide column">
+        <button class="ui button" ng-click="ctrl.vimeo.player.api('play')" ng-disabled="!ctrl.vimeo">Play</button>
+        <button class="ui button" ng-click="ctrl.vimeo.player.api('pause')" ng-disabled="!ctrl.vimeo">Pause</button>
+        <div class="ui label">{{ctrl.vimeo.currentTime.toFixed(2)}} / {{ctrl.vimeo.duration}}</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="nine wide column">
+        <h1 class="ui header">Dailymotion Generator</h1>
+        <sm-embed source="dailymotion" data-id="xsr67x"></sm-embed>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="nine wide column">
+        <h1 class="ui header">Custom Content</h1>
+        <sm-embed url="http://www.myfav.es/jack"></sm-embed>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../../../../node_modules/angular/angular.js"></script>
+  <script src="demo.js"></script>
+  <script src="../generator.js"></script>
+  <script src="../embed.js"></script>
+</body>
+</html>
