@@ -35,29 +35,29 @@
         })[0];
       }
 
-      function generateFromUrl(url, params) {
-        var html, matchingGenerators = [];
+      function getUrlInfo(url) {
+        var res = [];
 
         generators.forEach(function(gen) {
           var id = angular.isFunction(gen.getIdFromUrl) && gen.getIdFromUrl(url);
           if (id) {
-            html = gen.generate(id, params);
-            matchingGenerators.push(gen);
+            res.push({
+              generator: gen,
+              id: id
+            });
           }
         });
-
-        if (!html) { throw new Error('Url does not match with any video source'); }
-        if (matchingGenerators.length > 1) {
+        if (res.length > 1) {
           console.warn('Url matches multiple video sources: ' +
-            matchingGenerators.map(function(gen) { return gen.source; }) +
-            '. Used source: ' + matchingGenerators[matchingGenerators.length - 1].source);
+            res.map(function(info) { return info.generator.source; }) +
+            '. Used source: ' + res[0].generator.source);
         }
-        return html;
+        return res[0];
       }
 
       return {
-        generateFromUrl: generateFromUrl,
-        get: get
+        get: get,
+        getUrlInfo: getUrlInfo
       };
     }];
   }
@@ -91,7 +91,7 @@
       '<iframe src="'+ this.embedUrl + id + '?=' + this.generateUrl(params) + '"' +
       ' width="100%" height="100%"' +
       ' frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
-    return html;
+    return angular.element(html);
   };
 
   function smVideoYoutube() {
@@ -105,7 +105,7 @@
       angular.extend(defaultParams, value);
     };
 
-    this.$get = function() {
+    this.$get = ['$window', '$q', function($window, $q) {
       var regExp = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
 
       function getId(url) {
@@ -113,13 +113,50 @@
         return matches && matches[1];
       }
 
+      function loadApi() {
+        if (!loadApi.promise) {
+          var defer = $q.defer();
+
+          if ($window.YT) {
+            defer.resolve();
+          } else {
+            var tag = document.createElement('script');
+
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            $window.onYouTubeIframeAPIReady = function() {
+              defer.resolve();
+            };
+          }
+          loadApi.promise = defer.promise;
+        }
+        return loadApi.promise;
+      }
+
+      function getPlayer(element) {
+        var defer = $q.defer();
+        loadApi().then(function() {
+          new $window.YT.Player(element, {
+            events: {
+              onReady: function(event) {
+                defer.resolve(event.target);
+              }
+            }
+          });
+        });
+        return defer.promise;
+      }
+
       return {
         defaultParams: defaultParams,
         source: 'youtube',
         embedUrl: '//www.youtube.com/embed/',
-        getIdFromUrl: getId
+        getIdFromUrl: getId,
+        getPlayer: getPlayer
       };
-    };
+    }];
   }
 
   function smVideoVimeo() {

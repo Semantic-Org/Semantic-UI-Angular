@@ -12,13 +12,16 @@
       restrict: 'EA',
       replace: true,
       template: setTemplate,
+      scope: {
+        onReady: '&'
+      },
       link: function(scope, element, attrs) {
         var
           source = attrs.source,
           id = attrs.id,
           url = attrs.url,
-          params = angular.isDefined(attrs.options) ? scope.$eval(attrs.options) : {},
-          embedHtml;
+          params = angular.isDefined(attrs.options) ? scope.$parent.$eval(attrs.options) : {},
+          iframe, generator;
 
         angular.forEach(attrs, function(value, key) {
           if (key.indexOf('pr') === 0) {
@@ -31,9 +34,18 @@
         }
 
         if ((source && id) || url) {
-          embedHtml = (source && id) ?
-            smVideoGenerator.get(source).generate(id, params) :
-            smVideoGenerator.generateFromUrl(url, params);
+          if (!(source && id)) {
+            var info = smVideoGenerator.getUrlInfo(url);
+
+            if (!info) { throw new Error('Url does not match with any video source'); }
+
+            id = info.id;
+            generator = info.generator
+          } else {
+            generator = smVideoGenerator.get(source);
+          }
+
+          iframe = generator.generate(id, params);
         } else {
           throw new Error('No source or url for video.');
         }
@@ -55,7 +67,14 @@
           if (init.done) return;
 
           element.addClass('active');
-          element.find('div').html(embedHtml);
+          element.find('div').append(iframe);
+
+          if (angular.isDefined(attrs.onReady)) {
+            generator.getPlayer && generator.getPlayer(iframe[0]).then(function(player) {
+              scope.onReady({player: player});
+            });
+          }
+
           init.done = true;
         }
       }

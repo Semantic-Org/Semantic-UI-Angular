@@ -16,7 +16,15 @@
     <div class="row">
       <div class="six wide column">
         <h1 class="ui header">Default</h1>
-        <sm-video source="youtube" data-id="O6ROCaLvMnQ" placeholder="http://placekitten.com/601/300" pr-theme="light" options="options"></sm-video>
+        <sm-video source="youtube" data-id="O6ROCaLvMnQ" placeholder="http://placekitten.com/601/300" pr-theme="light" options="options"
+                  on-ready="onReady(player)" pr-enablejsapi="1"></sm-video>
+      </div>
+    </div>
+    <div class="row">
+      <div class="six wide column">
+        <button class="ui button" ng-click="player.playVideo()" ng-disabled="!player">Play</button>
+        <button class="ui button" ng-click="player.pauseVideo()" ng-disabled="!player">Pause</button>
+        <div class="ui label">{{currentTime.toFixed(2)}} / {{duration}}</div>
       </div>
     </div>
     <div class="row">
