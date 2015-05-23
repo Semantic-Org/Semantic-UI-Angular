@@ -15,24 +15,40 @@
   <div class="ui stackable centered grid">
     <div class="row">
       <div class="six wide column">
-        <h1 class="ui header">Default</h1>
+        <h1 class="ui header">Youtube</h1>
         <sm-video source="youtube" data-id="O6ROCaLvMnQ" placeholder="http://placekitten.com/601/300" pr-theme="light" options="options"
                   on-ready="onReady(player)" pr-enablejsapi="1"></sm-video>
       </div>
     </div>
     <div class="row">
       <div class="six wide column">
-        <button class="ui button" ng-click="player.playVideo()" ng-disabled="!player">Play</button>
-        <button class="ui button" ng-click="player.pauseVideo()" ng-disabled="!player">Pause</button>
-        <div class="ui label">{{currentTime.toFixed(2)}} / {{duration}}</div>
+        <button class="ui button" ng-click="youtube.player.playVideo()" ng-disabled="!youtube">Play</button>
+        <button class="ui button" ng-click="youtube.player.pauseVideo()" ng-disabled="!youtube">Pause</button>
+        <div class="ui label">{{youtube.currentTime.toFixed(2)}} / {{youtube.duration}}</div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="six wide column">
+        <h1 class="ui header">Vimeo</h1>
+        <sm-video url="https://vimeo.com/37328349" on-ready="onVimeoReady(player)"></sm-video>
+      </div>
+    </div>
+    <div class="row">
+      <div class="six wide column">
+        <button class="ui button" ng-click="vimeo.player.api('play')" ng-disabled="!vimeo">Play</button>
+        <button class="ui button" ng-click="vimeo.player.api('pause')" ng-disabled="!vimeo">Pause</button>
+        <div class="ui label">{{vimeo.currentTime.toFixed(2)}} / {{vimeo.duration}}</div>
+      </div>
+    </div>
+
     <div class="row">
       <div class="six wide column">
         <h1 class="ui header">Use Dailymotion generator</h1>
         <sm-video source="dailymotion" data-id="xsr67x"></sm-video>
       </div>
     </div>
+
   </div>
 
   <script src="../../../../node_modules/angular/angular.js"></script>

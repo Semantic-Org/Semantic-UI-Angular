@@ -120,10 +120,10 @@
           if ($window.YT) {
             defer.resolve();
           } else {
-            var tag = document.createElement('script');
+            var tag = $window.document.createElement('script');
 
             tag.src = "https://www.youtube.com/iframe_api";
-            var firstScriptTag = document.getElementsByTagName('script')[0];
+            var firstScriptTag = $window.document.getElementsByTagName('script')[0];
             firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
             $window.onYouTubeIframeAPIReady = function() {
@@ -166,7 +166,7 @@
       angular.extend(defaultParams, value);
     };
 
-    this.$get = function() {
+    this.$get = ['$window', '$q', function($window, $q) {
       var regExp = /https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/;
 
       function getId(url) {
@@ -174,12 +174,53 @@
         return matches && matches[3];
       }
 
+      function loadApi() {
+        if (!loadApi.promise) {
+          var defer = $q.defer();
+
+          if ($window.Froogaloop && $window.$f) {
+            defer.resolve();
+          } else {
+            var script = $window.document.createElement('script');
+
+            script.async = true;
+            script.src = '//secure-a.vimeocdn.com/js/froogaloop2.min.js';
+
+            var firstScriptTag = $window.document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
+
+            script.onload = script.onreadystatechange = function () {
+              var rdyState = script.readyState;
+              if (!rdyState || /complete|loaded/.test(rdyState)) {
+                defer.resolve();
+                script.onload = null;
+                script.onreadystatechange = null;
+              }
+            };
+          }
+          loadApi.promise = defer.promise;
+        }
+        return loadApi.promise;
+      }
+
+      function getPlayer(element) {
+        var defer = $q.defer();
+        loadApi().then(function() {
+          var player = $window.$f(element);
+          player.addEvent('ready', function() {
+            defer.resolve(player);
+          });
+        });
+        return defer.promise;
+      }
+
       return {
         defaultParams: defaultParams,
         source: 'vimeo',
         embedUrl: '//player.vimeo.com/video/',
-        getIdFromUrl: getId
+        getIdFromUrl: getId,
+        getPlayer: getPlayer
       };
-    };
+    }];
   }
 })();
