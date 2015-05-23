@@ -101,8 +101,8 @@
       autohide: 0
     };
 
-    this.extendDefaultParams = function (value) {
-      angular.extend(defaultParams, value);
+    this.extendDefaultParams = function (params) {
+      angular.extend(defaultParams, params);
     };
 
     this.$get = ['$window', '$q', function($window, $q) {
@@ -114,11 +114,9 @@
       }
 
       function loadApi() {
-        if (!loadApi.promise) {
-          var defer = $q.defer();
-
+        loadApi.promise = loadApi.promise || $q(function(resolve) {
           if ($window.YT) {
-            defer.resolve();
+            resolve();
           } else {
             var tag = $window.document.createElement('script');
 
@@ -127,26 +125,25 @@
             firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
             $window.onYouTubeIframeAPIReady = function() {
-              defer.resolve();
+              resolve();
             };
           }
-          loadApi.promise = defer.promise;
-        }
+        });
         return loadApi.promise;
       }
 
       function getPlayer(element) {
-        var defer = $q.defer();
-        loadApi().then(function() {
-          new $window.YT.Player(element, {
-            events: {
-              onReady: function(event) {
-                defer.resolve(event.target);
+        return $q(function(resolve) {
+          loadApi().then(function() {
+            new $window.YT.Player(element, {
+              events: {
+                onReady: function(event) {
+                  resolve(event.target);
+                }
               }
-            }
+            });
           });
         });
-        return defer.promise;
       }
 
       return {
@@ -162,8 +159,8 @@
   function smVideoVimeo() {
     var defaultParams = {};
 
-    this.extendDefaultParams = function (value) {
-      angular.extend(defaultParams, value);
+    this.extendDefaultParams = function (params) {
+      angular.extend(defaultParams, params);
     };
 
     this.$get = ['$window', '$q', function($window, $q) {
@@ -175,11 +172,9 @@
       }
 
       function loadApi() {
-        if (!loadApi.promise) {
-          var defer = $q.defer();
-
+        loadApi.promise = loadApi.promise || $q(function(resolve) {
           if ($window.Froogaloop && $window.$f) {
-            defer.resolve();
+            resolve();
           } else {
             var script = $window.document.createElement('script');
 
@@ -192,26 +187,25 @@
             script.onload = script.onreadystatechange = function () {
               var rdyState = script.readyState;
               if (!rdyState || /complete|loaded/.test(rdyState)) {
-                defer.resolve();
+                resolve();
                 script.onload = null;
                 script.onreadystatechange = null;
               }
             };
           }
-          loadApi.promise = defer.promise;
-        }
+        });
         return loadApi.promise;
       }
 
       function getPlayer(element) {
-        var defer = $q.defer();
-        loadApi().then(function() {
-          var player = $window.$f(element);
-          player.addEvent('ready', function() {
-            defer.resolve(player);
+        return $q(function(resolve) {
+          loadApi().then(function() {
+            var player = $window.$f(element);
+            player.addEvent('ready', function() {
+              resolve(player);
+            });
           });
         });
-        return defer.promise;
       }
 
       return {
