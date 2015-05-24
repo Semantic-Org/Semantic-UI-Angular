@@ -2,7 +2,7 @@
 'use strict';
 
 angular
-  .module('semantic.ui.elements.button', [])
+  .module('semantic.ui.elements.button', ['semantic.ui.elements.icon'])
 
   .directive('smButton', smButton);
 
