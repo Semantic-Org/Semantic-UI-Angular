@@ -23,6 +23,8 @@
           element.append(nodes);
         });
 
+        //Adding base icon class, if it is not mentioned explicitly.
+        scope.fontIcon = scope.fontIcon && scope.fontIcon.indexOf('icon') <= -1 ? scope.fontIcon + ' icon' : scope.fontIcon;
         element.addClass(scope.fontIcon);
 
         //Check if the icon size is specified
