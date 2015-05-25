@@ -14,6 +14,9 @@ angular
       replace: true,
       transclude: true,
       template: setTemplate,
+      scope: {
+        isLoading: '=loading'
+      },
       link: function(scope, element, attrs, ctrl, transclude) {
         var node = element[0];
 
@@ -34,10 +37,13 @@ angular
           element.attr('aria-label', node.textContent.trim());
         }
 
-        scope.$watch(attrs.ngDisabled, function(isDisabled) {
-          if (isDisabled) {
-            $animate.addClass(element, 'disabled');
-          }
+        //Setup up watcher for loader
+        scope
+        .$watch(function() {
+          return scope.isLoading;
+        }, 
+        function(isLoading) {
+          isLoading ? element.addClass('loading') : element.removeClass('loading');
         });
       }
     };
