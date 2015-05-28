@@ -38,6 +38,21 @@ gulp.task('clean-build', function(done) {
   del(['./dist'], done);
 });
 
+gulp.task('build', ['clean-build'], function(done) {
+
+  return gulp.src([
+    'src/**/*.js',
+    '!src/**/demo/*',
+    '!src/**/*.spec.js'
+    ])
+    .pipe(plugins.angularFilesort())
+    .pipe(plugins.concat('semantic-ui-angular.js'))
+    .pipe(gulp.dest('./dist'))
+    .pipe(plugins.concat('semantic-ui-angular.min.js'))
+    .pipe(plugins.uglify({mangle: false}))
+    .pipe(gulp.dest('./dist'));
+});
+
 gulp.task('test', ['jshint'], function(done) {
   karma.start({
     configFile: __dirname + '/karma.conf.js',
