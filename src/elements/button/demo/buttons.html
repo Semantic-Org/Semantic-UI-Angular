@@ -5,20 +5,40 @@
     <title>Semantic-UI Demo page</title>
     <link rel="stylesheet" href="../../../../docs/config/assets/semantic-ui/semantic.css"/>
 </head>
-<body>
+<body style="padding:100px;text-align:center;" ng-controller="ButtonsCtrl">
 
 
 <sm-button>Generic Button</sm-button>
-
+<sm-divider></sm-divider>
 <sm-button class="blue">Styled button</sm-button>
+<sm-divider></sm-divider>
+<sm-button>
+  <sm-icon sm-font-icon="user icon"></sm-icon>
+  Icon button
+</sm-button>
+<sm-button loading="isLoading" ng-click="toggleLoader()" class="blue">
+  Loading..
+</sm-button>
+<sm-divider></sm-divider>
+<sm-buttons conditional="or">
+  <sm-button ng-click="hello()">With Condition</sm-button>
+  <sm-button ng-click="hello()">Button 2</sm-button>
+  <sm-button ng-click="hello()">Button 3</sm-button>
+</sm-buttons>
+<sm-divider></sm-divider>
 <sm-button aria-label="aria_btn">Aria generic Button</sm-button>
+<sm-divider></sm-divider>
 <sm-button ng-disabled="true">Disabled button</sm-button>
+<sm-divider></sm-divider>
 <sm-button href="http://google.com">Go to Google</sm-button>
+<sm-divider></sm-divider>
 <sm-button aria-label="no content"></sm-button>
 
 
 <script src="../../../../node_modules/angular/angular.js"></script>
 <script src="../../../../node_modules/angular-aria/angular-aria.js"></script>
+<script src="../../../../src/elements/divider/divider.js"></script>
+<script src="../../../../src/elements/icon/icon.js"></script>
 <script src="../../../../src/elements/button/button.js"></script>
 
 <script src="buttons.module.js"></script>
