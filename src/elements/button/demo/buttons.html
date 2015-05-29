@@ -20,6 +20,12 @@
   Loading..
 </sm-button>
 <sm-divider></sm-divider>
+<sm-buttons conditional="or">
+  <sm-button ng-click="hello()">With Condition</sm-button>
+  <sm-button ng-click="hello()">Button 2</sm-button>
+  <sm-button ng-click="hello()">Button 3</sm-button>
+</sm-buttons>
+<sm-divider></sm-divider>
 <sm-button aria-label="aria_btn">Aria generic Button</sm-button>
 <sm-divider></sm-divider>
 <sm-button ng-disabled="true">Disabled button</sm-button>

@@ -13,6 +13,10 @@
         $scope.toggleLoader = function() {
           $scope.isLoading = !$scope.isLoading;
         }
+
+        $scope.hello = function() {
+          console.log('Button Group');
+        }
       });
 
 })();
