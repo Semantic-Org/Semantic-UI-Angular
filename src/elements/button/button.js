@@ -26,7 +26,9 @@ angular
         });
 
         scope.$watch(attrs.ngDisabled, function(isDisabled) {
-          element.attr('tabindex', isDisabled ? -1 : 0);
+          if (isAnchorBtn(attrs)) {
+            element.attr('tabindex', isDisabled ? -1 : 0);
+          }
           if (isDisabled) {
             $animate.addClass(element, 'disabled');
           }
