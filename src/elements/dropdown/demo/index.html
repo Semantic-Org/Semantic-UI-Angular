@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html ng-app="demo">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../../../node_modules/semantic-ui-css/semantic.css"/>
+    <style>
+      pre.ui.segment {
+        margin: 20px 0;
+      }
+    </style>
+</head>
+<body>
+<div class="ui padded page grid">
+<div class="column">
+<div ng-controller="DropdownDemoCtrl as ctrl">
+
+  <h3 class="ui header">Dropdown</h3>
+  <div class="ui grid">
+    <div class="six wide column">
+      <sm-dropdown is-open="ctrl.isOpen">
+        <sm-dropdown-label>Shop</sm-dropdown-label>
+        <i class="dropdown icon"></i>
+
+        <sm-dropdown-menu>
+          <div class="header">Categories</div>
+          <sm-dropdown-item>Clothing</sm-dropdown-item>
+          <sm-dropdown-item>Home Goods</sm-dropdown-item>
+          <sm-dropdown-item>Bedroom</sm-dropdown-item>
+          <div class="divider"></div>
+          <div class="header">Order</div>
+          <sm-dropdown-item>Status</sm-dropdown-item>
+          <sm-dropdown-item>Cancellations</sm-dropdown-item>
+        </sm-dropdown-menu>
+      </sm-dropdown>
+    </div>
+    <div class="ten wide column">
+      <pre class="ui segment">isOpen: <b>{{ctrl.isOpen}}</b></pre>
+      <div class="ui button" ng-click="ctrl.isOpen = !ctrl.isOpen">Toggle open</div>
+    </div>
+  </div>
+
+  <h3 class="ui header">Selection</h3>
+
+  <sm-dropdown type="selection" ng-model="ctrl.gender">
+    <sm-dropdown-label>Gender</sm-dropdown-label>
+    <i class="dropdown icon"></i>
+    <sm-dropdown-menu>
+      <sm-dropdown-item ng-value="gender" ng-repeat="gender in ctrl.genders">{{gender.label}}</sm-dropdown-item>
+    </sm-dropdown-menu>
+  </sm-dropdown>
+  <pre class="ui segment">Model: {{ctrl.gender}}</b></pre>
+
+  <h3 class="ui header">Search Selection</h3>
+
+  <sm-dropdown type="fluid search selection" ng-model="ctrl.country" >
+    <sm-dropdown-label>Select Country</sm-dropdown-label>
+    <i class="dropdown icon"></i>
+    <sm-dropdown-menu>
+      <sm-dropdown-item ng-value="country" ng-repeat="country in ctrl.countries">
+        <i class="flag" ng-class="country.short"></i>{{country.full}}
+      </sm-dropdown-item>
+    </sm-dropdown-menu>
+  </sm-dropdown>
+  <pre class="ui segment">Model: {{ctrl.country}}</b></pre>
+
+  <h3 class="ui header">Search Dropdown</h3>
+  <sm-dropdown type="floating labeled search icon button" ng-model="ctrl.lang">
+    <i class="world icon"></i>
+    <sm-dropdown-label>Select Language</sm-dropdown-label>
+    <sm-dropdown-menu>
+      <sm-dropdown-item ng-value="lang" ng-repeat="lang in ctrl.languages">
+        {{lang}}
+      </sm-dropdown-item>
+    </sm-dropdown-menu>
+  </sm-dropdown>
+  <pre class="ui segment">Model: {{ctrl.lang}}</b></pre>
+
+  <h3 class="ui header">Search In-Menu</h3>
+
+  <sm-dropdown type="floating labeled icon button" ng-model="ctrl.filter">
+    <i class="filter icon"></i>
+    <sm-dropdown-label>Filter Posts</sm-dropdown-label>
+    <sm-dropdown-menu>
+      <div class="ui icon search input">
+        <i class="search icon"></i>
+        <input type="text" name="search" placeholder="Search issues..." sm-dropdown-search>
+      </div>
+      <div class="divider"></div>
+      <div class="header">
+        <i class="tags icon"></i>
+        Tag Label
+      </div>
+      <sm-dropdown-item>
+        <div class="ui red empty circular label"></div>
+        Important
+      </sm-dropdown-item>
+      <sm-dropdown-item>
+        <div class="ui blue empty circular label"></div>
+        Announcement
+      </sm-dropdown-item>
+      <sm-dropdown-item>
+        <div class="ui black empty circular label"></div>
+        Cannot Fix
+      </sm-dropdown-item>
+      <sm-dropdown-item>
+        <div class="ui green empty circular label"></div>
+        Discussion
+      </sm-dropdown-item>
+    </sm-dropdown-menu>
+  </sm-dropdown>
+
+</div>
+</div>
+</div>
+<script src="../../../../node_modules/angular/angular.js"></script>
+<script src="../../../../node_modules/angular-animate/angular-animate.js"></script>
+<script src="demo.js"></script>
+<script src="../dropdown.js"></script>
+</body>
+</html>
