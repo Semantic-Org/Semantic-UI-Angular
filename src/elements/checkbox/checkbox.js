@@ -33,9 +33,9 @@
           throw new Error('Semantic-UI-Angular: The \'smCheckbox\' directive requires a \'ng-model\' value');
         }
 
-        ngModel.$render = function() { 
+        ngModel.$render = function() {
           checked = ngModel.$viewValue;
-          input.attr('checked', checked);
+          input.prop('checked', checked);
         };
 
         scope.$watch(attrs.ngDisabled, function(val) {
@@ -60,7 +60,7 @@
           if (disabled) { return; }
 
           checked = !checked;
-          input.attr('checked', checked);
+          input.prop('checked', checked);
           ngModel.$setViewValue(checked);
           scope.$apply();
         }
