@@ -8,35 +8,23 @@
 
   function smIcon() {
     return {
-      restrict: 'E',
-      replace: true,
-      transclude: true,
+      restrict: 'EA',
       scope: {
-        fontIcon: '@smFontIcon',
-        iconSize: '@smIconSize'
+        fontIcon: '@smFontIcon'
       },
       template: getTemplate,
-      link: function(scope, element, attrs, ctrl, transclude) {
-        var node = element[0];
-
-        transclude(scope, function(nodes) {
-          element.append(nodes);
-        });
-
-        //Adding base icon class, if it is not mentioned explicitly.
-        scope.fontIcon = scope.fontIcon && scope.fontIcon.indexOf('icon') <= -1 ? scope.fontIcon + ' icon' : scope.fontIcon;
-        element.addClass(scope.fontIcon);
-
-        //Check if the icon size is specified
-        if(scope.iconSize) {
-          element.css('font-size', scope.iconSize);
+      link: function(scope, element, attrs, ctrl) {
+        if(scope.fontIcon) {
+          element.find('i').addClass(scope.fontIcon)
+        } else {
+          console.warn('sm-font-icon is not provided');
         }
       }
     }
   }
 
   function getTemplate(element, attr) {
-    return attr.smFontIcon ? '<i class="sm-font"></i>' : '';
+    return attr.smFontIcon ? '<i class="sm-font icon"></i>' : '';
   }
 
-})();
+})(angular);
