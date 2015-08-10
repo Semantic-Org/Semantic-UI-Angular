@@ -11,21 +11,20 @@ describe('Semantic-UI: Elements - smFlag', function () {
     }));
 
     it('has to be able to be a flag by country name', function () {
-        var smFlag = $compile('<sm-flag value="\'china\'"></sm-flag>')($scope);
+        var smFlag = $compile('<sm-flag value="china"></sm-flag>')($scope);
         $scope.$digest();
-        expect(smFlag.find('i').hasClass('china')).toBe(true);
-        expect(smFlag.find('i').hasClass('flag')).toBe(true);
+        expect(smFlag.find('i').hasClass('flag china')).toBe(true);
     });
 
     it('has to be able to be a flag by iso code ', function () {
-        var smFlag = $compile('<sm-flag value="\'jp\'"></sm-flag>')($scope);
+        var smFlag = $compile('<sm-flag value="jp"></sm-flag>')($scope);
         $scope.$digest();
         expect(smFlag.find('i').hasClass('jp')).toBe(true);
         expect(smFlag.find('i').hasClass('flag')).toBe(true);
     });
 
     it('has to be able to be a flag by common name ', function () {
-        var smFlag = $compile('<sm-flag value="\'america\'"></sm-flag>')($scope);
+        var smFlag = $compile('<sm-flag value="america"></sm-flag>')($scope);
         $scope.$digest();
         expect(smFlag.find('i').hasClass('america')).toBe(true);
         expect(smFlag.find('i').hasClass('flag')).toBe(true);

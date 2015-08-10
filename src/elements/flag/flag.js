@@ -5,14 +5,11 @@
         .module('semantic.ui.elements.flag', [])
         .directive('smFlag', smFlag);
 
-    function smFlag($compile) {
+    function smFlag() {
         return {
             restrict: 'E',
-            replace: true,
-            scope: { value: '='},
-            link: function (scope, element) {
-                element.html('').append($compile('<i class="flag ' + scope.value + '"></i>')(scope));
-            }
+            scope: { value: '@' },
+            template: '<i class="flag {{value}}"></i>'
         }
     }
 
