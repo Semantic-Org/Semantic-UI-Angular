@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.5/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.5/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-dimmer.js"></script>
+    <script src="../checkbox/sm-checkbox.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          $scope.dimmerVisible = false;
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+
+      <code class="float right optional">optional</code>
+      <code class="float right required">required</code> 
+
+      <h1 class="ui header">
+        <img src="http://semantic-ui.com/images/logo.png">
+        <div class="content">
+          Dimmer Directives
+          <div class="sub header">Create &amp; Control Semantic UI Dimmers with Angular Directives</div>
+        </div>
+      </h1>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-dimmer
+          <div class="sub header">Creates a dimmer with content for the parent element.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="optional">settings</code> <code>=</code> reference to a settings object to pass to the initialization function.</li>
+          <li><code class="optional">visible</code> <code>=</code> a value which can show/hide the dimmer when it changes.</li>
+        </ul>
+        <h5>Callback Attributes</h5>
+        <ul>
+          <li><code class="optional">on-init</code> <code>=</code> Callback once the module is initialized, passing the initialized element as the first argument.</li>
+          <li><code class="optional">on-change</code> <code>=</code> Callback after a dimmer is either shown or hidden.</li>
+          <li><code class="optional">on-show</code> <code>=</code> Callback after a dimmer is shown.</li>
+          <li><code class="optional">on-hide</code> <code>=</code> Callback after a dimmer is hidden.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code6"></pre>
+
+        <div data-copy-to="#code6">
+          <div class="ui segment">
+            <h3 class="ui header">
+              Overlayable Section
+            </h3>
+            <div class="ui small images">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+            </div>
+            <sm-dimmer visible="dimmerVisible">
+              <div class="content">
+                <div class="center">
+                  <h2 class="ui inverted icon header">
+                    <i class="heart icon"></i>
+                    I &lt;3 Dimmers!
+                  </h2>
+                </div>
+              </div>
+            </sm-dimmer>
+          </div>
+          <sm-checkbox label="Toggle Dimmer" model="dimmerVisible"></sm-checkbox>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-dimmer-bind
+          <div class="sub header">A lightweight attribute directive which calls dimmer() on the element with the settings object passed to the attribute. Using this directive means you need to manage the communication between Angular and Semantic UI yourself.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code0"></pre>
+
+        <div data-copy-to="#code0">
+          <div class="ui segment">
+            <h3 class="ui header">
+              Overlayable Section
+            </h3>
+            <div class="ui small images">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+            </div>
+            <div class="ui dimmer" id="container0" sm-dimmer-bind="{transition: 'vertical flip'}">
+              <div class="content">
+                <div class="center">
+                  <h2 class="ui inverted icon header">
+                    <i class="heart icon"></i>
+                    Dimmed Message!
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <sm-button sm-dimmer-show="'#container0'" class="icon"><i class="icon plus"></i></sm-button>
+          <sm-button sm-dimmer-hide="'#container0'" class="icon"><i class="icon minus"></i></sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui tertiary segment">
+
+        <h1>Behavior Directives</h1>
+        <p>These attribute directives invoke a behavior on the component where the attribute value can be one of the following formats:</p>
+
+        <h5>String</h5>
+        <ul>
+          <li>Selector to the accordion(s) to invoke the behavior when the element with the directive is clicked.</li>
+        </ul>
+
+        <h5>Object</h5>
+        <ul>
+          <li><code class="required">$</code> <code>@</code> A selector string.</li>
+          <li><code class="optional">evt</code> <code>@</code> The event string which triggers the behavior ('click' by default).</li>
+          <li><code class="optional">enabled</code> <code>=</code> A boolean value which determines whether or not the behavior should be called when the event occurs.</li>
+          <li><code class="optional">value</code> <code>=</code> The first argument to pass to the behavior if it requires one.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code2"></pre>
+
+        <div data-copy-to="#code2">
+          <sm-button class="teal" sm-dimmer-behavior="'selector'">Execute Simple Behavior</sm-button>
+          <sm-button class="teal" sm-dimmer-behavior="{$: 'selector', value: scopeValue1, enabled: scopeValue2, evt: 'mouseover'}">Execute Advanced Behavior</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-dimmer-show
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dimmer(s) to show.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code3"></pre>
+
+        <div data-copy-to="#code3">
+          <div class="ui segment" id="container3">
+            <h3 class="ui header">
+              Overlayable Section
+            </h3>
+            <div class="ui small images">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+            </div>
+          </div>
+          <sm-button sm-dimmer-show="'#container3'" class="teal">Show</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-dimmer-hide
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dimmer(s) to hide.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code4"></pre>
+
+        <div data-copy-to="#code4">
+          <div class="ui segment" id="container4" sm-dimmer-show="{$:'#container4', evt:'mouseenter'}">
+            <h3 class="ui header">
+              Overlayable Section
+            </h3>
+            <div class="ui small images">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+            </div>
+          </div>
+          <sm-button sm-dimmer-hide="'#container4'" class="teal">Hide</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-dimmer-toggle
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dimmer(s) to toggle their visibility.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code5"></pre>
+
+        <div data-copy-to="#code5">
+          <div class="ui segment" id="container5">
+            <h3 class="ui header">
+              Overlayable Section
+            </h3>
+            <div class="ui small images">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+              <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+            </div>
+          </div>
+          <sm-button sm-dimmer-toggle="'#container5'" class="teal">Toggle</sm-button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

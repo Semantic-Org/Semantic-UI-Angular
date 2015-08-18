@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-sticky.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          
+        })
+      ;
+    </script>
+    <style>
+    .wireframe.image {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+    .main.ui.container {
+      position: relative;
+      width: 700px !important;
+      left: 0px;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    </style>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="main ui container">
+    
+      <div class="ui segment">
+
+        <h3 class="ui header">Sticky</h3>
+
+        <p>Sticky content fixes itself to the browser viewport as content is scrolled.</p>
+        
+        <div data-copy-to="#example0" class="ui segment">
+          <div class="ui left rail">
+            <sm-sticky context="#context0" settings="{offset: 20}">
+              <h3 class="ui header">Stuck Content</h3>
+              <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/image.png">
+            </sm-sticky>
+          </div>
+          <div id="context0">
+            <img class="ui wireframe paragraph image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+            <img class="ui wireframe paragraph image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+            <img class="ui wireframe paragraph image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+            <img class="ui wireframe paragraph image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+            <img class="ui wireframe paragraph image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+          </div>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example0"></pre>
+
+      </div>
+      
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

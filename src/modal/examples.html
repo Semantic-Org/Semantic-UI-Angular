@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-modal.js"></script>
+    <script src="../dropdown/sm-dropdown.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          $scope.approved = function() {
+            alert('Approved');
+          };
+          $scope.denied = function() {
+            alert('Denied');
+          };
+
+          $scope.transitions = [
+            'horizontal flip',
+            'vertical flip',
+            'fade up',
+            'fade',
+            'scale'
+          ];
+
+          $scope.modalTransition = $scope.transitions[ 0 ];
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+    
+      <div class="ui segment">
+
+        <h3 class="ui header">Modal</h3>
+
+        <p>A standard modal.</p>
+
+        <div data-copy-to="#example0">
+          <sm-modal class="modal0" on-approve="approved" on-deny="denied">
+            <div class="header">
+              Profile Picture
+            </div>
+            <div class="image content">
+              <div class="ui medium image">
+                <img src="http://semantic-ui.com/images/avatar/large/chris.jpg">
+              </div>
+              <div class="description">
+                <div class="ui header">We've auto-chosen a profile image for you.</div>
+                <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+                <p>Is it okay to use this photo?</p>
+              </div>
+            </div>
+            <div class="actions">
+              <div class="ui black deny button">
+                Nope
+              </div>
+              <div class="ui positive right labeled icon button">
+                Yep, that's me
+                <i class="checkmark icon"></i>
+              </div>
+            </div>
+          </sm-modal>
+          <sm-button sm-modal-show="'.modal0'" class="teal">Show</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example0"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Basic</h3>
+
+        <p>A modal can reduce its complexity</p>
+
+        <div data-copy-to="#example1">
+          <sm-modal class="basic modal1" on-approve="approved" on-deny="denied">
+            <div class="ui icon header">
+              <i class="archive icon"></i>
+              Archive Old Messages
+            </div>
+            <div class="content">
+              <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+            </div>
+            <div class="actions">
+              <div class="ui red basic cancel inverted button">
+                <i class="remove icon"></i>
+                No
+              </div>
+              <div class="ui green ok inverted button">
+                <i class="checkmark icon"></i>
+                Yes
+              </div>
+            </div>
+          </sm-modal>
+          <sm-button sm-modal-show="'.modal1'" class="teal">Show</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example1"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Full Screen</h3>
+
+        <p>A modal can use the entire size of the screen.</p>
+
+        <div data-copy-to="#example2">
+          <sm-modal class="fullscreen modal2">
+            <i class="close icon"></i>
+            <div class="header">
+              Update Your Settings
+            </div>
+            <div class="content">
+              <div class="ui form">
+                <h4 class="ui dividing header">Give us your feedback</h4>
+                <div class="field">
+                  <label>Feedback</label>
+                  <textarea></textarea>
+                </div>
+                <div class="field">
+                  <div class="ui checkbox checked">
+                    <input type="checkbox" checked="checked" name="contact-me" tabindex="0" class="hidden">
+                    <label>It's okay to contact me.</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="actions">
+              <div class="ui button cancel">Cancel</div>
+              <div class="ui green button ok">Send</div>
+            </div>
+          </sm-modal>
+          <sm-button sm-modal-show="'.modal2'" class="teal">Show</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example2"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Size</h3>
+
+        <p>A modal can vary in size.</p>
+
+        <div data-copy-to="#example3">
+          <sm-modal class="small modal3">
+            <div class="header">
+              Delete Your Account
+            </div>
+            <div class="content">
+              <p>Are you sure you want to delete your account</p>
+            </div>
+            <div class="actions">
+              <div class="ui negative button">
+                No
+              </div>
+              <div class="ui positive right labeled icon button">
+                Yes
+                <i class="checkmark icon"></i>
+              </div>
+            </div>
+          </sm-modal>
+          <sm-button sm-modal-show="'.modal3'" class="teal">Show</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example3"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Scrolling Modal</h3>
+
+        <p>When your modal content exceeds the height of the browser the scrollable area will automatically expand to include just enough space for scrolling, without scrolling the page below.</p>
+
+        <div data-copy-to="#example4">
+          <sm-modal class="long scrolling modal4">
+            <div class="header">
+              Profile Picture
+            </div>
+            <div class="image content">
+              <div class="ui medium image">
+                <img src="http://semantic-ui.com/images/wireframe/image.png">
+              </div>
+              <div class="description">
+                <div class="ui header">Modal Header</div>
+                <p>This is an example of expanded content that will cause the modal's dimmer to scroll</p>
+                <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+                <div class="ui divider"></div>
+                <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+                <div class="ui divider"></div>
+                <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+                <div class="ui divider"></div>
+                <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+                <div class="ui divider"></div>
+                <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+                <div class="ui divider"></div>
+                <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+                <div class="ui divider"></div>
+                <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+                <div class="ui divider"></div>
+                <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+              </div>
+            </div>
+            <div class="actions">
+              <div class="ui primary approve button">
+                Proceed
+                <i class="right chevron icon"></i>
+              </div>
+            </div>
+          </sm-modal>
+          <sm-button sm-modal-show="'.modal4'" class="teal">Show</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example4"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Multiple Modals</h3>
+
+        <p>A modal can open a second modal. If you use <code>allowMultiple: true</code> parameter the second modal will be opened on top of the first modal. Otherwise the modal will be closed before the second modal is opened.</p>
+
+        <div data-copy-to="#example5">
+
+          <sm-modal class="modal5a" settings="{allowMultiple: true}">
+            <div class="header">
+              Modal #1
+            </div>
+            <div class="image content">
+              <div class="image">
+                <i class="right arrow icon"></i>
+              </div>
+              <div class="description">
+                <p>We have more to share with you. Follow us along to modal 2</p>
+              </div>
+            </div>
+            <div class="actions">
+              <div class="ui primary button" sm-modal-show="'.modal5b'">Proceed</div>
+            </div>
+          </sm-modal>
+
+          <sm-modal class="small modal5b" settings="{allowMultiple: true}">
+            <div class="header">
+              Modal #2
+            </div>
+            <div class="content">
+              <div class="description">
+                <p>That's everything!</p>
+              </div>
+            </div>
+            <div class="actions">
+              <div class="ui approve button" sm-modal-hide="'.modal5a'">
+                <i class="checkmark icon"></i>
+                All Done
+              </div>
+            </div>
+          </sm-modal>
+
+          <sm-button sm-modal-show="'.modal5a'" class="teal">Show</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example5"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Forcing a Choice</h3>
+
+        <p>You can disable a modal's dimmer from being closed by click to force a user to make a choice.</p>
+
+        <div data-copy-to="#example6">
+          <sm-modal class="small basic modal6" settings="{closable: false}">
+            <div class="ui icon header">
+              <i class="archive icon"></i>
+              Archive Old Messages
+            </div>
+            <div class="content">
+              <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+            </div>
+            <div class="actions">
+              <div class="ui red basic cancel inverted button">
+                <i class="remove icon"></i>
+                No
+              </div>
+              <div class="ui green ok inverted button">
+                <i class="checkmark icon"></i>
+                Yes
+              </div>
+            </div>
+          </sm-modal>
+          <sm-button sm-modal-show="'.modal6'" class="teal">Show</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example6"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Transitions</h3>
+
+        <p>A modal can use any named ui transition.</p>
+
+        <div class="current value">{{ modalTransition }}</div>
+
+        <div data-copy-to="#example7">
+
+          <sm-dropdown class="selection" model="modalTransition" items="transitions" label="item" value="item" sm-modal-show="{$:'.modal7', evt:'change'}"></sm-dropdown>
+
+          <sm-modal class="modal7" settings="{transition: modalTransition}">
+            <div class="header">
+              Profile Picture
+            </div>
+            <div class="image content">
+              <div class="ui medium image">
+                <img src="http://semantic-ui.com/images/avatar/large/chris.jpg">
+              </div>
+              <div class="description">
+                <div class="ui header">We've auto-chosen a profile image for you.</div>
+                <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+                <p>Is it okay to use this photo?</p>
+              </div>
+            </div>
+            <div class="actions">
+              <div class="ui black deny button">
+                Nope
+              </div>
+              <div class="ui positive right labeled icon button">
+                Yep, that's me
+                <i class="checkmark icon"></i>
+              </div>
+            </div>
+          </sm-modal>
+
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example7"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Dimmer Variations</h3>
+
+        <p>Modals can specify additional variations like <code>blurring</code> or <code>inverted</code> which adjust how the dimmer displays.</p>
+
+        <div data-copy-to="#example8">
+
+          <sm-button sm-modal-show="'.modal8a'" class="teal">Show Inverted</sm-button>
+          <sm-button sm-modal-show="'.modal8b'" class="teal">Show Blurred</sm-button>
+
+          <sm-modal class="modal8a" settings="{inverted: true}">
+            <div class="header">
+              Profile Picture
+            </div>
+            <div class="image content">
+              <div class="ui medium image">
+                <img src="http://semantic-ui.com/images/avatar/large/chris.jpg">
+              </div>
+              <div class="description">
+                <div class="ui header">We've auto-chosen a profile image for you.</div>
+                <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+                <p>Is it okay to use this photo?</p>
+              </div>
+            </div>
+            <div class="actions">
+              <div class="ui black deny button">
+                Nope
+              </div>
+              <div class="ui positive right labeled icon button">
+                Yep, that's me
+                <i class="checkmark icon"></i>
+              </div>
+            </div>
+          </sm-modal>
+
+          <sm-modal class="modal8b" settings="{blurring: true}">
+            <div class="header">
+              Profile Picture
+            </div>
+            <div class="image content">
+              <div class="ui medium image">
+                <img src="http://semantic-ui.com/images/avatar/large/chris.jpg">
+              </div>
+              <div class="description">
+                <div class="ui header">We've auto-chosen a profile image for you.</div>
+                <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+                <p>Is it okay to use this photo?</p>
+              </div>
+            </div>
+            <div class="actions">
+              <div class="ui black deny button">
+                Nope
+              </div>
+              <div class="ui positive right labeled icon button">
+                Yep, that's me
+                <i class="checkmark icon"></i>
+              </div>
+            </div>
+          </sm-modal>
+
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example8"></pre>
+
+      </div>
+      
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

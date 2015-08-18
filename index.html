@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="src/examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+    <script src="src/sm-core.js"></script>
+    <script src="src/sm-addons.js"></script>
+
+  </head>
+  <body ng-app="semantic-ui">
+
+    <div class="ui container">
+      
+      <br>
+
+      <h1 class="ui header">
+        <img src="http://semantic-ui.com/images/logo.png">
+        <div class="content">
+          Semantic UI &amp; Angular
+          <div class="sub header">Create &amp; Control Semantic UI Elements with Angular Directives</div>
+        </div>
+      </h1>
+
+      <div class="ui segment">
+
+        <h1 class="ui center aligned header">Elements</h1>
+
+        <table class="ui definition table" style="table-layout:fixed">
+          <thead>
+            <tr>
+              <th style="width:120px"></th>
+              <th style="width:250px">Documentation</th>
+              <th style=>Directives</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>List</td>
+              <td>
+                <a class="ui tiny button" href="src/list/examples.html"><i class="lab icon"></i> Examples</a>
+              </td>
+              <td>
+                <code>sm-list</code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="ui divider"></div>
+
+        <h1 class="ui center aligned header">Collections</h1>
+
+        <table class="ui definition table" style="table-layout:fixed">
+          <thead>
+            <tr>
+              <th style="width:120px"></th>
+              <th style="width:250px">Documentation</th>
+              <th style=>Directives</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Menu</td>
+              <td>
+                <a class="ui tiny button" href="src/menu/examples.html"><i class="lab icon"></i> Examples</a>
+              </td>
+              <td>
+                <code>sm-menu</code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="ui divider"></div>
+
+        <h1 class="ui center aligned header">Views</h1>
+
+        <table class="ui definition table" style="table-layout:fixed">
+          <thead>
+            <tr>
+              <th style="width:120px"></th>
+              <th style="width:250px">Documentation</th>
+              <th style=>Directives</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Comment</td>
+              <td>
+                <a class="ui tiny button" href="src/comment/examples.html"><i class="lab icon"></i> Examples</a>
+              </td>
+              <td>
+                <code>sm-comments</code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="ui divider"></div>
+
+        <h1 class="ui center aligned header">Modules</h1>
+
+        <table class="ui definition table" style="table-layout:fixed">
+          <thead>
+            <tr>
+              <th style="width:120px"></th>
+              <th style="width:250px">Documentation</th>
+              <th style=>Directives</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Accordion</td>
+              <td>
+                <a class="ui tiny button" href="src/accordion/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/accordion/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-accordion</code>
+                <code>sm-accordion-bind</code>
+                <code>sm-accordion-group</code>
+                <code>sm-accordion-open</code>
+                <code>sm-accordion-close-others</code>
+                <code>sm-accordion-close</code>
+                <code>sm-accordion-toggle</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Checkbox &amp; <br> Radio Button</td>
+              <td>
+                <a class="ui tiny button" href="src/checkbox/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/checkbox/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-checkbox</code>
+                <code>sm-checkbox-bind</code>
+                <code>sm-checkbox-toggle</code>
+                <code>sm-checkbox-check</code>
+                <code>sm-checkbox-uncheck</code>
+                <code>sm-checkbox-indeterminate</code>
+                <code>sm-checkbox-determinate</code>
+                <code>sm-checkbox-enable</code>
+                <code>sm-checkbox-disable</code>
+                <code>sm-radio</code>
+                <code>sm-radio-bind</code>
+                <code>sm-radio-check</code>
+                <code>sm-radio-enable</code>
+                <code>sm-radio-disable</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Dimmer</td>
+              <td>
+                <a class="ui tiny button" href="src/dimmer/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/dimmer/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-dimmer</code>
+                <code>sm-dimmer-bind</code>
+                <code>sm-dimmer-show</code>
+                <code>sm-dimmer-hide</code>
+                <code>sm-dimmer-toggle</code>                
+              </td>
+            </tr>
+            <tr>
+              <td>Dropdown</td>
+              <td>
+                <a class="ui tiny button" href="src/dropdown/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/dropdown/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-dropdown</code>
+                <code>sm-dropdown-bind</code>
+                <code>sm-dropdown-toggle</code>
+                <code>sm-dropdown-show</code>
+                <code>sm-dropdown-hide</code>
+                <code>sm-dropdown-clear</code>
+                <code>sm-dropdown-hide-others</code>
+                <code>sm-dropdown-restore-defaults</code>
+                <code>sm-dropdown-restore-default-text</code>
+                <code>sm-dropdown-restore-default-value</code>
+                <code>sm-dropdown-save-defaults</code>
+                <code>sm-dropdown-set-selected</code>
+                <code>sm-dropdown-set-text</code>
+                <code>sm-dropdown-set-value</code>
+                <code>sm-dropdown-bind-touch-events</code>
+                <code>sm-dropdown-mouse-events</code>
+                <code>sm-dropdown-bind-intent</code>
+                <code>sm-dropdown-unbind-intent</code>
+                <code>sm-dropdown-set-active</code>
+                <code>sm-dropdown-set-visible</code>
+                <code>sm-dropdown-remove-active</code>
+                <code>sm-dropdown-remove-visible</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Embed</td>
+              <td>
+                <a class="ui tiny button" href="src/embed/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/embed/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-embed</code>
+                <code>sm-embed-bind</code>
+                <code>sm-embed-reset</code>
+                <code>sm-embed-show</code>
+                <code>sm-embed-hide</code>
+                <code>sm-embed-destroy</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Modal</td>
+              <td>
+                <a class="ui tiny button" href="src/modal/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/modal/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-modal</code>
+                <code>sm-modal-bind</code>
+                <code>sm-modal-show</code>
+                <code>sm-modal-hide</code>
+                <code>sm-modal-toggle</code>
+                <code>sm-modal-refresh</code>
+                <code>sm-modal-show-dimmer</code>
+                <code>sm-modal-hide-dimmer</code>
+                <code>sm-modal-hide-others</code>
+                <code>sm-modal-hide-all</code>
+                <code>sm-modal-cache-sizes</code>
+                <code>sm-modal-set-active</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Popup</td>
+              <td>
+                <a class="ui tiny button" href="src/popup/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/popup/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-popup</code>
+                <code>sm-popup-bind</code>
+                <code>sm-popup-inline</code>
+                <code>sm-popup-display</code>
+                <code>sm-popup-detached</code>
+                <code>sm-popup-show</code>
+                <code>sm-popup-hide</code>
+                <code>sm-popup-hide-all</code>
+                <code>sm-popup-toggle</code>
+                <code>sm-popup-reposition</code>
+                <code>sm-popup-destroy</code>
+                <code>sm-popup-remove</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Progress</td>
+              <td>
+                <a class="ui tiny button" href="src/progress/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/progress/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-progress</code>
+                <code>sm-progress-bind</code>
+                <code>sm-progress-increment</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Rating</td>
+              <td>
+                <a class="ui tiny button" href="src/rating/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/rating/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-rating</code>
+                <code>sm-rating-bind</code>
+                <code>sm-rating-set</code>
+                <code>sm-rating-disable</code>
+                <code>sm-rating-enable</code>
+                <code>sm-rating-clear</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Search</td>
+              <td>
+                <a class="ui tiny button" href="src/search/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/search/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-search</code>
+                <code>sm-search-bind</code>
+                <code>sm-search-query</code>
+                <code>sm-search-cancel-query</code>
+                <code>sm-search-search-local</code>
+                <code>sm-search-search-remote</code>
+                <code>sm-search-set</code>
+                <code>sm-search-show-results</code>
+                <code>sm-search-hide-results</code>
+                <code>sm-search-destroy</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Shape</td>
+              <td>
+                <a class="ui tiny button" href="src/shape/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/shape/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-shape</code>
+                <code>sm-shape-bind</code>
+                <code>sm-shape-flip-up</code>
+                <code>sm-shape-flip-down</code>
+                <code>sm-shape-flip-left</code>
+                <code>sm-shape-flip-right</code>
+                <code>sm-shape-flip-over</code>
+                <code>sm-shape-flip-back</code>
+                <code>sm-shape-set-next-side</code>
+                <code>sm-shape-reset</code>
+                <code>sm-shape-queue</code>
+                <code>sm-shape-repaint</code>
+                <code>sm-shape-set-default-side</code>
+                <code>sm-shape-set-stage-size</code>
+                <code>sm-shape-refresh</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Sidebar</td>
+              <td>
+                <a class="ui tiny button" href="src/sidebar/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/sidebar/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-sidebar</code>
+                <code>sm-sidebar-bind</code>
+                <code>sm-sidebar-show</code>
+                <code>sm-sidebar-hide</code>
+                <code>sm-sidebar-toggle</code>
+                <code>sm-sidebar-push-page</code>
+                <code>sm-sidebar-pull-page</code>
+                <code>sm-sidebar-add-body-css</code>
+                <code>sm-sidebar-remove-body-css</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Sticky</td>
+              <td>
+                <a class="ui tiny button" href="src/sticky/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/sticky/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-sticky</code>
+                <code>sm-sticky-bind</code>
+                <code>sm-sticky-refresh</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Tab</td>
+              <td>
+                <a class="ui tiny button" href="src/tab/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/tab/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-tab</code>
+                <code>sm-tab-bind</code>
+                <code>sm-tab-menu</code>
+                <code>sm-tab-set</code>
+              </td>
+            </tr>
+            <tr>
+              <td>Transition</td>
+              <td>
+                <a class="ui tiny button" href="src/transition/examples.html"><i class="lab icon"></i> Examples</a>
+                <a class="ui tiny button" href="src/transition/directives.html"><i class="code icon"></i> Directives</a>
+              </td>
+              <td>
+                <code>sm-transition</code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>

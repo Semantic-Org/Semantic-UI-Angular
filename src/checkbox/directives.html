@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.5/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.5/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-checkbox.js"></script>
+    <script src="sm-radio.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          $scope.value3 = false;
+          $scope.value4a = false;
+          $scope.value4b = false;
+          $scope.value5 = true;
+          $scope.value6 = false;
+          $scope.value7 = void 0;
+          $scope.value8a = false;
+          $scope.value8b = false;
+          $scope.enabled8 = false;
+          $scope.value9a = false;
+          $scope.value9b = false;
+          $scope.enabled9 = true;
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+
+      <code class="float right optional">optional</code>
+      <code class="float right required">required</code> 
+
+      <h1 class="ui header">
+        <img src="http://semantic-ui.com/images/logo.png">
+        <div class="content">
+          Checkbox &amp; Radio Button Directives
+          <div class="sub header">Create &amp; Control Semantic UI Checkboxes &amp; Radio Buttons with Angular Directives</div>
+        </div>
+      </h1>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-checkbox
+          <div class="sub header">Create a plain checkbox.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="required">model</code> <code>=</code> the variable to place the value of the checkbox.</li>
+          <li><code class="required">label</code> <code>@</code> a string for the label of the checkbox.</li>
+          <li><code class="optional">settings</code> <code>=</code> reference to a settings object to pass to the initialization function.</li>
+          <li><code class="optional">enabled</code> <code>=</code> a value which can enable/disable the checkbox when it changes.</li>
+          <li><code class="optional">checked-value</code> <code>=</code> the value of the model when the checkbox is in a checked state (default is true).</li>
+          <li><code class="optional">unchecked-value</code> <code>=</code> the value of the model when the checkbox is in an unchecked state (default is false).</li>
+          <li><code class="optional">indeterminat-value</code> <code>=</code> the value of the model when the checkbox is in an indeterminate state (default is undefined).</li>
+          <li><code class="optional">children</code> <code>@</code> a selector string of checkboxes that are the 'children' of this checkbox. I.E. the state of this checkbox is determined by the collective state of it's children. When all children are checked - this checkbox is checked. When all children are unchecked - this checkbox is unchecked. When the children have mixed states - this checkbox is indeterminate. When this checkbox is checked it checks all children. When this checkbox is unchecked it unchecks all children.</li>
+        </ul>
+        <h5>Callback Attributes</h5>
+        <ul>
+          <li><code class="optional">on-init</code> <code>=</code> Callback once the module is initialized, passing the initialized element as the first argument.</li>
+          <li><code class="optional">on-change</code> <code>=</code> Callback after a checkbox is either checked or unchecked.</li>
+          <li><code class="optional">on-checked</code> <code>=</code> Callback after a checkbox is checked.</li>
+          <li><code class="optional">on-indeterminate</code> <code>=</code> Callback after a checkbox is set to undeterminate.</li>
+          <li><code class="optional">on-determinate</code> <code>=</code> Callback after a checkbox is set to determinate.</li>
+          <li><code class="optional">on-unchecked</code> <code>=</code> Callback after a checkbox is unchecked.</li>
+          <li><code class="optional">on-enable</code> <code>=</code> Callback after a checkbox is enabled.</li>
+          <li><code class="optional">on-disable</code> <code>=</code> Callback after a checkbox is disabled.</li>
+        </ul>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-checkbox-bind
+          <div class="sub header">A lightweight attribute directive which calls checkbox() on the element with the settings object passed to the attribute. Using this directive means you need to manage the communication between Angular and Semantic UI yourself.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code0"></pre>
+
+        <div data-copy-to="#code0">
+          <div class="ui checkbox" sm-checkbox-bind>
+            <input type="checkbox" name="example">
+            <label>Make my profile visible</label>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-radio
+          <div class="sub header">Create a plain radio button. Radio buttons and checkboxes use the same checkbox module but are separate directives for convenience.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="required">model</code> <code>=</code> the variable to place the value of the radio.</li>
+          <li><code class="required">label</code> <code>@</code> a string for the label of the radio.</li>
+          <li><code class="required">name</code> <code>@</code> the name which groups radio buttons together.</li>
+          <li><code class="required">value</code> <code>=</code> the value of the model if this radio button is selected.</li>
+          <li><code class="optional">settings</code> <code>=</code> reference to a settings object to pass to the initialization function.</li>
+          <li><code class="optional">enabled</code> <code>=</code> a value which can enable/disable the checkbox when it changes.</li>
+        </ul>
+        <h5>Callback Attributes</h5>
+        <ul>
+          <li><code class="optional">on-init</code> <code>=</code> Callback once the module is initialized, passing the initialized element as the first argument.</li>
+          <li><code class="optional">on-change</code> <code>=</code> Callback after a checkbox is either checked or unchecked.</li>
+          <li><code class="optional">on-checked</code> <code>=</code> Callback after a checkbox is checked.</li>
+          <li><code class="optional">on-unchecked</code> <code>=</code> Callback after a checkbox is unchecked.</li>
+          <li><code class="optional">on-enable</code> <code>=</code> Callback after a checkbox is enabled.</li>
+          <li><code class="optional">on-disable</code> <code>=</code> Callback after a checkbox is disabled.</li>
+        </ul>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-radio-bind
+          <div class="sub header">A lightweight attribute directive which calls checkbox() on the element with the settings object passed to the attribute. Using this directive means you need to manage the communication between Angular and Semantic UI yourself.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code1"></pre>
+
+        <div data-copy-to="#code1">
+          <div class="ui radio checkbox" sm-radio-bind>
+            <input type="radio" name="radioGroup">
+            <label>Option #1</label>
+          </div>
+          <br>
+          <div class="ui radio checkbox" sm-radio-bind>
+            <input type="radio" name="radioGroup">
+            <label>Option #2</label>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ui tertiary segment">
+
+        <h1>Behavior Directives</h1>
+        <p>These attribute directives invoke a behavior on the component where the attribute value can be one of the following formats:</p>
+
+        <h5>String</h5>
+        <ul>
+          <li>Selector to the accordion(s) to invoke the behavior when the element with the directive is clicked.</li>
+        </ul>
+
+        <h5>Object</h5>
+        <ul>
+          <li><code class="required">$</code> <code>@</code> A selector string.</li>
+          <li><code class="optional">evt</code> <code>@</code> The event string which triggers the behavior ('click' by default).</li>
+          <li><code class="optional">enabled</code> <code>=</code> A boolean value which determines whether or not the behavior should be called when the event occurs.</li>
+          <li><code class="optional">value</code> <code>=</code> The first argument to pass to the behavior if it requires one.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code2"></pre>
+
+        <div data-copy-to="#code2">
+          <sm-button class="teal" sm-checkbox-behavior="'selector'">Execute Simple Behavior</sm-button>
+          <sm-button class="teal" sm-checkbox-behavior="{$: 'selector', value: scopeValue1, enabled: scopeValue2, evt: 'mouseover'}">Execute Advanced Behavior</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-checkbox-toggle
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command checkbox(es) to toggle their state.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code3"></pre>
+
+        <div class="current value">
+          {{ value3 }}
+        </div>
+        <div data-copy-to="#code3">
+          <sm-button class="teal" sm-checkbox-toggle="'.example3'">Toggle</sm-button><br><br>
+          <sm-checkbox model="value3" class="example3" label="Checkbox"></sm-checkbox>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-checkbox-check / sm-radio-check
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command checkbox/radio(s) to the checked state.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code4"></pre>
+
+        <div class="current value">
+          {{ value4a }} / {{ value4b }}
+        </div>
+        <div data-copy-to="#code4">
+          <sm-button class="teal" sm-checkbox-check="'.example4'">Check</sm-button><br><br>
+          <sm-checkbox model="value4a" class="example4" label="Checkbox"></sm-checkbox><br>
+          <sm-radio model="value4b" class="example4" label="Radio #1" value="1" name="example4"></sm-radio><br>
+          <sm-radio model="value4b" label="Radio #2" value="2" name="example4"></sm-radio><br>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-checkbox-uncheck
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command checkbox(es) to the unchecked state.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code5"></pre>
+
+        <div class="current value">
+          {{ value5 }}
+        </div>
+        <div data-copy-to="#code5">  
+          <sm-button class="teal" sm-checkbox-uncheck="'.example5'">Uncheck</sm-button><br><br>
+          <sm-checkbox model="value5" class="example5" label="Checkbox"></sm-checkbox>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-checkbox-indeterminate
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command checkbox(es) to the indeterminate state.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code6"></pre>
+
+        <div class="current value">
+          {{ value6 }}
+        </div>
+        <div data-copy-to="#code6">
+          <sm-button class="teal" sm-checkbox-indeterminate="'.example6'">Indeterminate</sm-button><br><br>
+          <sm-checkbox model="value6" class="example6" label="Checkbox"></sm-checkbox>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-checkbox-determinate
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command checkbox(es) to a determinate state.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code7"></pre>
+
+        <div class="current value">
+          {{ value7 }}
+        </div>
+        <div data-copy-to="#code7">
+          <sm-button class="teal" sm-checkbox-determinate="'.example7'">Determinate</sm-button><br><br>
+          <sm-checkbox model="value7" class="example7" label="Checkbox"></sm-checkbox>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-checkbox-enable / sm-radio-enable
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command checkbox/radio(s) to become enabled.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code8"></pre>
+
+        <div data-copy-to="#code8">
+          <sm-button class="teal" sm-checkbox-enable="'.example8'">Enable</sm-button><br><br>
+          <sm-checkbox model="value8a" class="example8" label="Checkbox" enabled="enabled8"></sm-checkbox><br>
+          <sm-radio model="value8b" class="example8" label="Radio #1" enabled="enabled8" name="example8" value="1"></sm-radio><br>
+          <sm-radio model="value8b" class="example8" label="Radio #2" enabled="enabled8" name="example8" value="2"></sm-radio><br>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-checkbox-disable / sm-radio-disable
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command checkbox/radio(s) to become disabled.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code9"></pre>
+
+        <div data-copy-to="#code9">
+          <sm-button class="teal" sm-checkbox-disable="'.example9'">Disable</sm-button><br><br>
+          <sm-checkbox model="value9a" class="example9" label="Checkbox" enabled="enabled9"></sm-checkbox><br>
+          <sm-radio model="value9b" class="example9" label="Radio #1" enabled="enabled9" name="example9" value="1"></sm-radio><br>
+          <sm-radio model="value9b" class="example9" label="Radio #2" enabled="enabled9" name="example9" value="2"></sm-radio><br>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

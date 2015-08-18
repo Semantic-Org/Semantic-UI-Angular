@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="../dropdown/sm-dropdown.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          $scope.handleClick = function(item, $event)
+          {
+            alert( item.label );
+          };
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+    
+      <div class="ui segment">
+
+        <h3 class="ui header">Menu Dropdown</h3>
+
+        <p>A dropdown menu.</p>
+
+        <div data-copy-to="#example0">
+          <div ng-controller="DropdownMenuController">
+            <div class="ui dropdown" sm-dropdown-bind="{action: 'hide'}">
+              <div class="text">File</div>
+              <i class="dropdown icon"></i>
+              <sm-menu items="menu" label="item.label" description="item.description" icon="item.icon" children="item.children" divider="item.divider" on-click="handleClick(item, $event)"></sm-menu>
+            </div>
+          </div>
+          <script>
+            angular.module('semantic-ui')
+              .controller('DropdownMenuController', function($scope) 
+              {
+                $scope.menu = [
+                  {label: 'Open...', description: 'ctrl + o'},
+                  {label: 'Save as...', description: 'ctrl + s'},
+                  {label: 'Rename', description: 'ctrl + r'},
+                  {label: 'Make a copy'},
+                  {label: 'Move to folder', icon: 'folder'},
+                  {label: 'Move to trash', icon: 'trash'},
+                  {divider: true},
+                  {label: 'Download As...'},
+                  {label: 'Publish To Web', icon: 'dropdown', children: [
+                    {label: 'Google Docs'},
+                    {label: 'Google Drive'},
+                    {label: 'Dropbox'},
+                    {label: 'Adobe Creative Cloud'},
+                    {label: 'Private FTP'},
+                    {label: 'Another Service...'}
+                  ]},
+                  {label: 'E-mail Collaborators'}
+                ];
+              })
+            ;
+          </script>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example0"></pre>
+
+      </div>
+      
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

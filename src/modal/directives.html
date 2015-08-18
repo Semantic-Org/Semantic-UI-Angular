@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-modal.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+
+      <code class="float right optional">optional</code>
+      <code class="float right required">required</code> 
+
+      <h1 class="ui header">
+        <img src="http://semantic-ui.com/images/logo.png">
+        <div class="content">
+          Modal Directives
+          <div class="sub header">Create &amp; Control Semantic UI Modals with Angular Directives</div>
+        </div>
+      </h1>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-modal
+          <div class="sub header">Creates a modal.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="optional">visible</code> <code>=</code> a variable which can be used to toggle the visiblity of the modal.</li>
+          <li><code class="optional">settings</code> <code>=</code> reference to a settings object to pass to the initialization function.</li>
+        </ul>
+        <h5>Callback Attributes</h5>
+        <ul>
+          <li><code class="optional">on-init</code> <code>=</code> Callback once the module is initialized, passing the initialized element as the first argument.</li>
+          <li><code class="optional">on-show</code> <code>=</code> Callback when a modal starts to show.</li>
+          <li><code class="optional">on-visible</code> <code>=</code> Callback after a modal has finished showing animating.</li>
+          <li><code class="optional">on-hide</code> <code>=</code> Callback after a modal starts to hide.</li>
+          <li><code class="optional">on-hidden</code> <code>=</code> Callback after a modal has finished hiding animation.</li>
+          <li><code class="optional">on-approve</code> <code>=</code> Callback after a positive, approve or ok button is pressed. If the function returns <code>false</code>, the modal will not hide.</li>
+          <li><code class="optional">on-deny</code> <code>=</code> Callback after a negative, deny or cancel button is pressed. If the function returns <code>false</code> the modal will not hide.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code0"></pre>
+
+        <div data-copy-to="#code0">
+          <sm-modal>
+            <div class="ui icon header">
+              <i class="archive icon"></i>
+              Archive Old Messages
+            </div>
+            <div class="content">
+              <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+            </div>
+            <div class="actions">
+              <div class="ui red basic cancel inverted button">
+                <i class="remove icon"></i>
+                No
+              </div>
+              <div class="ui green ok inverted button">
+                <i class="checkmark icon"></i>
+                Yes
+              </div>
+            </div>
+          </sm-modal>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-modal-bind
+          <div class="sub header">A lightweight attribute directive which calls modal() on the element with the settings object passed to the attribute. Using this directive means you need to manage the communication between Angular and Semantic UI yourself.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code1"></pre>
+
+        <div data-copy-to="#code1">
+          <div class="ui modal" sm-modal-bind>
+            <div class="ui icon header">
+              <i class="archive icon"></i>
+              Archive Old Messages
+            </div>
+            <div class="content">
+              <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+            </div>
+            <div class="actions">
+              <div class="ui red basic cancel inverted button">
+                <i class="remove icon"></i>
+                No
+              </div>
+              <div class="ui green ok inverted button">
+                <i class="checkmark icon"></i>
+                Yes
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ui tertiary segment">
+
+        <h1>Behavior Directives</h1>
+        <p>These attribute directives invoke a behavior on the component where the attribute value can be one of the following formats:</p>
+
+        <h5>String</h5>
+        <ul>
+          <li>Selector to the dropdown(s) to invoke the behavior when the element with the directive is clicked.</li>
+        </ul>
+
+        <h5>Object</h5>
+        <ul>
+          <li><code class="required">$</code> <code>@</code> A selector string.</li>
+          <li><code class="optional">evt</code> <code>@</code> The event string which triggers the behavior ('click' by default).</li>
+          <li><code class="optional">enabled</code> <code>=</code> A boolean value which determines whether or not the behavior should be called when the event occurs.</li>
+          <li><code class="optional">value</code> <code>=</code> The first argument to pass to the behavior if it requires one.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code2"></pre>
+
+        <div data-copy-to="#code2">
+          <sm-button class="teal" sm-modal-behavior="'selector'">Execute Simple Behavior</sm-button>
+          <sm-button class="teal" sm-modal-behavior="{$: 'selector', value: scopeValue1, enabled: scopeValue2, evt: 'mouseover'}">Execute Advanced Behavior</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-modal-show
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command modal(s) to be shown.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code3"></pre>
+
+        <div data-copy-to="#code3">
+          <sm-button sm-modal-show="'.modal3'" class="teal">Show</sm-button>
+
+          <sm-modal class="basic small modal3">
+            <div class="ui centered header">Archive Old Messages</div>
+            <div class="content">Your inbox is getting full, would you like us to enable automatic archiving of old messages?</div>
+            <div class="actions">
+              <div class="ui red basic cancel inverted button">No</div>
+              <div class="ui green ok inverted button">Yes</div>
+            </div>
+          </sm-modal>
+        </div>
+
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-modal-hide
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command modal(s) to be hidden.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-modal-toggle
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command modal(s) to toggle their visibility.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-modal-refresh
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command modal(s) to center themselves on the page.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-modal-show-dimmer
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command modal(s) to show their dimmer.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-modal-hide-dimmer
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command modal(s) to hide their dimmer.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-modal-hide-others
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command modal(s) that aren't the selected ones to be hidden.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-modal-hide-all
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command modal(s) to hide all visible modals in the same dimmer.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-modal-cache-sizes
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command modal(s) to cache their current size.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-modal-set-active
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command modal(s) to make themselves active.</div>
+        </h3>
+      </div>
+
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

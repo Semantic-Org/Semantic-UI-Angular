@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-checkbox.js"></script>
+    <script src="sm-radio.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          $scope.standard = false;
+          $scope.radio = 'meow';
+          $scope.frequency = void 0;
+          $scope.checked = true;
+          $scope.isEnabled = false;
+          $scope.disabled = false;
+          $scope.indeter = 'ind';
+          $scope.master = false;
+          $scope.fruit1 = false;
+          $scope.fruit2 = false;
+          $scope.fruit3 = false;
+          $scope.attach1 = true;
+          $scope.attach2 = true;
+          $scope.attach3 = false;
+          $scope.attach4 = false;
+          $scope.attach5 = false;
+          $scope.attach6 = false;
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+    
+      <div class="ui segment">
+
+        <h3 class="ui header">Checkbox</h3>
+        <p>A standard checkbox</p>
+
+        <sm-checkbox model="standard" label="Make my profile visible"></sm-checkbox>
+
+        <div class="current value">
+          {{ standard }}
+        </div>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Radio</h3>
+        <p>A checkbox can be formatted as a radio element. This means it is an exclusive option.</p>
+
+
+        <div class="current value">
+          {{ radio }}
+        </div>
+        <sm-radio model="radio" value="'kitty'" name="radio0" label="Radio choice"></sm-radio>
+
+        <br><br><br>
+
+        <div class="current value">
+          {{ frequency }}
+        </div>
+        <div class="ui form">
+          <div class="inline fields">
+            <label>How often do you use checkboxes?</label>
+            <div class="field">
+              <sm-radio name="frequency" model="frequency" label="Once a week" value="1">
+            </div>
+            <div class="field">
+              <sm-radio name="frequency" model="frequency" label="2-3 times a week" value="2">
+            </div>
+            <div class="field">
+              <sm-radio name="frequency" model="frequency" label="Once a day" value="3">
+            </div>
+            <div class="field">
+              <sm-radio name="frequency" model="frequency" label="Twice a day" value="4">
+            </div>
+          </div>
+        </div>
+
+        <br><br>
+
+        <div class="current value">
+          {{ example2 }}
+        </div>
+        <div class="ui form">
+          <div class="grouped fields">
+            <label>How often do you use checkboxes?</label>
+            <div class="field">
+              <sm-radio name="example2" model="example2" label="Once a week" value="1">
+            </div>
+            <div class="field">
+              <sm-radio name="example2" model="example2" label="2-3 times a week" value="2">
+            </div>
+            <div class="field">
+              <sm-radio name="example2" model="example2" label="Once a day" value="3">
+            </div>
+            <div class="field">
+              <sm-radio name="example2" model="example2" label="Twice a day" value="4">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Slider</h3>
+        <p>A checkbox can be formatted to emphasize the current selection state</p>
+
+
+        <div class="current value">
+          {{ slider }}
+        </div>
+        <sm-checkbox class="slider" model="slider" label="Accept terms and conditions"></sm-checkbox>
+        
+        <br><br><br>
+
+        <div class="current value">
+          {{ throughput }}
+        </div>
+        <div class="ui form">
+          <div class="grouped fields">
+            <label>Outbound Throughput</label>
+            <div class="field">
+               <sm-radio class="slider" name="throughput" model="throughput" label="20 mbps max" value="20">
+            </div>
+            <div class="field">
+               <sm-radio class="slider" name="throughput" model="throughput" label="10mbps max" value="10">
+            </div>
+            <div class="field">
+               <sm-radio class="slider" name="throughput" model="throughput" label="5mbps max" value="5">
+            </div>
+            <div class="field">
+               <sm-radio class="slider" name="throughput" model="throughput" label="Unmetered" value="-1">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Toggle</h3>
+        <p>A checkbox can be formatted to show an on or off choice</p>
+
+
+        <div class="current value">
+          {{ toggle }}
+        </div>
+        <sm-checkbox class="toggle" model="toggle" label="Subscribe to weekly newsletter"></sm-checkbox>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Read-only</h3>
+        <p>A checkbox can be read-only and unable to change states</p>
+
+        <sm-checkbox model="false" class="read-only" label="Read Only"></sm-checkbox>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Checked</h3>
+        <p>A checkbox can be checked</p>
+
+        <div class="current value">
+          {{ checked }}
+        </div>
+        <sm-checkbox model="checked" label="Active"></sm-checkbox>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Indeterminate</h3>
+        <p>A checkbox can be indeterminate</p>
+
+
+        <div class="current value">
+          {{ indeter }}
+        </div>
+        <sm-checkbox model="indeter" label="Indeterminate" indeterminate-value="'ind'" checked-value="'checked'" unchecked-value="'unchecked'"></sm-checkbox>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Disabled</h3>
+        <p>A checkbox can be read-only and unable to change states</p>
+
+        <sm-checkbox model="disabled" label="Disabled" enabled="isEnabled"></sm-checkbox>
+        <br><br>
+        <sm-checkbox class="toggle" model="disabled" enabled="isEnabled" label="Disabled"></sm-checkbox>
+        <br><br>
+        <sm-button class="basic" ng-click="isEnabled = !isEnabled">{{ isEnabled ? 'Disable' : 'Enable' }}</sm-button>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Grouped Checkboxes</h3>
+        <p>The <code>indeterminate</code> state can be used to represent a value that is neither checked or unchecked.</p>
+        <p>This can be useful with groups where a "master" checkbox, should display the selections of several other checkboxes</p>
+
+        <div class="contains floats">
+          <div class="current value">{{ master }}</div>
+          <sm-checkbox model="master" children=".childs" label="All Fruits" indeterminate-value="'mixed'"></sm-checkbox>
+        </div>
+
+        <div class="contains floats">
+          <div class="current value">{{ fruit1 }}</div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sm-checkbox class="childs" model="fruit1" label="Apple"></sm-checkbox>
+        </div>
+
+        <div class="contains floats">
+          <div class="current value">{{ fruit2 }}</div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sm-checkbox class="childs" model="fruit2" label="Orange"></sm-checkbox>
+        </div>
+
+        <div class="contains floats">
+          <div class="current value">{{ fruit3 }}</div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sm-checkbox class="childs" model="fruit3" label="Pear"></sm-checkbox>
+        </div>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Attaching Events to other Elements</h3>
+        <p>Checkbox can use the <code>sm-checkbox-*</code> behaviors to attach events easily to other activating elements. This defaults to toggling, but other behaviors can be used as well.</p>
+
+        <sm-button sm-checkbox-toggle="'#attached .ui.checkbox'">Toggle</sm-button>
+        <sm-button sm-checkbox-check="'#attached .ui.checkbox'" class="positive">Check</sm-button>
+        <sm-button sm-checkbox-uncheck="'#attached .ui.checkbox'" class="negative">Uncheck</sm-button>
+
+        <div class="ui six column center aligned stackable divided grid segment" id="attached">
+          <div class="column">
+            <sm-checkbox class="slider" model="attach1" label="1">
+          </div>
+          <div class="column">
+            <sm-checkbox class="toggle" model="attach2" label="2">
+          </div>
+          <div class="column">
+            <sm-checkbox model="attach3" label="3">
+          </div>
+          <div class="column">
+            <sm-checkbox class="slider" model="attach4" label="4">
+          </div>
+          <div class="column">
+            <sm-checkbox class="toggle" model="attach5" label="5">
+          </div>
+          <div class="column">
+            <sm-checkbox model="attach6" label="6">
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+
+  </body>
+</html>

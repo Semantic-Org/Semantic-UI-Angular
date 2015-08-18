@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-accordion.js"></script>
+    <script src="../checkbox/sm-checkbox.js"></script>
+    <script src="../checkbox/sm-radio.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+            $scope.size = false;
+            $scope.red = false;
+            $scope.orange = true;
+            $scope.green = false;
+            $scope.blue = false;
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+    
+      <div class="ui segment">
+
+        <h3 class="ui header">Accordion</h3>
+        <p>A standard accordion</p>
+
+        <sm-accordion>
+
+          <sm-accordion-group title="'What is a dog?'">
+            <p class="transition hidden">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+          </sm-accordion-group>
+
+          <sm-accordion-group title="'What kinds of dogs are there?'">
+            <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+          </sm-accordion-group>
+
+          <sm-accordion-group title="'How do you acquire a dog?'">
+            <p class="transition hidden">Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+            <p class="transition hidden">A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+          </sm-accordion-group>
+
+        </sm-accordion>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Styled</h3>
+        <p>A styled accordion adds basic formatting</p>
+
+        <sm-accordion class="styled">
+
+          <sm-accordion-group title="'What is a dog?'">
+            <p class="transition hidden">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+          </sm-accordion-group>
+
+          <sm-accordion-group title="'What kinds of dogs are there?'">
+            <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+          </sm-accordion-group>
+
+          <sm-accordion-group title="'How do you acquire a dog?'">
+            <p class="transition hidden">Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+            <p class="transition hidden">A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+          </sm-accordion-group>
+
+        </sm-accordion>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Fluid</h3>
+        <p>An accordion can take up the width of its container</p>
+
+        <sm-accordion class="fluid styled">
+
+          <sm-accordion-group title="'What is a dog?'">
+            <p class="transition hidden">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+          </sm-accordion-group>
+
+          <sm-accordion-group title="'What kinds of dogs are there?'">
+            <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+          </sm-accordion-group>
+
+          <sm-accordion-group title="'How do you acquire a dog?'">
+            <p class="transition hidden">Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+            <p class="transition hidden">A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+          </sm-accordion-group>
+
+        </sm-accordion>
+
+      </div>
+      <div class="ui inverted segment">
+
+        <h3 class="ui header">Inverted</h3>
+        <p>An accordion can be formatted to appear on dark backgrounds</p>
+
+        <sm-accordion class="inverted">
+
+          <sm-accordion-group title="'What is a dog?'">
+            <p class="transition hidden">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+          </sm-accordion-group>
+
+          <sm-accordion-group title="'What kinds of dogs are there?'">
+            <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+          </sm-accordion-group>
+
+          <sm-accordion-group title="'How do you acquire a dog?'">
+            <p class="transition hidden">Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+            <p class="transition hidden">A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+          </sm-accordion-group>
+
+        </sm-accordion>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Nested Accordions</h3>
+        <p>An accordion can have multiple levels of nested content. This content can either be in a nested <code>accordion</code> or simply another level of <code>title</code> and <code>content</code></p>
+
+        <sm-accordion class="styled">
+          <sm-accordion-group title="'Level 1'" active="true">
+            <div class="accordion">
+              <sm-accordion-group title="'Level 1A'" active="true">
+                <p>Level 1A Contents</p>
+                <div class="accordion">
+                  <sm-accordion-group title="'Level 1A-A'">
+                    Level 1A-A Content
+                  </sm-accordion-group>
+                  <sm-accordion-group title="'Level 1A-B'">
+                    Level 1A-B Content
+                  </sm-accordion-group>
+                </div>
+              </sm-accordion-group>
+              <sm-accordion-group title="'Level 1B'">
+                <p>Level 1B Contents</p>
+              </sm-accordion-group>
+              <sm-accordion-group title="'Level 1C'">
+                <p>Level 1C Contents</p>
+              </sm-accordion-group>
+            </div>
+          </sm-accordion-group>
+          <sm-accordion-group title="'Level 2'">
+            <p>Level 2 Content</p>
+          </sm-accordion-group>
+        </sm-accordion>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Changing Trigger</h3>
+        <p>An accordion normally triggers when its title is clicked. However you can change the trigger selector to specify an element inside a title to use as an activator</p>
+
+        <sm-accordion settings="{selector:{trigger:'.title .icon'}}">
+
+          <sm-accordion-group title="'What is a dog?'">
+            <p class="transition hidden">A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+          </sm-accordion-group>
+
+          <sm-accordion-group title="'What kinds of dogs are there?'">
+            <p class="transition hidden">There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+          </sm-accordion-group>
+
+          <sm-accordion-group title="'How do you acquire a dog?'">
+            <p class="transition hidden">Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
+            <p class="transition hidden">A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
+          </sm-accordion-group>
+
+        </sm-accordion>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Form Fields</h3>
+        <p>An accordion can be used anywhere where content can be shown or hidden. For example, to show optional form fields.</p>
+
+        <div class="ui fluid form">
+          <div class="two fields">
+            <div class="field">
+              <label>First Name</label>
+              <input placeholder="First Name" type="text">
+            </div>
+            <div class="field">
+              <label>Last Name</label>
+              <input placeholder="Last Name" type="text">
+            </div>
+          </div>
+          <sm-accordion class="field">
+            <sm-accordion-group title="'Optional Details'">
+              <label class="transition hidden">Maiden Name</label>
+              <input placeholder="Maiden Name" type="text" class="transition hidden">
+            </sm-accordion-group>
+          </sm-accordion>
+          <div class="ui secondary submit button">Sign Up</div>
+        </div>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Accordion Menu</h3>
+        <p>An accordion can be used to create content drawers inside a menu</p>
+
+        <sm-accordion class="vertical menu">
+          
+          <sm-accordion-group title="'Size'" class="item" active="true">
+            <div class="ui form">
+              <div class="grouped fields">
+                <div class="field">
+                  <sm-radio name="size" model="size" value="'small'" label="Small">
+                </div>
+                <div class="field">
+                  <sm-radio name="size" model="size" value="'medium'" label="Medium">
+                </div>
+                <div class="field">
+                  <sm-radio name="size" model="size" value="'large'" label="Large">
+                </div>
+                <div class="field">
+                  <sm-radio name="size" model="size" value="'x-large'" label="X-Large">
+                </div>
+              </div>
+            </div>
+          </sm-accordion-group>
+
+          <sm-accordion-group title="'Colors'" class="item">
+            <div class="ui form">
+              <div class="grouped fields">
+                <div class="field">
+                  <sm-checkbox model="red" label="Red">
+                </div>
+                <div class="field">
+                  <sm-checkbox model="orange"label="Orange">
+                </div>
+                <div class="field">
+                  <sm-checkbox model="green" label="Green">
+                </div>
+                <div class="field">
+                  <sm-checkbox model="blue" label="Blue">
+                </div>
+              </div>
+            </div>
+          </sm-accordion-group>
+          
+        </sm-accordion>
+
+      </div>
+    
+    </div>
+
+  </body>
+</html>

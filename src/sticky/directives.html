@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-sticky.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          
+        })
+      ;
+    </script>
+    <style>
+    .wireframe.image {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+    .main.ui.container {
+      position: relative;
+      width: 700px !important;
+      left: 0px;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    </style>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="main ui container">
+
+      <code class="float right optional">optional</code>
+      <code class="float right required">required</code> 
+
+      <h1 class="ui header">
+        <img src="http://semantic-ui.com/images/logo.png">
+        <div class="content">
+          Sticky Directives
+          <div class="sub header">Create &amp; Control Semantic UI Sticky with Angular Directives</div>
+        </div>
+      </h1>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-sticky
+          <div class="sub header">Creates a sticky.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="optional">context</code> <code>@</code> a selector string to the element this sticky is contained in.</li>
+          <li><code class="optional">settings</code> <code>=</code> a reference to a settings object to pass to the initialization function.</li>
+        </ul>
+        <h5>Callback Attributes</h5>
+        <ul>
+          <li><code class="optional">on-init</code> <code>=</code> Callback once the module is initialized, passing the initialized element as the first argument.</li>
+          <li><code class="optional">on-reposition</code> <code>=</code> Callback when element is repositioned from layout change.</li>
+          <li><code class="optional">on-scroll</code> <code>=</code> Callback when <code>requestAnimationFrame</code> fires from scroll handler.</li>
+          <li><code class="optional">on-stick</code> <code>=</code> Callback when element is fixed to page.</li>
+          <li><code class="optional">on-unstick</code> <code>=</code> Callback when element is unfixed from page.</li>
+          <li><code class="optional">on-top</code> <code>=</code> Callback when element is bound to top of parent container.</li>
+          <li><code class="optional">on-bottom</code> <code>=</code> Callback when element is bound to bottom of parent container.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code0"></pre>
+
+        <div data-copy-to="#code0" class="ui segment">
+          <div class="ui left rail">
+            <sm-sticky context="#context0" settings="{offset: 20}">
+              <h3 class="ui header">Stuck Content</h3>
+              <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/image.png">
+            </sm-sticky>
+          </div>
+          <div id="context0">
+            <img class="ui wireframe paragraph image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+            <img class="ui wireframe paragraph image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+            <img class="ui wireframe paragraph image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+            <img class="ui wireframe paragraph image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+            <img class="ui wireframe paragraph image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-sticky-bind
+          <div class="sub header">A lightweight attribute directive which calls sticky() on the element with the settings object passed to the attribute. Using this directive means you need to manage the communication between Angular and Semantic UI yourself.</div>
+        </h3>
+      </div>
+
+      <div class="ui tertiary segment">
+
+        <h1>Behavior Directives</h1>
+        <p>These attribute directives invoke a behavior on the component where the attribute value can be one of the following formats:</p>
+
+        <h5>String</h5>
+        <ul>
+          <li>Selector to the dropdown(s) to invoke the behavior when the element with the directive is clicked.</li>
+        </ul>
+
+        <h5>Object</h5>
+        <ul>
+          <li><code class="required">$</code> <code>@</code> A selector string.</li>
+          <li><code class="optional">evt</code> <code>@</code> The event string which triggers the behavior ('click' by default).</li>
+          <li><code class="optional">enabled</code> <code>=</code> A boolean value which determines whether or not the behavior should be called when the event occurs.</li>
+          <li><code class="optional">value</code> <code>=</code> The first argument to pass to the behavior if it requires one.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code4"></pre>
+
+        <div data-copy-to="#code4">
+          <sm-button class="teal" sm-sticky-behavior="'selector'">Execute Simple Behavior</sm-button>
+          <sm-button class="teal" sm-sticky-behavior="{$: 'selector', value: scopeValue1, enabled: scopeValue2, evt: 'mouseover'}">Execute Advanced Behavior</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-sticky-refresh
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command sticky(s) to refresh it's current offset (which is useful when the sticky content or the context content changes).</div>
+        </h3>
+      </div>
+     
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-progress.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+
+      <code class="float right optional">optional</code>
+      <code class="float right required">required</code> 
+
+      <h1 class="ui header">
+        <img src="http://semantic-ui.com/images/logo.png">
+        <div class="content">
+          Progress Directives
+          <div class="sub header">Create &amp; Control Semantic UI Progress with Angular Directives</div>
+        </div>
+      </h1>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-progress
+          <div class="sub header">Creates a progress bar.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="required">model</code> <code>=</code> a number variable representing the current progress on the bar (out of total, which is by default 100).</li>
+          <li><code class="optional">total</code> <code>=</code> a number variable for the largest possible value the progress bar can have (100 by default).</li>
+          <li><code class="optional">label</code> <code>=</code> a string which determines what label is displayed in the bar.</li>
+          <li><code class="optional">active-text</code> <code>@</code> a templated string for the text below the progress bar in a normal (active) state.</li>
+          <li><code class="optional">error-text</code> <code>@</code> a templated string for the text below the progress bar in a error state.</li>
+          <li><code class="optional">warning-text</code> <code>@</code> a templated string for the text below the progress bar in a warning state.</li>
+          <li><code class="optional">success-text</code> <code>@</code> a templated string for the text below the progress bar in a success state.</li>
+          <li><code class="optional">duration</code> <code>@</code> a string representing the amount of time it takes the progress bar to reach a target value from the current value.</li>
+        </ul>
+        <h5>Callback Attributes</h5>
+        <ul>
+          <li><code class="optional">on-init</code> <code>=</code> Callback once the module is initialized, passing the initialized element as the first argument.</li>
+          <li><code class="optional">on-change</code> <code>=</code> Callback on percentage change.</li>
+          <li><code class="optional">on-success</code> <code>=</code> Callback on success state.</li>
+          <li><code class="optional">on-active</code> <code>=</code> Callback on active state.</li>
+          <li><code class="optional">on-error</code> <code>=</code> Callback on error state.</li>
+          <li><code class="optional">on-warning</code> <code>=</code> Callback on warning state.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code0"></pre>
+
+        <div data-copy-to="#code0">
+          <sm-progress class="blue" model="34" label="percent">Progress So Far</sm-progress>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-progress-bind
+          <div class="sub header">A lightweight attribute directive which calls progress() on the element with the settings object passed to the attribute. Using this directive means you need to manage the communication between Angular and Semantic UI yourself.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code1"></pre>
+
+        <div data-copy-to="#code1">
+          <div class="ui progress" data-percent="45" sm-progress-bind="{label: 'percent', showActivity: false}">
+            <div class="bar"><div class="progress"></div></div>
+            <div class="label">So far, so good.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ui tertiary segment">
+
+        <h1>Behavior Directives</h1>
+        <p>These attribute directives invoke a behavior on the component where the attribute value can be one of the following formats:</p>
+
+        <h5>String</h5>
+        <ul>
+          <li>Selector to the dropdown(s) to invoke the behavior when the element with the directive is clicked.</li>
+        </ul>
+
+        <h5>Object</h5>
+        <ul>
+          <li><code class="required">$</code> <code>@</code> A selector string.</li>
+          <li><code class="optional">evt</code> <code>@</code> The event string which triggers the behavior ('click' by default).</li>
+          <li><code class="optional">enabled</code> <code>=</code> A boolean value which determines whether or not the behavior should be called when the event occurs.</li>
+          <li><code class="optional">value</code> <code>=</code> The first argument to pass to the behavior if it requires one.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code4"></pre>
+
+        <div data-copy-to="#code4">
+          <sm-button class="teal" sm-progress-behavior="'selector'">Execute Simple Behavior</sm-button>
+          <sm-button class="teal" sm-progress-behavior="{$: 'selector', value: scopeValue1, enabled: scopeValue2, evt: 'mouseover'}">Execute Advanced Behavior</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-progress-increment
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command progress(es) to be incremented or decremented.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code5"></pre>
+
+        <div data-copy-to="#code5">
+          <sm-progress class="progress5" model="32" label="ratio">I'm working on it...</sm-progress>
+
+          <div class="ui icon buttons">
+            <sm-button sm-progress-increment="{$:'.progress5', value:5}" class="teal"><i class="plus icon"></i></sm-button>
+            <sm-button sm-progress-increment="{$:'.progress5', value:-5}" class="teal"><i class="minus icon"></i></sm-button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>
