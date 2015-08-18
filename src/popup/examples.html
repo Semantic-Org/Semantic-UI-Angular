@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-popup.js"></script>
+    <script src="../rating/sm-rating.js"></script>
+    <script src="../dropdown/sm-dropdown.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          $scope.transitions = [
+            'horizontal flip',
+            'vertical flip',
+            'fade up',
+            'fade',
+            'scale'
+          ];
+
+          $scope.popupTransition = $scope.transitions[ 0 ];
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+    
+      <div class="ui segment">
+
+        <h3 class="ui header">Content</h3>
+
+        <p>An element can specify popup content to appear.</p>
+
+        <div data-copy-to="#example0">
+          <sm-button class="icon" sm-popup="'Add users to your feed'"><i class="add icon"></i></sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example0"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Title</h3>
+
+        <p>An element can specify popup content with a title.</p>
+
+        <div data-copy-to="#example1">
+          <img src="http://semantic-ui.com/images/avatar/small/elliot.jpg" 
+            sm-popup-title="'Elliot Fu'" sm-popup="'Elliot has been a member since July 2012'" class="ui avatar image">
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example1"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Pre-Existing</h3>
+
+        <p>An element can display a popup that is already included in the page.</p>
+
+        <div data-copy-to="#example2">
+          <div class="ui card" sm-popup-inline>
+            <div class="image">
+              <img src="http://semantic-ui.com/images/movies/watchmen-horizontal.jpg">
+            </div>
+            <div class="content">
+              <div class="header">Watchmen</div>
+              <div class="description">
+                In a gritty and alternate 1985 the glory days of costumed vigilantes have been brought to a close by a government crackdown, but after one of the masked veterans is brutally murdered an investigation into the killer is initiated.
+              </div>
+            </div>
+            <div class="ui two bottom attached buttons">
+              <div class="ui button"><i class="add icon"></i>Queue</div>
+              <div class="ui primary button"><i class="play icon"></i>Watch</div>
+            </div>
+          </div>
+          <sm-popup-detached>
+            <div class="header">User Rating</div>
+            <sm-rating total="5" model="3" type="star"></sm-rating>
+          </sm-popup-detached>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example2"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Basic</h3>
+
+        <p>A popup can provide more basic formatting.</p>
+
+        <div data-copy-to="#example3">
+          <sm-button class="icon" sm-popup="'The default theme\'s basic popup removes the pointing arrow.'" sm-popup-variation="basic">
+            <i class="add icon"></i>
+          </sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example3"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Width</h3>
+
+        <p>A popup can be extra wide to allow for longer content.</p>
+
+        <div data-copy-to="#example4">
+          <i class="circular heart icon link" sm-popup="'Hello. This is a wide pop-up which allows for lots of content with additional space. You can fit a lot of words here and the paragraphs will be pretty wide.'" sm-popup-variation="wide"></i>
+          <i class="circular heart icon link" sm-popup="'Hello. This is a very wide pop-up which allows for lots of content with additional space. You can fit a lot of words here and the paragraphs will be pretty wide.'" sm-popup-variation="very wide"></i>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example4"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Fluid</h3>
+
+        <p>A fluid popup will take up the entire width of its offset container.</p>
+
+        <div data-copy-to="#example5">
+
+          <sm-button sm-popup-inline>Show fluid popup</sm-button>
+          <sm-popup-detached class="fluid top left transition hidden">
+            <div class="ui four column divided center aligned grid">
+              <div class="column">1</div>
+              <div class="column">2</div>
+              <div class="column">3</div>
+              <div class="column">4</div>
+            </div>
+          </sm-popup-detached>
+
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example5"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Size</h3>
+
+        <p>A popup can vary in size.</p>
+
+        <div data-copy-to="#example6">
+          <i class="circular heart icon link" sm-popup="'Hello. This is a mini popup'" sm-popup-variation="mini"></i>
+          <i class="circular heart icon link" sm-popup="'Hello. This is a tiny popup'" sm-popup-variation="tiny"></i>
+          <i class="circular heart icon link" sm-popup="'Hello. This is a small popup'" sm-popup-variation="small"></i>
+          <i class="circular heart icon link" sm-popup="'Hello. This is a large popup'" sm-popup-variation="large"></i>
+          <i class="circular heart icon link" sm-popup="'Hello. This is a huge popup'" sm-popup-variation="huge"></i>
+
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example6"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Flowing</h3>
+
+        <p>A popup can have no maximum width and continue to flow to fit its content.</p>
+
+        <div data-copy-to="#example7">
+
+          <sm-button sm-popup-inline="{hoverable: true}">Show flowing popup</sm-button>
+          <sm-popup-detached class="flowing top left transition hidden">
+            <div class="ui three column divided center aligned grid">
+              <div class="column">
+                <h4 class="ui header">Basic Plan</h4>
+                <p><b>2</b> projects, $10 a month</p>
+                <div class="ui button">Choose</div>
+              </div>
+              <div class="column">
+                <h4 class="ui header">Business Plan</h4>
+                <p><b>5</b> projects, $20 a month</p>
+                <div class="ui button">Choose</div>
+              </div>
+              <div class="column">
+                <h4 class="ui header">Premium Plan</h4>
+                <p><b>8</b> projects, $25 a month</p>
+                <div class="ui button">Choose</div>
+              </div>
+            </div>
+          </sm-popup-detached>
+
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example7"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Inverted</h3>
+
+        <p>A popup can have its colors inverted.</p>
+
+        <div data-copy-to="#example8">
+          <i class="circular heart icon link" sm-popup="'Hello. This is an inverted popup'" sm-popup-variation="inverted"></i>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example8"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Wide Popup Menu</h3>
+
+        <p>An easier way to display complex content, like a wide popup menu is to have the popup content as a pre- existing part of your page's html.</p>
+
+        <div data-copy-to="#example9">
+          <div class="ui menu">
+            <a class="browse item" sm-popup-inline="{hoverable: true}">
+              Browse
+              <i class="dropdown icon"></i>
+            </a>
+            <sm-popup-detached class="fluid bottom left transition hidden" style="top: 554px; left: 1px; bottom: auto; right: auto; width: 960px;">
+              <div class="ui four column relaxed divided grid">
+                <div class="column">
+                  <h4 class="ui header">Fabrics</h4>
+                  <div class="ui link list">
+                    <a class="item">Cashmere</a>
+                    <a class="item">Linen</a>
+                    <a class="item">Cotton</a>
+                    <a class="item">Viscose</a>
+                  </div>
+                </div>
+                <div class="column">
+                  <h4 class="ui header">Size</h4>
+                  <div class="ui link list">
+                    <a class="item">Small</a>
+                    <a class="item">Medium</a>
+                    <a class="item">Large</a>
+                    <a class="item">Plus Sizes</a>
+                  </div>
+                </div>
+                <div class="column">
+                  <h4 class="ui header">Colors</h4>
+                  <div class="ui link list">
+                    <a class="item">Neutrals</a>
+                    <a class="item">Brights</a>
+                    <a class="item">Pastels</a>
+                  </div>
+                </div>
+                <div class="column">
+                  <h4 class="ui header">Types</h4>
+                  <div class="ui link list">
+                    <a class="item">Knitwear</a>
+                    <a class="item">Outerwear</a>
+                    <a class="item">Pants</a>
+                    <a class="item">Shoes</a>
+                  </div>
+                </div>
+              </div>
+            </sm-popup-detached>
+            <a class="item">
+              <i class="cart icon"></i>
+              Checkout
+            </a>
+          </div>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example9"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Specifying a trigger event</h3>
+
+        <p>A popup trigger event can be specified.</p>
+
+        <div data-copy-to="#exampleA">
+          <sm-button class="teal" sm-popup-inline="{on:'click'}">Show custom popup</sm-button>
+          <sm-popup-detached class="top left transition hidden">
+            You click, I show.
+          </sm-popup-detached>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleA"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Target Element</h3>
+
+        <p>A popup can specify a different target element than itself to show a popup.</p>
+
+        <div data-copy-to="#exampleB">
+          <sm-button class="teal" sm-popup="'My favorite dog would like other dogs as much as themselves'" sm-popup-title="'My favorite dog'" sm-popup-settings="{position: 'right center', target: '.test.image'}">Hover Me</sm-button>
+          <div class="ui divider"></div>
+          <img class="medium ui test image" src="http://semantic-ui.com/images/wireframe/image.png">
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleB"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Inline or relative to page</h3>
+
+        <p>A popup can either be inserted directly after an element, or added as a child element to the page's <code>body</code>.</p>
+
+        <div data-copy-to="#exampleC">
+          <i class="heart circular icon link" sm-popup-display="popupC"></i>
+          <sm-popup-detached name="popupC" class="top left transition hidden">
+            <div class="content">This popup was inserted inline and will be styled</div>
+          </sm-popup-detached>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleC"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Positioning</h3>
+
+        <p>A popup can be positioned to any side of an element. If space is not available, it will automatically search for a similar alternative position to use.</p>
+
+        <div data-copy-to="#exampleD">
+          <div class="ui segment">
+            <i class="square inverted red heart icon link" sm-popup="'Top Left'" sm-popup-position="top left"></i>
+            <i class="square inverted red heart icon link" sm-popup="'Top Center'" sm-popup-position="top center"></i>
+            <i class="square inverted red heart icon link" sm-popup="'Top Right'" sm-popup-position="top right"></i>
+            <i class="square inverted red heart icon link" sm-popup="'Right Center'" sm-popup-position="right center"></i>
+            <i class="square inverted red heart icon link" sm-popup="'Bottom Right'" sm-popup-position="bottom right"></i>
+            <i class="square inverted red heart icon link" sm-popup="'Bottom Center'" sm-popup-position="bottom center"></i>
+            <i class="square inverted red heart icon link" sm-popup="'Bottom Left'" sm-popup-position="bottom left"></i>
+            <i class="square inverted red heart icon link" sm-popup="'Left Center'" sm-popup-position="left center"></i>
+          </div>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleD"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Transitions</h3>
+
+        <p>A popup can use any named ui transition.</p>
+
+        <div data-copy-to="#exampleE">
+          <i class="large demo home circular link icon" sm-popup="'The place where you keep your dog'" sm-popup-title="'Home'" sm-popup-settings="{transition: popupTransition}"></i>
+          <div class="ui divider"></div>
+          <sm-dropdown class="selection" model="popupTransition" items="transitions" value="item" label="item" sm-popup-show="{$:'.demo.home.icon', evt:'change'}"></sm-dropdown>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleE"></pre>
+
+      </div>
+      
+
+
+
+
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

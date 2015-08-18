@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-dropdown.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          $scope.model0 = null;
+          $scope.options0 = [
+            'New',
+            '<span class="description">ctrl + o</span> Open...',
+            '<span class="description">ctrl + s</span> Save as...',
+            '<span class="description">ctrl + r</span> Rename',
+            'Make a copy',
+            '<i class="folder icon"></i> Move to folder',
+            '<i class="trash icon"></i> Move to trash'
+          ];
+
+          $scope.model1 = null;
+          $scope.genders = [
+            {label: 'Male', value: 'M'},
+            {label: 'Female', value: 'F'}
+          ];
+
+          $scope.model2 = null;
+          $scope.countries = [
+            {value: "af", label: '<i class="af flag"></i>Afghanistan'},
+            {value: "ax", label: '<i class="ax flag"></i>Aland Islands'},
+            {value: "al", label: '<i class="al flag"></i>Albania'},
+            {value: "dz", label: '<i class="dz flag"></i>Algeria'},
+            {value: "as", label: '<i class="as flag"></i>American Samoa'},
+            {value: "ad", label: '<i class="ad flag"></i>Andorra'},
+            {value: "ao", label: '<i class="ao flag"></i>Angola'},
+            {value: "ai", label: '<i class="ai flag"></i>Anguilla'},
+            {value: "ag", label: '<i class="ag flag"></i>Antigua'},
+            {value: "ar", label: '<i class="ar flag"></i>Argentina'},
+            {value: "am", label: '<i class="am flag"></i>Armenia'},
+            {value: "aw", label: '<i class="aw flag"></i>Aruba'},
+            {value: "au", label: '<i class="au flag"></i>Australia'},
+            {value: "at", label: '<i class="at flag"></i>Austria'},
+            {value: "az", label: '<i class="az flag"></i>Azerbaijan'},
+            {value: "bs", label: '<i class="bs flag"></i>Bahamas'},
+            {value: "bh", label: '<i class="bh flag"></i>Bahrain'},
+            {value: "bd", label: '<i class="bd flag"></i>Bangladesh'},
+            {value: "bb", label: '<i class="bb flag"></i>Barbados'},
+            {value: "by", label: '<i class="by flag"></i>Belarus'},
+            {value: "be", label: '<i class="be flag"></i>Belgium'},
+            {value: "bz", label: '<i class="bz flag"></i>Belize'},
+            {value: "bj", label: '<i class="bj flag"></i>Benin'},
+            {value: "bm", label: '<i class="bm flag"></i>Bermuda'},
+            {value: "bt", label: '<i class="bt flag"></i>Bhutan'},
+            {value: "bo", label: '<i class="bo flag"></i>Bolivia'},
+            {value: "ba", label: '<i class="ba flag"></i>Bosnia'},
+            {value: "bw", label: '<i class="bw flag"></i>Botswana'},
+            {value: "bv", label: '<i class="bv flag"></i>Bouvet Island'},
+            {value: "br", label: '<i class="br flag"></i>Brazil'},
+            {value: "vg", label: '<i class="vg flag"></i>British Virgin Islands'},
+            {value: "bn", label: '<i class="bn flag"></i>Brunei'},
+            {value: "bg", label: '<i class="bg flag"></i>Bulgaria'},
+            {value: "bf", label: '<i class="bf flag"></i>Burkina Faso'},
+            {value: "ar", label: '<i class="ar flag"></i>Burma'},
+            {value: "bi", label: '<i class="bi flag"></i>Burundi'},
+            {value: "tc", label: '<i class="tc flag"></i>Caicos Islands'},
+            {value: "kh", label: '<i class="kh flag"></i>Cambodia'},
+            {value: "cm", label: '<i class="cm flag"></i>Cameroon'},
+            {value: "ca", label: '<i class="ca flag"></i>Canada'},
+            {value: "cv", label: '<i class="cv flag"></i>Cape Verde'},
+            {value: "ky", label: '<i class="ky flag"></i>Cayman Islands'},
+            {value: "cf", label: '<i class="cf flag"></i>Central African Republic'},
+            {value: "td", label: '<i class="td flag"></i>Chad'},
+            {value: "cl", label: '<i class="cl flag"></i>Chile'},
+            {value: "cn", label: '<i class="cn flag"></i>China'},
+            {value: "cx", label: '<i class="cx flag"></i>Christmas Island'},
+            {value: "cc", label: '<i class="cc flag"></i>Cocos Islands'},
+            {value: "co", label: '<i class="co flag"></i>Colombia'},
+            {value: "km", label: '<i class="km flag"></i>Comoros'},
+            {value: "cg", label: '<i class="cg flag"></i>Congo Brazzaville'},
+            {value: "cd", label: '<i class="cd flag"></i>Congo'},
+            {value: "ck", label: '<i class="ck flag"></i>Cook Islands'},
+            {value: "cr", label: '<i class="cr flag"></i>Costa Rica'},
+            {value: "ci", label: '<i class="ci flag"></i>Cote Divoire'},
+            {value: "hr", label: '<i class="hr flag"></i>Croatia'},
+            {value: "cu", label: '<i class="cu flag"></i>Cuba'},
+            {value: "cy", label: '<i class="cy flag"></i>Cyprus'},
+            {value: "cz", label: '<i class="cz flag"></i>Czech Republic'},
+            {value: "dk", label: '<i class="dk flag"></i>Denmark'},
+            {value: "dj", label: '<i class="dj flag"></i>Djibouti'},
+            {value: "dm", label: '<i class="dm flag"></i>Dominica'},
+            {value: "do", label: '<i class="do flag"></i>Dominican Republic'},
+            {value: "ec", label: '<i class="ec flag"></i>Ecuador'},
+            {value: "eg", label: '<i class="eg flag"></i>Egypt'},
+            {value: "sv", label: '<i class="sv flag"></i>El Salvador'},
+            {value: "gb", label: '<i class="gb flag"></i>England'},
+            {value: "gq", label: '<i class="gq flag"></i>Equatorial Guinea'},
+            {value: "er", label: '<i class="er flag"></i>Eritrea'},
+            {value: "ee", label: '<i class="ee flag"></i>Estonia'},
+            {value: "et", label: '<i class="et flag"></i>Ethiopia'},
+            {value: "eu", label: '<i class="eu flag"></i>European Union'},
+            {value: "fk", label: '<i class="fk flag"></i>Falkland Islands'},
+            {value: "fo", label: '<i class="fo flag"></i>Faroe Islands'},
+            {value: "fj", label: '<i class="fj flag"></i>Fiji'},
+            {value: "fi", label: '<i class="fi flag"></i>Finland'},
+            {value: "fr", label: '<i class="fr flag"></i>France'},
+            {value: "gf", label: '<i class="gf flag"></i>French Guiana'},
+            {value: "pf", label: '<i class="pf flag"></i>French Polynesia'},
+            {value: "tf", label: '<i class="tf flag"></i>French Territories'},
+            {value: "ga", label: '<i class="ga flag"></i>Gabon'},
+            {value: "gm", label: '<i class="gm flag"></i>Gambia'},
+            {value: "ge", label: '<i class="ge flag"></i>Georgia'},
+            {value: "de", label: '<i class="de flag"></i>Germany'},
+            {value: "gh", label: '<i class="gh flag"></i>Ghana'},
+            {value: "gi", label: '<i class="gi flag"></i>Gibraltar'},
+            {value: "gr", label: '<i class="gr flag"></i>Greece'},
+            {value: "gl", label: '<i class="gl flag"></i>Greenland'},
+            {value: "gd", label: '<i class="gd flag"></i>Grenada'},
+            {value: "gp", label: '<i class="gp flag"></i>Guadeloupe'},
+            {value: "gu", label: '<i class="gu flag"></i>Guam'},
+            {value: "gt", label: '<i class="gt flag"></i>Guatemala'},
+            {value: "gw", label: '<i class="gw flag"></i>Guinea-Bissau'},
+            {value: "gn", label: '<i class="gn flag"></i>Guinea'},
+            {value: "gy", label: '<i class="gy flag"></i>Guyana'},
+            {value: "ht", label: '<i class="ht flag"></i>Haiti'},
+            {value: "hm", label: '<i class="hm flag"></i>Heard Island'},
+            {value: "hn", label: '<i class="hn flag"></i>Honduras'},
+            {value: "hk", label: '<i class="hk flag"></i>Hong Kong'},
+            {value: "hu", label: '<i class="hu flag"></i>Hungary'},
+            {value: "is", label: '<i class="is flag"></i>Iceland'},
+            {value: "in", label: '<i class="in flag"></i>India'},
+            {value: "io", label: '<i class="io flag"></i>Indian Ocean Territory'},
+            {value: "id", label: '<i class="id flag"></i>Indonesia'},
+            {value: "ir", label: '<i class="ir flag"></i>Iran'},
+            {value: "iq", label: '<i class="iq flag"></i>Iraq'},
+            {value: "ie", label: '<i class="ie flag"></i>Ireland'},
+            {value: "il", label: '<i class="il flag"></i>Israel'},
+            {value: "it", label: '<i class="it flag"></i>Italy'},
+            {value: "jm", label: '<i class="jm flag"></i>Jamaica'},
+            {value: "jp", label: '<i class="jp flag"></i>Japan'},
+            {value: "jo", label: '<i class="jo flag"></i>Jordan'},
+            {value: "kz", label: '<i class="kz flag"></i>Kazakhstan'},
+            {value: "ke", label: '<i class="ke flag"></i>Kenya'},
+            {value: "ki", label: '<i class="ki flag"></i>Kiribati'},
+            {value: "kw", label: '<i class="kw flag"></i>Kuwait'},
+            {value: "kg", label: '<i class="kg flag"></i>Kyrgyzstan'},
+            {value: "la", label: '<i class="la flag"></i>Laos'},
+            {value: "lv", label: '<i class="lv flag"></i>Latvia'},
+            {value: "lb", label: '<i class="lb flag"></i>Lebanon'},
+            {value: "ls", label: '<i class="ls flag"></i>Lesotho'},
+            {value: "lr", label: '<i class="lr flag"></i>Liberia'},
+            {value: "ly", label: '<i class="ly flag"></i>Libya'},
+            {value: "li", label: '<i class="li flag"></i>Liechtenstein'},
+            {value: "lt", label: '<i class="lt flag"></i>Lithuania'},
+            {value: "lu", label: '<i class="lu flag"></i>Luxembourg'},
+            {value: "mo", label: '<i class="mo flag"></i>Macau'},
+            {value: "mk", label: '<i class="mk flag"></i>Macedonia'},
+            {value: "mg", label: '<i class="mg flag"></i>Madagascar'},
+            {value: "mw", label: '<i class="mw flag"></i>Malawi'},
+            {value: "my", label: '<i class="my flag"></i>Malaysia'},
+            {value: "mv", label: '<i class="mv flag"></i>Maldives'},
+            {value: "ml", label: '<i class="ml flag"></i>Mali'},
+            {value: "mt", label: '<i class="mt flag"></i>Malta'},
+            {value: "mh", label: '<i class="mh flag"></i>Marshall Islands'},
+            {value: "mq", label: '<i class="mq flag"></i>Martinique'},
+            {value: "mr", label: '<i class="mr flag"></i>Mauritania'},
+            {value: "mu", label: '<i class="mu flag"></i>Mauritius'},
+            {value: "yt", label: '<i class="yt flag"></i>Mayotte'},
+            {value: "mx", label: '<i class="mx flag"></i>Mexico'},
+            {value: "fm", label: '<i class="fm flag"></i>Micronesia'},
+            {value: "md", label: '<i class="md flag"></i>Moldova'},
+            {value: "mc", label: '<i class="mc flag"></i>Monaco'},
+            {value: "mn", label: '<i class="mn flag"></i>Mongolia'},
+            {value: "me", label: '<i class="me flag"></i>Montenegro'},
+            {value: "ms", label: '<i class="ms flag"></i>Montserrat'},
+            {value: "ma", label: '<i class="ma flag"></i>Morocco'},
+            {value: "mz", label: '<i class="mz flag"></i>Mozambique'},
+            {value: "na", label: '<i class="na flag"></i>Namibia'},
+            {value: "nr", label: '<i class="nr flag"></i>Nauru'},
+            {value: "np", label: '<i class="np flag"></i>Nepal'},
+            {value: "an", label: '<i class="an flag"></i>Netherlands Antilles'},
+            {value: "nl", label: '<i class="nl flag"></i>Netherlands'},
+            {value: "nc", label: '<i class="nc flag"></i>New Caledonia'},
+            {value: "pg", label: '<i class="pg flag"></i>New Guinea'},
+            {value: "nz", label: '<i class="nz flag"></i>New Zealand'},
+            {value: "ni", label: '<i class="ni flag"></i>Nicaragua'},
+            {value: "ne", label: '<i class="ne flag"></i>Niger'},
+            {value: "ng", label: '<i class="ng flag"></i>Nigeria'},
+            {value: "nu", label: '<i class="nu flag"></i>Niue'},
+            {value: "nf", label: '<i class="nf flag"></i>Norfolk Island'},
+            {value: "kp", label: '<i class="kp flag"></i>North Korea'},
+            {value: "mp", label: '<i class="mp flag"></i>Northern Mariana Islands'},
+            {value: "no", label: '<i class="no flag"></i>Norway'},
+            {value: "om", label: '<i class="om flag"></i>Oman'},
+            {value: "pk", label: '<i class="pk flag"></i>Pakistan'},
+            {value: "pw", label: '<i class="pw flag"></i>Palau'},
+            {value: "ps", label: '<i class="ps flag"></i>Palestine'},
+            {value: "pa", label: '<i class="pa flag"></i>Panama'},
+            {value: "py", label: '<i class="py flag"></i>Paraguay'},
+            {value: "pe", label: '<i class="pe flag"></i>Peru'},
+            {value: "ph", label: '<i class="ph flag"></i>Philippines'},
+            {value: "pn", label: '<i class="pn flag"></i>Pitcairn Islands'},
+            {value: "pl", label: '<i class="pl flag"></i>Poland'},
+            {value: "pt", label: '<i class="pt flag"></i>Portugal'},
+            {value: "pr", label: '<i class="pr flag"></i>Puerto Rico'},
+            {value: "qa", label: '<i class="qa flag"></i>Qatar'},
+            {value: "re", label: '<i class="re flag"></i>Reunion'},
+            {value: "ro", label: '<i class="ro flag"></i>Romania'},
+            {value: "ru", label: '<i class="ru flag"></i>Russia'},
+            {value: "rw", label: '<i class="rw flag"></i>Rwanda'},
+            {value: "sh", label: '<i class="sh flag"></i>Saint Helena'},
+            {value: "kn", label: '<i class="kn flag"></i>Saint Kitts and Nevis'},
+            {value: "lc", label: '<i class="lc flag"></i>Saint Lucia'},
+            {value: "pm", label: '<i class="pm flag"></i>Saint Pierre'},
+            {value: "vc", label: '<i class="vc flag"></i>Saint Vincent'},
+            {value: "ws", label: '<i class="ws flag"></i>Samoa'},
+            {value: "sm", label: '<i class="sm flag"></i>San Marino'},
+            {value: "gs", label: '<i class="gs flag"></i>Sandwich Islands'},
+            {value: "st", label: '<i class="st flag"></i>Sao Tome'},
+            {value: "sa", label: '<i class="sa flag"></i>Saudi Arabia'},
+            {value: "sn", label: '<i class="sn flag"></i>Senegal'},
+            {value: "cs", label: '<i class="cs flag"></i>Serbia'},
+            {value: "rs", label: '<i class="rs flag"></i>Serbia'},
+            {value: "sc", label: '<i class="sc flag"></i>Seychelles'},
+            {value: "sl", label: '<i class="sl flag"></i>Sierra Leone'},
+            {value: "sg", label: '<i class="sg flag"></i>Singapore'},
+            {value: "sk", label: '<i class="sk flag"></i>Slovakia'},
+            {value: "si", label: '<i class="si flag"></i>Slovenia'},
+            {value: "sb", label: '<i class="sb flag"></i>Solomon Islands'},
+            {value: "so", label: '<i class="so flag"></i>Somalia'},
+            {value: "za", label: '<i class="za flag"></i>South Africa'},
+            {value: "kr", label: '<i class="kr flag"></i>South Korea'},
+            {value: "es", label: '<i class="es flag"></i>Spain'},
+            {value: "lk", label: '<i class="lk flag"></i>Sri Lanka'},
+            {value: "sd", label: '<i class="sd flag"></i>Sudan'},
+            {value: "sr", label: '<i class="sr flag"></i>Suriname'},
+            {value: "sj", label: '<i class="sj flag"></i>Svalbard'},
+            {value: "sz", label: '<i class="sz flag"></i>Swaziland'},
+            {value: "se", label: '<i class="se flag"></i>Sweden'},
+            {value: "ch", label: '<i class="ch flag"></i>Switzerland'},
+            {value: "sy", label: '<i class="sy flag"></i>Syria'},
+            {value: "tw", label: '<i class="tw flag"></i>Taiwan'},
+            {value: "tj", label: '<i class="tj flag"></i>Tajikistan'},
+            {value: "tz", label: '<i class="tz flag"></i>Tanzania'},
+            {value: "th", label: '<i class="th flag"></i>Thailand'},
+            {value: "tl", label: '<i class="tl flag"></i>Timorleste'},
+            {value: "tg", label: '<i class="tg flag"></i>Togo'},
+            {value: "tk", label: '<i class="tk flag"></i>Tokelau'},
+            {value: "to", label: '<i class="to flag"></i>Tonga'},
+            {value: "tt", label: '<i class="tt flag"></i>Trinidad'},
+            {value: "tn", label: '<i class="tn flag"></i>Tunisia'},
+            {value: "tr", label: '<i class="tr flag"></i>Turkey'},
+            {value: "tm", label: '<i class="tm flag"></i>Turkmenistan'},
+            {value: "tv", label: '<i class="tv flag"></i>Tuvalu'},
+            {value: "ug", label: '<i class="ug flag"></i>Uganda'},
+            {value: "ua", label: '<i class="ua flag"></i>Ukraine'},
+            {value: "ae", label: '<i class="ae flag"></i>United Arab Emirates'},
+            {value: "us", label: '<i class="us flag"></i>United States'},
+            {value: "uy", label: '<i class="uy flag"></i>Uruguay'},
+            {value: "um", label: '<i class="um flag"></i>Us Minor Islands'},
+            {value: "vi", label: '<i class="vi flag"></i>Us Virgin Islands'},
+            {value: "uz", label: '<i class="uz flag"></i>Uzbekistan'},
+            {value: "vu", label: '<i class="vu flag"></i>Vanuatu'},
+            {value: "va", label: '<i class="va flag"></i>Vatican City'},
+            {value: "ve", label: '<i class="ve flag"></i>Venezuela'},
+            {value: "vn", label: '<i class="vn flag"></i>Vietnam'},
+            {value: "wf", label: '<i class="wf flag"></i>Wallis and Futuna'},
+            {value: "eh", label: '<i class="eh flag"></i>Western Sahara'},
+            {value: "ye", label: '<i class="ye flag"></i>Yemen'},
+            {value: "zm", label: '<i class="zm flag"></i>Zambia'},
+            {value: "zw", label: '<i class="zw flag"></i>Zimbabwe'}
+          ];
+
+          $scope.model3 = ['Plumbing', 'Rails'];
+          $scope.libraries = [
+            'Angular', 'CSS', 'Graphic Design', 'Ember', 'HTML', 'Information Architecture', 'Javascript',
+            'Mechanical Engineering', 'Meteor', 'NodeJS', 'Plumbing', 'Python', 'Rails', 'React'
+          ];
+
+          $scope.model4 = [];
+          $scope.model4b = [];
+
+          $scope.model5 = null;
+          $scope.model5b = ['af', 'zw'];
+
+          $scope.model6 = null;
+
+          $scope.model7 = [];
+          $scope.model7b = null;
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+    
+      <div class="ui segment">
+
+        <h3 class="ui header">Dropdown</h3>
+
+        <div class="current value">
+          {{ model0 }}
+        </div>
+
+        <p>A dropdown</p>
+
+        <div data-copy-to="#example0">
+          <sm-dropdown model="model0" items="options0" default-text="'File'" settings="{action:'hide'}"></sm-dropdown>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example0"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Selection</h3>
+
+        <div class="current value">
+          {{ model1 }}
+        </div>
+
+        <p>A dropdown can be used to select between choices in a form</p>
+
+        <div data-copy-to="#example1">
+          <sm-dropdown class="selection" model="model1" items="genders" label="item.label" value="item.value" default-text="'Gender'"></sm-dropdown>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example1"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Search Selection</h3>
+
+        <div class="current value">
+          {{ model2 }}
+        </div>
+
+        <p>A selection dropdown can allow a user to search through a large list of choices.</p>
+
+        <div data-copy-to="#example2">
+          <sm-dropdown class="fluid search selection" model="model2" items="countries" label="item.label" value="item.value" default-text="'Select Country'"></sm-dropdown>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example2"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Multiple Selection</h3>
+
+        <div class="current value">
+          {{ model3 }}
+        </div>
+
+        <p>A selection dropdown can allow multiple selections</p>
+
+        <div data-copy-to="#example3">
+          <sm-dropdown class="fluid multiple search selection" model="model3" items="libraries" default-text="'Skills'"></sm-dropdown>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example3"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Maximum Selections</h3>
+
+        <p>Using <code>maxSelections</code> lets you force a maximum number of selections. You can also use form validation rules to specify minimum and maximum validation settings for multi-selects inside forms.</p>
+
+        <div class="current value">
+          {{ model4 }}
+        </div>
+        <div class="ui sub header">Selection</div>
+
+        <div data-copy-to="#example4">
+          <sm-dropdown class="fluid multiple search selection" model="model4" items="libraries" default-text="'Skills'" settings="{maxSelections: 3}"></sm-dropdown>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example4"></pre>
+
+        <div class="current value">
+          {{ model4b }}
+        </div>
+        <div class="ui sub header">Search Selection</div>
+
+        <div data-copy-to="#example4b">
+          <sm-dropdown class="fluid multiple search selection" model="model4b" items="countries" label="item.label" value="item.value" default-text="'Select Country'" settings="{maxSelections: 3}"></sm-dropdown>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example4b"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Tagging and User Additions</h3>
+
+        <p>Using <code>allowAdditions: true</code> gives users the ability to add their own options. This can work with either single or multiple search select dropdowns</p>
+
+        <div class="current value">
+          {{ model5 }}
+        </div>
+        <div class="ui sub header">Single</div>
+
+        <div data-copy-to="#example5">
+          <sm-dropdown class="fluid search selection" model="model5" items="libraries" default-text="'Skills'" settings="{allowAdditions: true}"></sm-dropdown>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example5"></pre>
+
+        <div class="current value">
+          {{ model5b }}
+        </div>
+        <div class="ui sub header">Multiple</div>
+        <div data-copy-to="#example5b">
+          <sm-dropdown class="fluid multiple search selection" model="model5b" items="countries" label="item.label" value="item.value" default-text="'Select Country'" settings="{allowAdditions: true}"></sm-dropdown>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example5b"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Text Labels</h3>
+
+        <div class="current value">
+          {{ model6 }}
+        </div>
+
+        <p>Sometimes multiselect include options which are long and would appear awkwardly as labels. Setting <code>useLabels: false</code> will display a selected count, and allow reselection directly from the menu.</p>
+
+        <div data-copy-to="#example6">
+          <sm-dropdown class="fluid multiple selection" model="model6" items="libraries" default-text="'Select Libraries'" settings="{useLabels: false}"></sm-dropdown>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example6"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Clearing Dropdown</h3>
+
+        <div class="current value">
+          {{ model7b }}
+        </div>
+        <div class="current value">
+          {{ model7 }}
+        </div>
+
+        <p>You can reset a form field to its placeholder value.</p>
+
+        <div data-copy-to="#example7">
+          <sm-dropdown class="example7 multiple selection" model="model7" items="libraries" label="item" value="item" default-text="'Libraries'"></sm-dropdown>
+          <sm-dropdown class="example7 selection" model="model7b" items="libraries" default-text="'Library'"></sm-dropdown>
+          <sm-button sm-dropdown-clear="'.example7'">Clear</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example7"></pre>
+
+      </div>
+      
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

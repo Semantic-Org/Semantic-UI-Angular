@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-shape.js"></script>
+    <script src="../dropdown/sm-dropdown.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+            var bindModel = function(property, selector)
+            {
+                $scope.$watch( property, function(updated)
+                {
+                    $( selector ).shape( updated );
+                });
+
+                $scope[ property + 'Go' ] = function()
+                {
+                    $( selector ).shape( $scope[ property ] );
+                };
+            };
+
+            $scope.animations = [
+                'flip up',
+                'flip down',
+                'flip left',
+                'flip right',
+                'flip over',
+                'flip back'
+            ];
+
+            bindModel( 'animation0', '#people' );
+            bindModel( 'animation1', '#cube' );
+            bindModel( 'animation2', '#text' );
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+    
+      <div class="ui segment">
+
+        <h3 class="ui header">Shape</h3>
+
+        <p>A shape is a three dimensional object including any flat content as a side.</p>
+        
+        <sm-dropdown class="selection" items="animations" label="item" value="item" model="animation0"></sm-dropdown>
+        <sm-button class="icon teal" ng-click="animation0Go()"><i class="refresh icon"></i></sm-button>
+        <br><br>
+
+        <div data-copy-to="#example0">
+          
+          <sm-shape class="people" id="people">
+            <div class="side active">
+              <div class="ui card">
+                <div class="image">
+                  <img src="http://semantic-ui.com/images/avatar/large/steve.jpg">
+                </div>
+                <div class="content">
+                  <div class="header">Steve Jobes</div>
+                  <div class="meta">
+                    <a>Acquaintances</a>
+                  </div>
+                  <div class="description">
+                    Steve Jobes is a fictional character designed to resemble someone familiar to readers.
+                  </div>
+                </div>
+                <div class="extra content">
+                  <span class="right floated">
+                    Joined in 2014
+                  </span>
+                  <span>
+                    <i class="user icon"></i>
+                    151 Friends
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="side">
+              <div class="ui card">
+                <div class="image">
+                  <img src="http://semantic-ui.com/images/avatar/large/stevie.jpg">
+                </div>
+                <div class="content">
+                  <a class="header">Stevie Feliciano</a>
+                  <div class="meta">
+                    <span class="date">Joined in 2014</span>
+                  </div>
+                  <div class="description">
+                    Stevie Feliciano is a library scientist living in New York City. She likes to spend her time reading, running, and writing.
+                  </div>
+                </div>
+                <div class="extra content">
+                  <a>
+                    <i class="user icon"></i>
+                    22 Friends
+                  </a>
+                </div>
+              </div>
+            </div>
+          </sm-shape>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example0"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Cube</h3>
+
+        <p>A cube shape is formatted so that each side is the face of a cube.</p>
+
+        <sm-dropdown class="selection" items="animations" label="item" value="item" model="animation1"></sm-dropdown>
+        <sm-button class="icon teal" ng-click="animation1Go()"><i class="refresh icon"></i></sm-button>
+        <br><br>
+
+        <div data-copy-to="#example1">
+          <sm-shape class="cube" id="cube">
+            <div class="side active">
+              <div class="content">
+                <div class="center">
+                  1
+                </div>
+              </div>
+            </div>
+            <div class="side">
+              <div class="content">
+                <div class="center">
+                  2
+                </div>
+              </div>
+            </div>
+            <div class="side">
+              <div class="content">
+                <div class="center">
+                  3
+                </div>
+              </div>
+            </div>
+            <div class="side">
+              <div class="content">
+                <div class="center">
+                  4
+                </div>
+              </div>
+            </div>
+            <div class="side">
+              <div class="content">
+                <div class="center">
+                  5
+                </div>
+              </div>
+            </div>
+            <div class="side">
+              <div class="content">
+                <div class="center">
+                  6
+                </div>
+              </div>
+            </div>
+          </sm-shape>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example1"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Text</h3>
+
+        <p>A text shape is formatted to allow for sides of text to be displayed.</p>
+
+        <sm-dropdown class="selection" items="animations" label="item" value="item" model="animation2"></sm-dropdown>
+        <sm-button class="icon teal" ng-click="animation2Go()"><i class="refresh icon"></i></sm-button>
+        <br><br>
+
+        <div data-copy-to="#example2">
+          <sm-shape class="text" id="text">
+            <div class="ui header side">Did you know? This side starts visible.</div>
+            <div class="ui header side">Help, its another side!</div>
+            <div class="ui header side active">This is the last side</div>
+          </sm-shape>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example2"></pre>
+
+      </div>
+      
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.5/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.5/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-accordion.js"></script>
+    <script src="../checkbox/sm-checkbox.js"></script>
+    <script src="../checkbox/sm-radio.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+
+      <code class="float right optional">optional</code>
+      <code class="float right required">required</code> 
+
+      <h1 class="ui header">
+        <img src="http://semantic-ui.com/images/logo.png">
+        <div class="content">
+          Accordion Directives
+          <div class="sub header">Create &amp; Control Semantic UI Accordions with Angular Directives</div>
+        </div>
+      </h1>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-accordion
+          <div class="sub header">The outer directive for an accordion.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="optional">settings</code> <code>=</code> reference to a settings object to pass to the initialization function.</li>
+        </ul>
+        <h5>Callback Attributes</h5>
+        <ul>
+          <li><code class="optional">on-init</code> <code>=</code> Callback once the module is initialized, passing the initialized element as the first argument.</li>
+          <li><code class="optional">on-opening</code> <code>=</code> Callback before element opens</li>
+          <li><code class="optional">on-open</code> <code>=</code> Callback after element is open</li>
+          <li><code class="optional">on-closing</code> <code>=</code> Callback before element closes</li>
+          <li><code class="optional">on-close</code> <code>=</code> Callback after element is closed</li>
+          <li><code class="optional">on-change</code> <code>=</code> Callback on element open or close</li>
+        </ul>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-accordion-group
+          <div class="sub header">The inner directive for an accordion which has a title and content.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="required">title</code> <code>=</code> A string variable with the title of the accordion group.</li>
+          <li><code class="optional">active</code> <code>=</code> A variable which sets whether or not the group is the active one.</li>
+        </ul>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-accordion-bind
+          <div class="sub header">A lightweight attribute directive which calls accordion() on the element with the settings object passed to the attribute. Using this directive means you need to manage the communication between Angular and Semantic UI yourself.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="accordion3Code"></pre>
+
+        <div data-copy-to="#accordion3Code">
+          <div class="ui styled accordion" sm-accordion-bind>
+            <div class="active title">
+              <i class="dropdown icon"></i>
+              What is a dog?
+            </div>
+            <div class="active content">
+              <p>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
+            </div>
+            <div class="title">
+              <i class="dropdown icon"></i>
+              What kinds of dogs are there?
+            </div>
+            <div class="content">
+              <p>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ui tertiary segment">
+
+        <h1>Behavior Directives</h1>
+        <p>These attribute directives invoke a behavior on the component where the attribute value can be one of the following formats:</p>
+
+        <h5>String</h5>
+        <ul>
+          <li>Selector to the accordion(s) to invoke the behavior when the element with the directive is clicked.</li>
+        </ul>
+
+        <h5>Object</h5>
+        <ul>
+          <li><code class="required">$</code> <code>@</code> A selector string.</li>
+          <li><code class="optional">evt</code> <code>@</code> The event string which triggers the behavior ('click' by default).</li>
+          <li><code class="optional">enabled</code> <code>=</code> A boolean value which determines whether or not the behavior should be called when the event occurs.</li>
+          <li><code class="optional">value</code> <code>=</code> The first argument to pass to the behavior if it requires one.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="accordion4Code"></pre>
+
+        <div data-copy-to="#accordion4Code">
+          <sm-button class="teal" sm-accordion-behavior="'selector'">Execute Simple Behavior</sm-button>
+          <sm-button class="teal" sm-accordion-behavior="{$: 'selector', value: scopeValue1, enabled: scopeValue2, evt: 'mouseover'}">Execute Advanced Behavior</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-accordion-open
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command accordion(s) to open a specific group by index.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="accordion0Code"></pre>
+
+        <div data-copy-to="#accordion0Code">
+          <sm-button class="teal" sm-accordion-open="{$: '#accordion0', value: 0}">Open First</sm-button><br><br>
+          <sm-accordion class="styled" id="accordion0">
+            <sm-accordion-group title="'Group #1'">
+              Group #1 Content
+            </sm-accordion-group>
+            <sm-accordion-group title="'Group #2'">
+              Group #2 Content
+            </sm-accordion-group>
+          </sm-accordion>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-accordion-close
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command accordion(s) to close a specific group by index.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="accordion1Code"></pre>
+
+        <div data-copy-to="#accordion1Code">
+          <sm-button class="teal" sm-accordion-close="{$: '#accordion1', value: 1}">Close Second</sm-button><br><br>
+          <sm-accordion class="styled" id="accordion1">
+            <sm-accordion-group title="'Group #1'">
+              Group #1 Content
+            </sm-accordion-group>
+            <sm-accordion-group title="'Group #2'" active="true">
+              Group #2 Content
+            </sm-accordion-group>
+          </sm-accordion>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-accordion-toggle
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command accordion(s) to toggle a specific group by index.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="accordion2Code"></pre>
+
+        <div data-copy-to="#accordion2Code">
+          <sm-button class="teal" sm-accordion-toggle="{$: '#accordion2', value: 0}">Toggle First</sm-button><br><br>
+          <sm-accordion class="styled" id="accordion2">
+            <sm-accordion-group title="'Group #1'">
+              Group #1 Content
+            </sm-accordion-group>
+            <sm-accordion-group title="'Group #2'">
+              Group #2 Content
+            </sm-accordion-group>
+          </sm-accordion>
+        </div>
+
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-accordion-close-others
+          <div class="sub header"><a href="http://semantic-ui.com/modules/accordion.html#/usage" target="_blank">See Usage</a></div>
+        </h3>
+      </div>
+      
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

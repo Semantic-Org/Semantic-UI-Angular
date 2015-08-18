@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-sidebar.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          var onHome = function() {
+            alert('Home');
+          };
+          var onTopics = function() {
+            alert('Topics');
+          };
+          var onFriends = function() {
+            alert('Friends');
+          };
+
+          $scope.simple = ['1', '2', '3'];
+          $scope.icons = [
+            { label: '<i class="home icon"></i> Home', click: onHome },
+            { label: '<i class="block layout icon"></i> Topics', click: onTopics },
+            { label: '<i class="smile icon"></i> Friends', click: onFriends }
+          ];
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="pusher">
+    <div class="ui container">
+    
+      <div class="ui segment">
+
+        <h3 class="ui header">Sidebar</h3>
+
+        <p>A sidebar.</p>
+        
+        <div data-copy-to="#example0">
+         <sm-sidebar class="inverted vertical menu sidebar0" items="simple" label="item"></sm-sidebar>
+        </div>
+
+        <sm-button class="teal" sm-sidebar-toggle="'.sidebar0'">Toggle</sm-button>
+
+        <pre class="ui segment prettyprint lang-html" id="example0"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Sidebar with icons</h3>
+
+        <div data-copy-to="#example1">
+          <sm-sidebar class="inverted vertical labeled icon menu sidebar1" items="icons" label="item.label"  on-click="item.click()"></sm-sidebar>
+        </div>
+
+        <sm-button class="teal" sm-sidebar-toggle="'.sidebar1'">Toggle</sm-button>
+
+        <pre class="ui segment prettyprint lang-html" id="example1"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Direction</h3>
+
+        <p>A sidebar can appear on different sides of the page.</p>
+
+        <div data-copy-to="#example2">
+          <sm-sidebar class="inverted vertical labeled icon right menu sidebar2" items="icons" label="item.label" on-click="item.click()"></sm-sidebar>
+        </div>
+
+        <sm-button class="teal" sm-sidebar-toggle="'.sidebar2'">Toggle</sm-button>
+
+        <pre class="ui segment prettyprint lang-html" id="example2"></pre>
+
+      </div>
+      
+    </div>
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

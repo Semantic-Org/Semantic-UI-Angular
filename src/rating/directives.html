@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-rating.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+
+      <code class="float right optional">optional</code>
+      <code class="float right required">required</code> 
+
+      <h1 class="ui header">
+        <img src="http://semantic-ui.com/images/logo.png">
+        <div class="content">
+          Rating Directives
+          <div class="sub header">Create &amp; Control Semantic UI Rating with Angular Directives</div>
+        </div>
+      </h1>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-rating
+          <div class="sub header">Creates a rating.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="required">model</code> <code>=</code> a number variable representing the current rating (out of total).</li>
+          <li><code class="required">total</code> <code>=</code> a number variable for the maximum rating that can be given.</li>
+          <li><code class="optional">type</code> <code>@</code> a string for the type of rating (none, star, heart, + sizes).</li>
+          <li><code class="optional">disabled</code> <code>=</code> a boolean variable for disabling or enabling the rating.</li>
+          <li><code class="optional">settings</code> <code>=</code> a reference to a settings object to pass to the initialization function.</li>
+        </ul>
+        <h5>Callback Attributes</h5>
+        <ul>
+          <li><code class="optional">on-init</code> <code>=</code> Callback once the module is initialized, passing the initialized element as the first argument.</li>
+          <li><code class="optional">on-rate</code> <code>=</code> Callback after user selects a new rating.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code0"></pre>
+
+        <div data-copy-to="#code0">
+          <sm-rating class="star" model="3" total="5"></sm-rating>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-rating-bind
+          <div class="sub header">A lightweight attribute directive which calls rating() on the element with the settings object passed to the attribute. Using this directive means you need to manage the communication between Angular and Semantic UI yourself.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code1"></pre>
+
+        <div data-copy-to="#code1">
+          <div class="ui heart rating" sm-rating-bind data-rating="2" data-max-rating="5"></div>
+        </div>
+
+      </div>
+
+      <div class="ui tertiary segment">
+
+        <h1>Behavior Directives</h1>
+        <p>These attribute directives invoke a behavior on the component where the attribute value can be one of the following formats:</p>
+
+        <h5>String</h5>
+        <ul>
+          <li>Selector to the dropdown(s) to invoke the behavior when the element with the directive is clicked.</li>
+        </ul>
+
+        <h5>Object</h5>
+        <ul>
+          <li><code class="required">$</code> <code>@</code> A selector string.</li>
+          <li><code class="optional">evt</code> <code>@</code> The event string which triggers the behavior ('click' by default).</li>
+          <li><code class="optional">enabled</code> <code>=</code> A boolean value which determines whether or not the behavior should be called when the event occurs.</li>
+          <li><code class="optional">value</code> <code>=</code> The first argument to pass to the behavior if it requires one.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code4"></pre>
+
+        <div data-copy-to="#code4">
+          <sm-button class="teal" sm-rating-behavior="'selector'">Execute Simple Behavior</sm-button>
+          <sm-button class="teal" sm-rating-behavior="{$: 'selector', value: scopeValue1, enabled: scopeValue2, evt: 'mouseover'}">Execute Advanced Behavior</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-rating-set
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command rating(s) to be set.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code5"></pre>
+
+        <div data-copy-to="#code5">
+          <sm-rating class="star rating5" model="3" total="5"></sm-rating>
+          <sm-button class="teal" sm-rating-set="{$:'.rating5', value:1}">Set to 1</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-rating-disable / sm-rating-enable
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command rating(s) to be disabled or enabled.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code6"></pre>
+
+        <div data-copy-to="#code6">
+          <sm-rating class="star rating6" model="3" total="5"></sm-rating>
+          <sm-button class="teal" sm-rating-disable="'.rating6'">Disable</sm-button>
+          <sm-button class="teal" sm-rating-enable="'.rating6'">Enable</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-rating-clear
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command rating(s) to be cleared of a value.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code7"></pre>
+
+        <div data-copy-to="#code7">
+          <sm-rating class="star rating7" model="3" total="5"></sm-rating>
+          <sm-button class="teal" sm-rating-clear="'.rating7'">Clear</sm-button>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

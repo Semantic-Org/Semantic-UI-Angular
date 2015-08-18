@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-tab.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          $scope.model3 = 'first3';
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+    
+      <div class="ui segment">
+
+        <h3 class="ui header">Tab</h3>
+
+        <p>A basic tab.</p>
+
+        <div data-copy-to="#example0">
+          <sm-tab-menu tabs="{first0:'Tab'}" class="top attached tabular"></sm-tab-menu>
+          <sm-tab name="first0" class="bottom attached segment">
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+          </sm-tab>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example0"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Active</h3>
+
+        <p>A tab can be activated, and visible on the page.</p>
+
+        <div data-copy-to="#example1">
+          <sm-tab-menu tabs="{first1:'Tab'}" active="'first1'" class="top attached tabular"></sm-tab-menu>
+          <sm-tab name="first1" class="bottom attached segment">
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+          </sm-tab>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example1"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Loading</h3>
+
+        <p>A tab can display a loading indicator.</p>
+
+        <div data-copy-to="#example2">
+          <sm-tab-menu tabs="{first2:'Tab'}" active="'first2'" class="top attached tabular"></sm-tab-menu>
+          <sm-tab name="first2" class="bottom attached segment loading">
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+          </sm-tab>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example2"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Basic Tabs</h3>
+
+        <p>Tabs are connecting using paths specified in the name attribute &amp; settings aattribute. Tab is then initialized in javascript on the active elements.</p>
+
+        <div class="current value">
+            {{ model3 }}
+        </div>
+
+        <div data-copy-to="#example3">
+          <sm-tab-menu tabs="{first3:'First', second3:'Second', third3:'Third'}" active="model3" class="pointing secondary"></sm-tab-menu>
+          <sm-tab name="first3">
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+          </sm-tab>
+          <sm-tab name="second3">
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png"><br>
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+          </sm-tab>
+          <sm-tab name="third3">
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png"><br>
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png"><br>
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+          </sm-tab>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example3"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Using Hash History</h3>
+
+        <p>For static sites, or sites that only require simple history, in-page links can be used to trigger different local tab states.</p>
+
+        <div class="current value">
+            {{ model3 }}
+        </div>
+
+        <br><br>
+
+        <div data-copy-to="#example4">
+          <sm-tab-menu tabs="{first4:'First', second4:'Second', third4:'Third'}" class="pointing" settings="{history: true}"></sm-tab-menu>
+          <sm-tab name="first4">
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+          </sm-tab>
+          <sm-tab name="second4">
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png"><br>
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+          </sm-tab>
+          <sm-tab name="third4">
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png"><br>
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png"><br>
+            <img class="ui wireframe image" src="http://semantic-ui.com/images/wireframe/paragraph.png">
+          </sm-tab>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example4"></pre>
+
+      </div>
+
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

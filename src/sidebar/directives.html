@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-sidebar.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          var onHome = function() {
+            alert('Home');
+          };
+          var onTopics = function() {
+            alert('Topics');
+          };
+          var onFriends = function() {
+            alert('Friends');
+          };
+
+          $scope.simple = ['1', '2', '3'];
+          $scope.icons = [
+            { label: '<i class="home icon"></i> Home', click: onHome },
+            { label: '<i class="block layout icon"></i> Topics', click: onTopics },
+            { label: '<i class="smile icon"></i> Friends', click: onFriends }
+          ];
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="pusher">
+    <div class="ui container">
+
+      <code class="float right optional">optional</code>
+      <code class="float right required">required</code> 
+
+      <h1 class="ui header">
+        <img src="http://semantic-ui.com/images/logo.png">
+        <div class="content">
+          Sidebar Directives
+          <div class="sub header">Create &amp; Control Semantic UI Sidebar with Angular Directives</div>
+        </div>
+      </h1>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-sidebar
+          <div class="sub header">Creates a sidebar.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="required">items</code> <code>=</code> an array of items to place in the sidebar.</li>
+          <li><code class="optional">label</code> <code>&amp;</code> an expression which takes <code>item</code> and returns what the label of the sidebar item will look like. HTML code is allowed here.</li>
+          <li><code class="optional">on-click</code> <code>&amp;</code> an expression which takes <code>item</code> when it's clicked and performs some action.</li>
+          <li><code class="optional">visible</code> <code>=</code> a variable which can be used to toggle the visiblity of the sidebar.</li>
+          <li><code class="optional">settings</code> <code>=</code> a reference to a settings object to pass to the initialization function.</li>
+        </ul>
+        <h5>Callback Attributes</h5>
+        <ul>
+          <li><code class="optional">on-init</code> <code>=</code> Callback once the module is initialized, passing the initialized element as the first argument.</li>
+          <li><code class="optional">on-visible</code> <code>=</code> Callback called when a sidebar begins animating in.</li>
+          <li><code class="optional">on-show</code> <code>=</code> Callback called when a sidebar has finished animating in.</li>
+          <li><code class="optional">on-change</code> <code>=</code> Callback called when a sidebar begins to hide or show.</li>
+          <li><code class="optional">on-hide</code> <code>=</code> Callback called before a sidebar begins to animate out.</li>
+          <li><code class="optional">on-hidden</code> <code>=</code> Callback called after a sidebar has finished animating out.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code0"></pre>
+
+        <sm-button class="teal" sm-sidebar-toggle="'.sidebar0'">Toggle</sm-button>
+
+        <div data-copy-to="#code0">
+          <sm-sidebar class="inverted vertical menu sidebar0" items="simple"></sm-sidebar>
+        </div>
+
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-sidebar-bind
+          <div class="sub header">A lightweight attribute directive which calls sidebar() on the element with the settings object passed to the attribute. Using this directive means you need to manage the communication between Angular and Semantic UI yourself.</div>
+        </h3>
+      </div>
+
+      <div class="ui tertiary segment">
+
+        <h1>Behavior Directives</h1>
+        <p>These attribute directives invoke a behavior on the component where the attribute value can be one of the following formats:</p>
+
+        <h5>String</h5>
+        <ul>
+          <li>Selector to the dropdown(s) to invoke the behavior when the element with the directive is clicked.</li>
+        </ul>
+
+        <h5>Object</h5>
+        <ul>
+          <li><code class="required">$</code> <code>@</code> A selector string.</li>
+          <li><code class="optional">evt</code> <code>@</code> The event string which triggers the behavior ('click' by default).</li>
+          <li><code class="optional">enabled</code> <code>=</code> A boolean value which determines whether or not the behavior should be called when the event occurs.</li>
+          <li><code class="optional">value</code> <code>=</code> The first argument to pass to the behavior if it requires one.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code4"></pre>
+
+        <div data-copy-to="#code4">
+          <sm-button class="teal" sm-sidebar-behavior="'selector'">Execute Simple Behavior</sm-button>
+          <sm-button class="teal" sm-sidebar-behavior="{$: 'selector', value: scopeValue1, enabled: scopeValue2, evt: 'mouseover'}">Execute Advanced Behavior</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-sidebar-show
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command sidebar(s) to show themselves.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code5"></pre>
+
+        <div data-copy-to="#code5">
+          <sm-sidebar class="inverted horizontal top menu sidebar5" items="simple"></sm-sidebar>
+          <sm-button class="teal" sm-sidebar-show="'.sidebar5'">Show</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-sidebar-toggle
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command sidebar(s) to toggle visibility.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code6"></pre>
+
+        <div data-copy-to="#code6">
+          <sm-sidebar class="inverted vertical menu sidebar6" items="simple" settings="{closable:false, dimPage:false}"></sm-sidebar>
+          <sm-button class="teal" sm-sidebar-toggle="'.sidebar6'">Toggle</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-sidebar-hide
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command sidebar(s) hide.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code7"></pre>
+
+        <div data-copy-to="#code7">
+          <sm-sidebar class="inverted vertical menu sidebar7" items="simple" settings="{closable:false, dimPage:false}"></sm-sidebar>
+          <sm-button class="teal" sm-sidebar-hide="'.sidebar7'" sm-sidebar-show="{$:'.sidebar7', evt:'mouseenter'}">Hide</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-sidebar-push-page
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command sidebar(s) to push page content to be visible alongside sidebar.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-sidebar-pull-page
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command sidebar(s) to return page content to original position.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-sidebar-add-body-css
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command sidebar(s) to add stylesheet to page head to trigger sidebar animations.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-sidebar-remove-body-css
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command sidebar(s) to remove any inline stylesheets for sidebar animation.</div>
+        </h3>
+      </div>
+
+    </div>
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

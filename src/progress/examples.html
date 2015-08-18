@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-progress.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          $scope.adjust = function(variableName, amount, min, max) 
+          {
+            $scope[ variableName ] = Math.min( max || 100, Math.max( min || 0, $scope[ variableName ] + amount ) );
+          };
+
+          $scope.model0 = 9;
+          $scope.model1 = 20;
+          $scope.model2 = 15;
+          $scope.model3 = 49;
+          $scope.model4 = 57;
+          $scope.model5 = 28;
+          $scope.model6 = 100;
+          $scope.model7 = 100;
+          $scope.model8 = 100;
+          $scope.model9 = 29;
+          $scope.modelA = 56;
+          $scope.modelB = 19;
+          $scope.modelC1 = 62;
+          $scope.modelC2 = 36;
+          $scope.modelC3 = 14;
+          $scope.modelC4 = 50;
+          $scope.modelC5 = 46;
+          $scope.modelF = 1;
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+    
+      <div class="ui segment">
+
+        <h3 class="ui header">Standard</h3>
+
+        <p>A standard progress bar.</p>
+
+        <div data-copy-to="#example0">
+          <sm-progress class="success" model="model0" label="percent">Uploading Files</sm-progress>
+        </div>
+
+        <div class="ui icon buttons">
+          <sm-button class="basic red" ng-click="adjust('model0', -10)"><i class="minus icon"></i></sm-button>
+          <sm-button class="basic green" ng-click="adjust('model0', +10)"><i class="plus icon"></i></sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example0"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Indicating</h3>
+
+        <p>An indicating progress bar visually indicates the current level of progress of a task.</p>
+
+        <div data-copy-to="#example1">
+          <sm-progress class="indicating active" model="model1">{{ model1 }}% Funded</sm-progress>
+        </div>
+
+        <div class="ui icon buttons">
+          <sm-button class="basic red" ng-click="adjust('model1', -10)"><i class="minus icon"></i></sm-button>
+          <sm-button class="basic green" ng-click="adjust('model1', +10)"><i class="plus icon"></i></sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example1"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Bar</h3>
+
+        <p>A progress element can contain a bar visually indicating progress.</p>
+
+        <div data-copy-to="#example2">
+           <sm-progress model="model2"></sm-progress>
+        </div>
+
+        <div class="ui icon buttons">
+          <sm-button class="basic red" ng-click="adjust('model2', -10)"><i class="minus icon"></i></sm-button>
+          <sm-button class="basic green" ng-click="adjust('model2', +10)"><i class="plus icon"></i></sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example2"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Progress</h3>
+
+        <p>A progress bar can contain a text value indicating current progress.</p>
+
+        <div data-copy-to="#example3">
+          <sm-progress model="model3" label="percent"></sm-progress>
+        </div>
+
+        <div class="ui icon buttons">
+          <sm-button class="basic red" ng-click="adjust('model3', -10)"><i class="minus icon"></i></sm-button>
+          <sm-button class="basic green" ng-click="adjust('model3', +10)"><i class="plus icon"></i></sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example3"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Label</h3>
+
+        <p>A progress element can contain a label.</p>
+
+        <div data-copy-to="#example4">
+          <sm-progress model="model4" label="percent">Uploading Files</sm-progress>
+        </div>
+
+        <div class="ui icon buttons">
+          <sm-button class="basic red" ng-click="adjust('model4', -10)"><i class="minus icon"></i></sm-button>
+          <sm-button class="basic green" ng-click="adjust('model4', +10)"><i class="plus icon"></i></sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example4"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Active</h3>
+
+        <p>A progress bar can show activity.</p>
+
+        <div data-copy-to="#example5">
+          <sm-progress class="active" model="model5" label="percent">Uploading Files</sm-progress>
+        </div>
+
+        <div class="ui icon buttons">
+          <sm-button class="basic red" ng-click="adjust('model5', -10)"><i class="minus icon"></i></sm-button>
+          <sm-button class="basic green" ng-click="adjust('model5', +10)"><i class="plus icon"></i></sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example5"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Success</h3>
+
+        <p>A progress bar can show a success state.</p>
+
+        <div data-copy-to="#example6">
+          <sm-progress class="success" model="model6" label="percent">Everything worked, your file is all ready.</sm-progress>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example6"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Warning</h3>
+
+        <p>A progress bar can show a warning state.</p>
+
+        <div data-copy-to="#example7">
+          <sm-progress class="warning" model="model7" label="percent">Your file didn't meet the minimum resolution requirements.</sm-progress>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example7"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Error</h3>
+
+        <p>A progress bar can show an error state.</p>
+
+        <div data-copy-to="#example8">
+          <sm-progress class="error" model="model8" label="percent">There was an error.</sm-progress>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example8"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Disabled</h3>
+
+        <p>A progress bar can be disabled</p>
+
+        <div data-copy-to="#example9">
+          <sm-progress class="disabled" model="model9"></sm-progress>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example9"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Inverted</h3>
+
+        <p>A progress bar can have its colors inverted.</p>
+
+        <div data-copy-to="#exampleA" class="ui inverted segment">
+          <sm-progress class="inverted" model="modelA" label="percent">Uploading Files</sm-progress>
+          <sm-progress class="inverted success" model="100" label="percent">Success</sm-progress>
+          <sm-progress class="inverted warning" model="100" label="percent">Warning</sm-progress>
+          <sm-progress class="inverted error" model="100" label="percent">Error</sm-progress>
+        </div>
+
+        <sm-button class="icon basic green" ng-click="adjust('modelA', +10)"><i class="plus icon"></i></sm-button>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleA"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Attached</h3>
+
+        <p>A progress bar can show progress of an element.</p>
+
+        <div data-copy-to="#exampleB" class="ui segment">
+          <sm-progress class="top attached" model="modelB"></sm-progress>
+          <p>La la la la</p>
+          <sm-progress class="bottom attached" model="modelB"></sm-progress>
+        </div>
+
+        <div class="ui icon buttons">
+          <sm-button class="basic red" ng-click="adjust('modelB', -10)"><i class="minus icon"></i></sm-button>
+          <sm-button class="basic green" ng-click="adjust('modelB', +10)"><i class="plus icon"></i></sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleB"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Size</h3>
+
+        <p>A progress bar can vary in size.</p>
+
+        <div data-copy-to="#exampleC">
+          <sm-progress class="tiny" model="modelC1">Tiny</sm-progress>
+          <sm-progress class="small" model="modelC2">Small</sm-progress>
+          <sm-progress class="" model="modelC3">Standard</sm-progress>
+          <sm-progress class="large" model="modelC4">Large</sm-progress>
+          <sm-progress class="big" model="modelC5">Big</sm-progress>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleC"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Color</h3>
+
+        <p>Can have different colors:</p>
+
+        <div data-copy-to="#exampleD">
+          <sm-progress class="red" model="49"></sm-progress>
+          <sm-progress class="orange" model="37"></sm-progress>
+          <sm-progress class="yellow" model="37"></sm-progress>
+          <sm-progress class="olive" model="56"></sm-progress>
+          <sm-progress class="green" model="21"></sm-progress>
+          <sm-progress class="teal" model="58"></sm-progress>
+          <sm-progress class="blue" model="40"></sm-progress>
+          <sm-progress class="violet" model="57"></sm-progress>
+          <sm-progress class="purple" model="51"></sm-progress>
+          <sm-progress class="pink" model="58"></sm-progress>
+          <sm-progress class="brown" model="59"></sm-progress>
+          <sm-progress class="grey" model="8"></sm-progress>
+          <sm-progress class="black" model="41"></sm-progress>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleD"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Inverted Color</h3>
+
+        <p>These colors can also be inverted for improved contrast on dark backgrounds.</p>
+
+        <div data-copy-to="#exampleE" class="ui segment inverted">
+          <sm-progress class="inverted red" model="49" label="percent"></sm-progress>
+          <sm-progress class="inverted orange" model="37" label="percent"></sm-progress>
+          <sm-progress class="inverted yellow" model="37" label="percent"></sm-progress>
+          <sm-progress class="inverted olive" model="56" label="percent"></sm-progress>
+          <sm-progress class="inverted green" model="21" label="percent"></sm-progress>
+          <sm-progress class="inverted teal" model="58" label="percent"></sm-progress>
+          <sm-progress class="inverted blue" model="40" label="percent"></sm-progress>
+          <sm-progress class="inverted violet" model="57" label="percent"></sm-progress>
+          <sm-progress class="inverted purple" model="51" label="percent"></sm-progress>
+          <sm-progress class="inverted pink" model="58" label="percent"></sm-progress>
+          <sm-progress class="inverted brown" model="59" label="percent"></sm-progress>
+          <sm-progress class="inverted grey" model="8" label="percent"></sm-progress>
+          <sm-progress class="inverted black" model="41" label="percent"></sm-progress>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleE"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Adding Custom Labels</h3>
+
+        <p>You can pass in templates text for each state available to your progress bar which will automatically be updated when your progress bar reaches that state</p>
+        <p>You can use <code>label</code> setting to change progress bar labels between two preset messages. In addition you can customize the messages themselves by specifying the templated text in text. Templated strings will replace three values on render.</p>
+
+        <div data-copy-to="#exampleF">
+          <sm-progress model="modelF" total="20" active-text="Adding {value} of {total} photos" success-text="{total} Photos Uploaded!"></sm-progress>
+        </div>
+
+        <div class="ui icon buttons">
+          <sm-button class="basic red" ng-click="adjust('modelF', -1, 0, 20)"><i class="minus icon"></i></sm-button>
+          <sm-button class="basic green" ng-click="adjust('modelF', +1, 0, 20)"><i class="plus icon"></i></sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleF"></pre>
+
+      </div>
+
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

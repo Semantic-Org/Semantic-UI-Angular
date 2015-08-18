@@ -1,0 +1,40 @@
+code {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+  display: inline-block;
+  font-family: "Monaco","Menlo","Ubuntu Mono","Consolas","source-code-pro",monospace;
+  font-size: 0.875em;
+  font-weight: bold;
+  padding: 1px 6px;
+  vertical-align: baseline;
+}
+code.required {
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+code.optional {
+  background-color: #00b5ad;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.current.value {
+  background-color: rgba(0, 0, 255, 0.08);
+  border-radius: 3px;
+  display: inline-block;
+  font-family: "Monaco","Menlo","Ubuntu Mono","Consolas","source-code-pro",monospace;
+  font-size: 0.875em;
+  font-weight: bold;
+  padding: 1px 6px;
+  vertical-align: baseline;
+  float: right;
+}
+
+.float.right {
+  float: right;
+}
+
+.contains.floats {
+  overflow: auto;
+}

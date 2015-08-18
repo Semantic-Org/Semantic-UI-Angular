@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-tab.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+
+      <code class="float right optional">optional</code>
+      <code class="float right required">required</code> 
+
+      <h1 class="ui header">
+        <img src="http://semantic-ui.com/images/logo.png">
+        <div class="content">
+          Tab Directives
+          <div class="sub header">Create &amp; Control Semantic UI Tab with Angular Directives</div>
+        </div>
+      </h1>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-tab-menu
+          <div class="sub header">Creates a menu of tab links.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="required">tabs</code> <code>=</code> an object where the keys are the names of the tabs and the values are the title on the tab.</li>
+          <li><code class="optional">active</code> <code>=</code> a reference to the name of the active tab.</li>
+          <li><code class="optional">settings</code> <code>=</code> a reference to a settings object to pass to the initialization function.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code0"></pre>
+
+        <div data-copy-to="#code0"> 
+          <sm-tab-menu tabs="{first0:'First', second0:'Second'}" active="'first0'" class="secondary pointing"></sm-tab-menu>
+          <sm-tab name="first0">
+            First Tab Content
+          </sm-tab>
+          <sm-tab name="second0">
+            Second Tab Content
+          </sm-tab>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-tab-bind
+          <div class="sub header">A lightweight attribute directive which calls tab() on the element with the settings object passed to the attribute. Using this directive means you need to manage the communication between Angular and Semantic UI yourself.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code1"></pre>
+
+        <div data-copy-to="#code1">
+          <div class="ui secondary pointing top attached menu">
+            <div class="item active" data-tab="first1" sm-tab-bind>First</div>
+            <div class="item" data-tab="second1" sm-tab-bind>Second</div>
+          </div>
+          <div class="ui bottom attached segment tab active" data-tab="first1">
+            First Tab Content
+          </div>
+          <div class="ui bottom attached segment tab" data-tab="second1">
+            Second Tab Content
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-tab
+          <div class="sub header">Creates a named tab.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code2"></pre>
+
+        <div data-copy-to="#code2">
+          <sm-tab-menu tabs="{first2:'First', second2:'Second'}" active="'first2'"></sm-tab-menu>
+          <sm-tab name="first2" class="segment">
+            First Tab Content
+          </sm-tab>
+          <sm-tab name="second2" class="segment">
+            Second Tab Content
+          </sm-tab>
+        </div>
+
+      </div>
+
+      <div class="ui tertiary segment">
+
+        <h1>Behavior Directives</h1>
+        <p>These attribute directives invoke a behavior on the component where the attribute value can be one of the following formats:</p>
+
+        <h5>String</h5>
+        <ul>
+          <li>Selector to the dropdown(s) to invoke the behavior when the element with the directive is clicked.</li>
+        </ul>
+
+        <h5>Object</h5>
+        <ul>
+          <li><code class="required">$</code> <code>@</code> A selector string.</li>
+          <li><code class="optional">evt</code> <code>@</code> The event string which triggers the behavior ('click' by default).</li>
+          <li><code class="optional">enabled</code> <code>=</code> A boolean value which determines whether or not the behavior should be called when the event occurs.</li>
+          <li><code class="optional">value</code> <code>=</code> The first argument to pass to the behavior if it requires one.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code4"></pre>
+
+        <div data-copy-to="#code4">
+          <sm-button class="teal" sm-tab-behavior="'selector'">Execute Simple Behavior</sm-button>
+          <sm-button class="teal" sm-tab-behavior="{$: 'selector', value: scopeValue1, enabled: scopeValue2, evt: 'mouseover'}">Execute Advanced Behavior</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-tab-set
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command tab(s) to be set as active.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code5"></pre>
+
+        <div data-copy-to="#code5">
+          <sm-button class="teal" sm-tab-set="{$: '.menu5 [data-tab=first5]', value: 'first5'}">Set to First</sm-button>
+          <sm-button class="teal" sm-tab-set="{$: '.menu5 [data-tab=second5]', value: 'second5'}">Set to Second</sm-button><br>
+          <sm-tab-menu tabs="{first5:'First', second5:'Second'}" active="'first5'" class="menu5"></sm-tab-menu>
+          <sm-tab name="first5" class="segment">
+            First Tab Content
+          </sm-tab>
+          <sm-tab name="second5" class="segment">
+            Second Tab Content
+          </sm-tab>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

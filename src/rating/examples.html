@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-rating.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          $scope.model0 = 0;
+          $scope.model1 = 3;
+          $scope.model2 = 1;
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+    
+      <div class="ui segment">
+
+        <h3 class="ui header">Rating</h3>
+
+        <p>A basic rating.</p>
+
+        <div class="current value">
+          <input type="number" min="0" max="1" size="3" ng-model="model0">
+        </div>
+
+        <div data-copy-to="#example0">
+          <sm-rating model="model0" total="1"></sm-rating>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example0"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Star</h3>
+
+        <p>A rating can use a set of star icons.</p>
+
+        <div class="current value">
+          <input type="number" min="0" max="4" size="3" ng-model="model1">
+        </div>
+
+        <div data-copy-to="#example1">
+          <sm-rating model="model1" total="4" type="star"></sm-rating>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example1"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Heart</h3>
+
+        <p>A rating can use a set of heart icons.</p>
+
+        <div class="current value">
+          <input type="number" min="0" max="3" size="3" ng-model="model2">
+        </div>
+
+        <div data-copy-to="#example2">
+          <sm-rating model="model2" total="3" type="heart"></sm-rating>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example2"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Size</h3>
+
+        <p>A rating can vary in size.</p>
+
+        <div data-copy-to="#example3">
+          <sm-rating model="3" total="4" type="mini star"></sm-rating><br>
+          <sm-rating model="3" total="4" type="tiny star"></sm-rating><br>
+          <sm-rating model="3" total="4" type="small star"></sm-rating><br>
+          <sm-rating model="3" total="4" type="star"></sm-rating><br>
+          <sm-rating model="3" total="4" type="large star"></sm-rating><br>
+          <sm-rating model="3" total="4" type="huge star"></sm-rating><br>
+          <sm-rating model="3" total="4" type="massive star"></sm-rating><br>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example3"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Read-Only Ratings</h3>
+
+        <p>You can disable or enable interactive rating.</p>
+
+        <div data-copy-to="#example4">
+          <sm-rating model="4" total="5" type="star" disabled="true"></sm-rating>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example4"></pre>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Clearing Ratings</h3>
+
+        <p>When clearable is set to <code>true</code> you can clear the rating by clicking on the current start rating..</p>
+
+        <div data-copy-to="#example5">
+          <sm-rating model="3" total="4" type="heart" settings="{clearable:true}"></sm-rating>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example5"></pre>
+
+      </div>
+
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

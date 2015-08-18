@@ -1,29 +1,25 @@
-Semantic-UI-Angular
-===================
+## SemanticUI-Angular [![Build Status](https://travis-ci.org/ClickerMonkey/SemanticUI-Angular.svg?branch=master)](https://travis-ci.org/ClickerMonkey/SemanticUI-Angular) [![devDependency Status](https://david-dm.org/ClickerMonkey/SemanticUI-Angular/dev-status.svg?branch=master)](https://david-dm.org/ClickerMonkey/SemanticUI-Angular#info=devDependencies)
 
-[![Join the chat at https://gitter.im/Semantic-Org/Semantic-UI-Angular](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Semantic-Org/Semantic-UI-Angular?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/Semantic-Org/Semantic-UI-Angular.svg)](https://travis-ci.org/Semantic-Org/Semantic-UI-Angular)
-[![Dependency Status](https://david-dm.org/Semantic-Org/Semantic-UI-Angular.svg)](https://david-dm.org/Semantic-Org/Semantic-UI-Angular)
-[![devDependency Status](https://david-dm.org/Semantic-Org/Semantic-UI-Angular/dev-status.svg)](https://david-dm.org/Semantic-Org/Semantic-UI-Angular#info=devDependencies)
+This library provides over 100 Angular directives for building Semantic UI elements, collections, views & modules.
 
-Status
-------
+Checkout `index.html` for more information.
 
-**Work in Progress**
+### Dependencies
 
-Current progress:
------------------
-At this moment we have following directives:
+- Semantic-UI
+- AngularJS
 
- - sm-button;
- - sm-checkbox;
- - sm-divider;
- - sm-radio-group and sm-radio-button;
- - sm-rating.
+### Global DevDependencies
 
-TODOs:
------
+- gulp
 
- - Create generic directives to cover common use cases.
- - Create a documentation generation.
- - Update project up to Angular 1.4 (ES6/TS - under discussion)
+### Building
+
+```bash
+$ npm install --dev
+$ gulp
+```
+
+### Contribution
+
+Any form of contribution is welcome, whether it be a bug report, a feature request, a feature implementation, a bug fix, or even an example usage or additional test. The contribution is welcome and appreciated.

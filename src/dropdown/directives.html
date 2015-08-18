@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-dropdown.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          $scope.projects = [
+            {name: 'Taco Maker', id: 123},
+            {name: 'Cornhole Boards', id: 456},
+            {name: 'Beef Jerky', id: 789}
+          ];
+
+          $scope.model0 = $scope.projects[ 1 ];
+
+          $scope.model1 = null;
+
+          $scope.model2 = null;
+
+          $scope.model3 = null;
+
+          $scope.model4 = [123, 456];
+
+          $scope.model5 = [456, 789];
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+
+      <code class="float right optional">optional</code>
+      <code class="float right required">required</code> 
+
+      <h1 class="ui header">
+        <img src="http://semantic-ui.com/images/logo.png">
+        <div class="content">
+          Dropdown Directives
+          <div class="sub header">Create &amp; Control Semantic UI Dropdowns with Angular Directives</div>
+        </div>
+      </h1>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-dropdown
+          <div class="sub header">Creates a dropdown.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="required">model</code> <code>=</code> a variable which represents the currently selected option(s) in the dropdown.</li>
+          <li><code class="required">items</code> <code>=</code> the iterable object which populates the options in the dropdown.</li>
+          <li><code class="optional">label</code> <code>&amp;</code> an expression which uses the item variable to determine what should be the label.</li>
+          <li><code class="optional">value</code> <code>&amp;</code> an expression which uses the item variable to determine what should be the value.</li>
+          <li><code class="optional">settings</code> <code>=</code> reference to a settings object to pass to the initialization function.</li>
+          <li><code class="optional">default-text</code> <code>=</code> a reference to a string to be used as a placeholder when no option(s) are selected.</li>
+        </ul>
+        <h5>Callback Attributes</h5>
+        <ul>
+          <li><code class="optional">on-init</code> <code>=</code> Callback once the module is initialized, passing the initialized element as the first argument.</li>
+          <li><code class="optional">on-change</code> <code>=</code> Callback after a dropdown value changes. Receives the name and value of selection and the active menu element.</li>
+          <li><code class="optional">on-add</code> <code>=</code> Callback after a dropdown selection is added using a multiple select dropdown, only receives the added value.</li>
+          <li><code class="optional">on-remove</code> <code>=</code> Callback after a dropdown selection is removed using a multiple select dropdown, only receives the removed value.</li>
+          <li><code class="optional">on-label-create</code> <code>=</code> Callback before a label is added to the dropdown. Allows you to modify a label before it is added. Expects <code>$label</code> to be returned.</li>
+          <li><code class="optional">on-label-select</code> <code>=</code> Callback after a label is selected by a user.</li>
+          <li><code class="optional">on-no-results</code> <code>=</code> Callback after a dropdown is searched with no matching values.</li>
+          <li><code class="optional">on-show</code> <code>=</code> Callback after a dropdown is shown.</li>
+          <li><code class="optional">on-hide</code> <code>=</code> Callback after a dropdown is hidden.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code0"></pre>
+
+        <div class="current value">
+          {{ model0 }}
+        </div>
+
+        <div data-copy-to="#code0">
+          <sm-dropdown class="selection" model="model0" items="projects" label="item.name"></sm-dropdown>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-dropdown-bind
+          <div class="sub header">A lightweight attribute directive which calls dropdown() on the element with the settings object passed to the attribute. Using this directive means you need to manage the communication between Angular and Semantic UI yourself.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code1"></pre>
+
+        <div data-copy-to="#code1">
+          <div class="ui selection dropdown" sm-dropdown-bind>
+            <div class="default text">Gender</div>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div class="item" data-value="F">Female</div>
+              <div class="item" data-value="M">Male</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ui tertiary segment">
+
+        <h1>Behavior Directives</h1>
+        <p>These attribute directives invoke a behavior on the component where the attribute value can be one of the following formats:</p>
+
+        <h5>String</h5>
+        <ul>
+          <li>Selector to the dropdown(s) to invoke the behavior when the element with the directive is clicked.</li>
+        </ul>
+
+        <h5>Object</h5>
+        <ul>
+          <li><code class="required">$</code> <code>@</code> A selector string.</li>
+          <li><code class="optional">evt</code> <code>@</code> The event string which triggers the behavior ('click' by default).</li>
+          <li><code class="optional">enabled</code> <code>=</code> A boolean value which determines whether or not the behavior should be called when the event occurs.</li>
+          <li><code class="optional">value</code> <code>=</code> The first argument to pass to the behavior if it requires one.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code2"></pre>
+
+        <div data-copy-to="#code2">
+          <sm-button class="teal" sm-dropdown-behavior="'selector'">Execute Simple Behavior</sm-button>
+          <sm-button class="teal" sm-dropdown-behavior="{$: 'selector', value: scopeValue1, enabled: scopeValue2, evt: 'mouseover'}">Execute Advanced Behavior</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-dropdown-toggle / sm-dropdown-show / sm-dropdown-hide
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to toggle visibility.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code3"></pre>
+
+        <div data-copy-to="#code3">
+          <sm-dropdown class="selection dropdown3" model="model3" items="projects" label="item.name" value="item"></sm-dropdown>
+          <sm-button sm-dropdown-toggle="'.dropdown3'" class="teal">Toggle</sm-button>
+          <sm-button sm-dropdown-show="'.dropdown3'" class="teal">Show</sm-button>
+          <sm-button sm-dropdown-hide="'.dropdown3'" class="teal">Hide</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-dropdown-clear
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to clear their current values.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code4"></pre>
+
+        <div data-copy-to="#code4">
+          <sm-dropdown class="multiple selection dropdown4" model="model4" items="projects" label="item.name" value="item.id" style="width:500px"></sm-dropdown>
+          <sm-button sm-dropdown-clear="'.dropdown4'" class="teal">Clear</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-dropdown-restore-defaults
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to restore their initial values.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code5"></pre>
+
+        <div data-copy-to="#code5">
+          <sm-dropdown class="multiple selection dropdown5" model="model5" items="projects" label="item.name" value="item.id" style="width:500px"></sm-dropdown>
+          <sm-button sm-dropdown-clear="'.dropdown5'" class="teal">Clear</sm-button>
+          <sm-button sm-dropdown-restore-defaults="'.dropdown5'" class="teal">Reset Defaults</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-hide-others
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-restore-default-text
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-restore-default-value
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-save-defaults
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-set-selected
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-set-text
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-set-value
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-bind-touch-events
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-mouse-events
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-bind-intent
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-unbind-intent
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-set-active
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-set-visible
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-remove-active
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-dropdown-remove-visible
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command dropdown(s) to execute the behavior.</div>
+        </h3>
+      </div>
+
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

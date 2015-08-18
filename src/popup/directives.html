@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-popup.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+
+      <code class="float right optional">optional</code>
+      <code class="float right required">required</code> 
+
+      <h1 class="ui header">
+        <img src="http://semantic-ui.com/images/logo.png">
+        <div class="content">
+          Popup Directives
+          <div class="sub header">Create &amp; Control Semantic UI Popups with Angular Directives</div>
+        </div>
+      </h1>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-popup
+          <div class="sub header">Adds a popup to the current element.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="required">sm-popup</code> <code>=</code> a string variable representing the content of the popup.</li>
+          <li><code class="optional">sm-popup-title</code> <code>=</code> a string variable representing the title of the popup.</li>
+          <li><code class="optional">sm-popup-html</code> <code>=</code> a string variable to display instead of the preformatted content and title.</li>
+          <li><code class="optional">sm-popup-position</code> <code>@</code> a string with the position of the popup relative to the element.</li>
+          <li><code class="optional">sm-popup-variation</code> <code>@</code> a string with the variation of the popup.</li>
+          <li><code class="optional">sm-popup-settings</code> <code>=</code> reference to a settings object to pass to the initialization function.</li>
+        </ul>
+        <h5>Callback Attributes</h5>
+        <ul>
+          <li><code class="optional">sm-popup-on-init</code> <code>=</code> Callback once the module is initialized, passing the initialized element as the first argument.</li>
+          <li><code class="optional">sm-popup-on-create</code> <code>=</code> Callback on popup element creation, with created popup.</li>
+          <li><code class="optional">sm-popup-on-remove</code> <code>=</code> Callback immediately before Popup is removed from DOM.</li>
+          <li><code class="optional">sm-popup-on-show</code> <code>=</code> Callback before popup is shown. Returning <code>false</code> from this callback will cancel the popup from showing.</li>
+          <li><code class="optional">sm-popup-on-visible</code> <code>=</code> Callback after popup is shown.</li>
+          <li><code class="optional">sm-popup-on-hide</code> <code>=</code> Callback before popup is hidden. Returning <code>false</code> from this callback will cancel the popup from hiding.</li>
+          <li><code class="optional">sm-popup-on-hidden</code> <code>=</code> Callback after popup is hidden.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code0"></pre>
+
+        <div data-copy-to="#code0">
+          <sm-button class="teal" sm-popup="'Nice to meet you.'" sm-popup-title="'Hello,'">I have a popup</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-popup-bind
+          <div class="sub header">A lightweight attribute directive which calls popup() on the element with the settings object passed to the attribute. Using this directive means you need to manage the communication between Angular and Semantic UI yourself.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code1"></pre>
+
+        <div data-copy-to="#code1">
+          <sm-button class="teal" sm-popup-bind data-content="Nice to meet you again." data-title="Hello,">I have a popup as well</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-popup-inline
+          <div class="sub header">Adds the following detached popup to the current element.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="required">sm-popup-inline</code> <code>=</code> reference to a settings object to pass to the initialization function.</li>
+        </ul>
+        <h5>Callback Attributes</h5>
+        <ul>
+          <li><code class="optional">sm-popup-inline-on-init</code> <code>=</code> Callback once the module is initialized, passing the initialized element as the first argument.</li>
+          <li><code class="optional">sm-popup-inline-on-create</code> <code>=</code> Callback on popup element creation, with created popup.</li>
+          <li><code class="optional">sm-popup-inline-on-remove</code> <code>=</code> Callback immediately before Popup is removed from DOM.</li>
+          <li><code class="optional">sm-popup-inline-on-show</code> <code>=</code> Callback before popup is shown. Returning <code>false</code> from this callback will cancel the popup from showing.</li>
+          <li><code class="optional">sm-popup-inline-on-visible</code> <code>=</code> Callback after popup is shown.</li>
+          <li><code class="optional">sm-popup-inline-on-hide</code> <code>=</code> Callback before popup is hidden. Returning <code>false</code> from this callback will cancel the popup from hiding.</li>
+          <li><code class="optional">sm-popup-inline-on-hidden</code> <code>=</code> Callback after popup is hidden.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code2"></pre>
+
+        <div data-copy-to="#code2">
+          <sm-button class="teal" sm-popup-inline>My popup follows me</sm-button>
+          <sm-popup-detached>
+            <div class="header">Hi</div>
+            <div class="content">I'm right behind you.</div>
+          </sm-popup-detached>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-popup-display
+          <div class="sub header">Adds the named detached popup to the current element.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <h5>Attributes</h5>
+        <ul>
+          <li><code class="required">sm-popup-display</code> <code>@</code> a string with the name of the popup to display on this element.</li>
+          <li><code class="optional">sm-popup-display-settings</code> <code>=</code> reference to a settings object to pass to the initialization function.</li>
+        </ul>
+        <h5>Callback Attributes</h5>
+        <ul>
+          <li><code class="optional">sm-popup-display-on-init</code> <code>=</code> Callback once the module is initialized, passing the initialized element as the first argument.</li>
+          <li><code class="optional">sm-popup-display-on-create</code> <code>=</code> Callback on popup element creation, with created popup.</li>
+          <li><code class="optional">sm-popup-display-on-remove</code> <code>=</code> Callback immediately before Popup is removed from DOM.</li>
+          <li><code class="optional">sm-popup-display-on-show</code> <code>=</code> Callback before popup is shown. Returning <code>false</code> from this callback will cancel the popup from showing.</li>
+          <li><code class="optional">sm-popup-display-on-visible</code> <code>=</code> Callback after popup is shown.</li>
+          <li><code class="optional">sm-popup-display-on-hide</code> <code>=</code> Callback before popup is hidden. Returning <code>false</code> from this callback will cancel the popup from hiding.</li>
+          <li><code class="optional">sm-popup-display-on-hidden</code> <code>=</code> Callback after popup is hidden.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code3"></pre>
+
+        <div data-copy-to="#code3">
+          <sm-popup-detached name="popup3">
+            I can exist <i>anywhere</i>.
+          </sm-popup-detached>
+          <sm-button class="teal" sm-popup-display="popup3">My popup is anywhere</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-popup-detached
+          <div class="sub header">A popup that can be shown by the previous element or by an element with the sm-popup-display directive with the <code>name</code> defined on this element.</div>
+        </h3>
+      </div>
+
+      <div class="ui tertiary segment">
+
+        <h1>Behavior Directives</h1>
+        <p>These attribute directives invoke a behavior on the component where the attribute value can be one of the following formats:</p>
+
+        <h5>String</h5>
+        <ul>
+          <li>Selector to the dropdown(s) to invoke the behavior when the element with the directive is clicked.</li>
+        </ul>
+
+        <h5>Object</h5>
+        <ul>
+          <li><code class="required">$</code> <code>@</code> A selector string.</li>
+          <li><code class="optional">evt</code> <code>@</code> The event string which triggers the behavior ('click' by default).</li>
+          <li><code class="optional">enabled</code> <code>=</code> A boolean value which determines whether or not the behavior should be called when the event occurs.</li>
+          <li><code class="optional">value</code> <code>=</code> The first argument to pass to the behavior if it requires one.</li>
+        </ul>
+
+        <h5>Example</h5>
+
+        <pre class="ui segment prettyprint lang-html" id="code4"></pre>
+
+        <div data-copy-to="#code4">
+          <sm-button class="teal" sm-popup-behavior="'selector'">Execute Simple Behavior</sm-button>
+          <sm-button class="teal" sm-popup-behavior="{$: 'selector', value: scopeValue1, enabled: scopeValue2, evt: 'mouseover'}">Execute Advanced Behavior</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-popup-show / sm-popup-hide / sm-popup-toggle
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command popup(s) to be shown or hidden.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code5"></pre>
+
+        <div data-copy-to="#code5">
+          <sm-button sm-popup="'I\'m not a popup'" class="popup5">Hey, look at me!</sm-button>
+          <br><br>
+          <sm-button sm-popup-show="'.popup5'" class="teal">Show</sm-button>
+          <sm-button sm-popup-hide="'.popup5'" class="teal">Hide</sm-button>
+          <sm-button sm-popup-toggle="'.popup5'" class="teal">Toggle</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary top attached segment">
+        <h3 class="ui header">
+          sm-popup-hideall
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command popup(s) to all be hidden.</div>
+        </h3>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <pre class="ui segment prettyprint lang-html" id="code6"></pre>
+
+        <div data-copy-to="#code6">
+          <sm-button sm-popup="'I\'m not a popup'" class="popup6">Hey, look at me!</sm-button>
+          <sm-button sm-popup="'But I am!'" class="popup6">Me too!</sm-button>
+          <br><br>
+          <sm-button sm-popup-show="'.popup6'" class="teal">Show</sm-button>
+          <sm-button sm-popup-hide-all="'.popup5'" class="teal">Hide All</sm-button>
+        </div>
+
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-popup-reposition
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command popup(s) to be adjusted when content size changes.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-popup-destroy
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command popup(s) to be removed from the page with all events.</div>
+        </h3>
+      </div>
+
+      <div class="ui secondary segment">
+        <h3 class="ui header">
+          sm-popup-remove
+          <div class="sub header">When a DOM event fires on the element with the directive, it can command popup(s) to be removed from the page.</div>
+        </h3>
+      </div>
+
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

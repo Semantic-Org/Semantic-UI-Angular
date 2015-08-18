@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-transition.js"></script>
+    <script src="../sticky/sm-sticky.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+        })
+      ;
+    </script>
+    <style>
+        .main.ui.container {
+          position: relative;
+          width: 800px !important;
+          left: 0px;
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+    </style>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+    
+    <div class="main ui container">
+
+      <div class="ui right rail">
+        <sm-sticky context=".main.ui.container">
+          <img src="http://semantic-ui.com/images/leaves/1.png" class="ui autumn leaf image">
+        </sm-sticky>
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Scale</h3>
+
+        <p>An element can scale into or out of view.</p>
+
+        <div data-copy-to="#example0">
+          <sm-button sm-transition="scale" sm-transition-other=".autumn.leaf">Scale</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example0"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Fade</h3>
+
+        <p>An element can fade into or out of view descending and ascending.</p>
+
+        <div data-copy-to="#example1">
+          <sm-button sm-transition="fade" sm-transition-other=".autumn.leaf">Fade</sm-button>
+          <sm-button sm-transition="fade up" sm-transition-other=".autumn.leaf">Fade Up</sm-button>
+          <sm-button sm-transition="fade down" sm-transition-other=".autumn.leaf">Fade Down</sm-button>
+          <sm-button sm-transition="fade left" sm-transition-other=".autumn.leaf">Fade Left</sm-button>
+          <sm-button sm-transition="fade right" sm-transition-other=".autumn.leaf">Fade Right</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example1"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Flip</h3>
+
+        <p>An element can flip into or out of view vertically or horizontally.</p>
+
+        <div data-copy-to="#example2">
+          <sm-button sm-transition="horizontal flip" sm-transition-other=".autumn.leaf">Horizontal Flip</sm-button>
+          <sm-button sm-transition="vertical flip" sm-transition-other=".autumn.leaf">Vertical Flip</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example2"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Drop</h3>
+
+        <p>An element can drop into view from above.</p>
+
+        <div data-copy-to="#example3">
+          <sm-button sm-transition="drop" sm-transition-other=".autumn.leaf">Drop</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example3"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Fly</h3>
+
+        <p>An element can fly in from off canvas.</p>
+
+        <div data-copy-to="#example4">
+          <sm-button sm-transition="fly left" sm-transition-other=".autumn.leaf">Fly Left</sm-button>
+          <sm-button sm-transition="fly right" sm-transition-other=".autumn.leaf">Fly Right</sm-button>
+          <sm-button sm-transition="fly up" sm-transition-other=".autumn.leaf">Fly Up</sm-button>
+          <sm-button sm-transition="fly down" sm-transition-other=".autumn.leaf">Fly Down</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example4"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Swing</h3>
+
+        <p>An element can swing into view.</p>
+
+        <div data-copy-to="#example5">
+          <sm-button sm-transition="swing left" sm-transition-other=".autumn.leaf">Swing Left</sm-button>
+          <sm-button sm-transition="swing right" sm-transition-other=".autumn.leaf">Swing Right</sm-button>
+          <sm-button sm-transition="swing up" sm-transition-other=".autumn.leaf">Swing Up</sm-button>
+          <sm-button sm-transition="swing down" sm-transition-other=".autumn.leaf">Swing Down</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example5"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Browse</h3>
+
+        <p>An element can appear and disappear as part of a series.</p>
+
+        <div data-copy-to="#example6">
+          <sm-button sm-transition="browse" sm-transition-other=".autumn.leaf">Browse</sm-button>
+          <sm-button sm-transition="browse right" sm-transition-other=".autumn.leaf">Browse Right</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example6"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Slide</h3>
+
+        <p>An element can appear to slide in from above or below.</p>
+
+        <div data-copy-to="#example7">
+          <sm-button sm-transition="slide left" sm-transition-other=".autumn.leaf">Slide Left</sm-button>
+          <sm-button sm-transition="slide right" sm-transition-other=".autumn.leaf">Slide Right</sm-button>
+          <sm-button sm-transition="slide up" sm-transition-other=".autumn.leaf">Slide Up</sm-button>
+          <sm-button sm-transition="slide down" sm-transition-other=".autumn.leaf">Slide Down</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example7"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Jiggle</h3>
+
+        <p>An element can jiggle to draw attention to its shape.</p>
+
+        <div data-copy-to="#example8">
+          <sm-button sm-transition="jiggle" sm-transition-other=".autumn.leaf">Jiggle</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example8"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Flash</h3>
+
+        <p>An element can flash to draw attention to itself.</p>
+
+        <div data-copy-to="#example9">
+          <sm-button sm-transition="flash" sm-transition-other=".autumn.leaf">Jiggle</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="example9"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Shake</h3>
+
+        <p>An element can shake to draw attention to its position.</p>
+
+        <div data-copy-to="#exampleA">
+          <sm-button sm-transition="shake" sm-transition-other=".autumn.leaf">Shake</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleA"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Pulse</h3>
+
+        <p>An element can pulse to draw attention to its visibility.</p>
+
+        <div data-copy-to="#exampleB">
+          <sm-button sm-transition="pulse" sm-transition-other=".autumn.leaf">Pulse</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleB"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Tada</h3>
+
+        <p>An element can give user positive feedback for an action.</p>
+
+        <div data-copy-to="#exampleC">
+          <sm-button sm-transition="tada" sm-transition-other=".autumn.leaf">Tada</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleC"></pre>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Bounce</h3>
+
+        <p>An element can bounce to politely remind you of itself.</p>
+
+        <div data-copy-to="#exampleD">
+          <sm-button sm-transition="bounce" sm-transition-other=".autumn.leaf">Bounce</sm-button>
+        </div>
+
+        <pre class="ui segment prettyprint lang-html" id="exampleD"></pre>
+
+      </div>
+
+
+    </div>
+
+    <script src="../examples.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/src/prettify.css">
+    <link rel="stylesheet" type="text/css" href="../examples.css">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.0.7/semantic.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+    <script src="../sm-core.js"></script>
+    <script src="../sm-addons.js"></script>
+    <script src="sm-dimmer.js"></script>
+
+    <script>
+      angular.module('semantic-ui')
+        .controller('MainController', function($scope) 
+        {
+          
+        })
+      ;
+    </script>
+
+  </head>
+  <body ng-app="semantic-ui" ng-controller="MainController">
+
+    <div class="ui container">
+    
+      <div class="ui segment">
+
+        <h3 class="ui header">Dimmer</h3>
+        <p>A simple dimmer displays no content</p>
+
+        <div class="ui segment" sm-dimmer-bind id="example0">
+          <h3 class="ui header">
+            Overlayable Section
+          </h3>
+          <div class="ui small images">
+            <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+            <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+            <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+          </div>
+          <img class="ui medium image" src="http://semantic-ui.com/images/wireframe/media-paragraph.png">
+        </div>
+
+        <sm-button sm-dimmer-show="'#example0'" class="icon"><i class="icon plus"></i></sm-button>
+        <sm-button sm-dimmer-hide="'#example0'" class="icon"><i class="icon minus"></i></sm-button>
+
+      </div>
+
+      <div class="ui segment">
+
+        <h3 class="ui header">Content Dimmer</h3>
+        <p>A dimmer can display content</p>
+
+        <div class="ui segment">
+          <h3 class="ui header">
+            Overlayable Section
+          </h3>
+          <div class="ui small images">
+            <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+            <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+            <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+          </div>
+          <img class="ui medium image" src="http://semantic-ui.com/images/wireframe/media-paragraph.png">
+          <sm-dimmer id="example1">
+            <div class="content">
+              <div class="center">
+                <h2 class="ui inverted icon header">
+                  <i class="heart icon"></i>
+                  Dimmed Message!
+                </h2>
+              </div>
+            </div>
+          </sm-dimmer>
+        </div>
+
+        <sm-button sm-dimmer-show="'#example1'" class="icon"><i class="icon plus"></i></sm-button>
+        <sm-button sm-dimmer-hide="'#example1'" class="icon"><i class="icon minus"></i></sm-button>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Page Dimmer</h3>
+        <p>A dimmer can be formatted to be fixed to the page</p>
+
+        <sm-dimmer class="page" id="example2">
+          <div class="content">
+            <div class="center">Hello</div>
+          </div>
+        </sm-dimmer>
+
+        <sm-button sm-dimmer-show="'#example2'" class="icon"><i class="icon plus"></i> Show</sm-button>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Blurring</h3>
+        <p>A dimmable element can blur its contents</p>
+
+        <div class="ui blurring segment">
+          <h3 class="ui header">
+            Overlayable Section
+          </h3>
+          <div class="ui small images">
+            <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+            <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+            <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+          </div>
+          <img class="ui medium image" src="http://semantic-ui.com/images/wireframe/media-paragraph.png">
+          <sm-dimmer id="example3"></sm-dimmer>
+        </div>
+
+        <sm-button sm-dimmer-show="'#example3'" class="icon"><i class="icon plus"></i></sm-button>
+        <sm-button sm-dimmer-hide="'#example3'" class="icon"><i class="icon minus"></i></sm-button>
+
+      </div>
+      <div class="ui segment">
+
+        <h3 class="ui header">Inverted Dimmer</h3>
+        <p>A dimmer can be formatted to have its colors inverted</p>
+
+        <div class="ui segment">
+          <h3 class="ui header">
+            Overlayable Section
+          </h3>
+          <div class="ui small images">
+            <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+            <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+            <img class="ui image" src="http://semantic-ui.com/images/wireframe/image.png">
+          </div>
+          <img class="ui medium image" src="http://semantic-ui.com/images/wireframe/media-paragraph.png">
+          <sm-dimmer id="example4" class="inverted"></sm-dimmer>
+        </div>
+
+        <sm-button sm-dimmer-show="'#example4'" class="icon"><i class="icon plus"></i></sm-button>
+        <sm-button sm-dimmer-hide="'#example4'" class="icon"><i class="icon minus"></i></sm-button>
+
+      </div>
+      
+    </div>
+
+  </body>
+</html>
