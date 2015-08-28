@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="semantic.ui.angular.loading">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Semantic-UI Demo page</title>
+    <link rel="stylesheet" href="../../../../docs/config/assets/semantic-ui/semantic.css"/>
+</head>
+<body>
+
+
+<div class="ui segment" sm-loading="true">
+  <h1>Loading</h1>
+</div>
+
+<div class="ui segment" sm-loading="false">
+  <h1>Segment does not have loading</h1>
+</div>
+
+<div class="ui segment" sm-loading="opts.loading">
+  <h1>Segment using scope</h1>
+</div>
+
+<div class="ui segment" sm-loading="opts.objects.length === 0">
+  <h1>Segment using complex expression</h1>
+</div>
+
+
+<button class="ui button" sm-loading="opts.loading">
+  Button
+</button>
+<button class="ui basic button" sm-loading="opts.loading">
+  Button
+</button>
+<button class="ui primary button" sm-loading="opts.loading">
+  Button
+</button>
+<button class="ui secondary button" sm-loading="opts.loading">
+  Button
+</button>
+
+
+
+<script src="../../../../node_modules/angular/angular.js"></script>
+<script src="../../../../src/behaviors/loading/loading.js"></script>
+
+<script src="loading.module.js"></script>
+</body>
+</html>
