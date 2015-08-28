@@ -11,7 +11,7 @@ angular
   function smLoading($parse) {
     return {
       restrict:'A',
-      link: function(scope, element, attrs, ctrl, transclude) {
+      link: function(scope, element, attrs) {
         scope.$watch(function() {
           return $parse(attrs.smLoading)(scope);
         }, function(loading) {
