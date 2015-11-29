@@ -26,7 +26,7 @@
 
     function setTemplate(element, attrs) {
       if (hasType(attrs)) {
-        if(attrs.vertical !== void 0) {
+        if (attrs.vertical !== void 0) {
           return '<div class="ui divider vertical"></div>';
         } else {
           return '<div class="ui divider horizontal"></div>';

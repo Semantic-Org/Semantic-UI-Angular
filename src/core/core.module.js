@@ -1,7 +1,6 @@
 (function() {
-'use strict';
+  'use strict';
 
-angular
-  .module('semantic.ui.angular.core', []);
+  angular.module('semantic.ui.angular.core', []);
 
 })();

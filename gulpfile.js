@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var jshint = require('gulp-jshint');
+var eslint = require('gulp-eslint');
 var del = require('del');
 var plugins = require('gulp-load-plugins')();
 var karma = require('karma').server;
@@ -7,10 +7,11 @@ var Dgeni = require('dgeni');
 var runSequence = require("run-sequence");
 var es = require('event-stream');
 
-gulp.task('jshint', function() {
+gulp.task('eslint', function () {
   return gulp.src('src/**/*.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'));
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
 gulp.task('dgeni', function() {
@@ -38,7 +39,7 @@ gulp.task('clean-build', function(done) {
   del(['./dist'], done);
 });
 
-gulp.task('test', ['jshint'], function(done) {
+gulp.task('test', ['eslint'], function(done) {
   karma.start({
     configFile: __dirname + '/karma.conf.js',
     autoWatch: false,
@@ -46,7 +47,7 @@ gulp.task('test', ['jshint'], function(done) {
   }, done);
 });
 
-gulp.task('test-dev', ['jshint'], function(done) {
+gulp.task('test-dev', ['eslint'], function(done) {
   karma.start({
     configFile: __dirname + '/karma.conf.js',
     autoWatch: true,
@@ -58,6 +59,6 @@ gulp.task('docs', function(cb) {
   runSequence('clean-build', ['dgeni', 'docs-assets'], cb);
 });
 
-gulp.task('default', ['jshint'], function(cb) {
-  runSequence(['jshint', 'docs'], cb);
+gulp.task('default', ['eslint'], function(cb) {
+  runSequence(['eslint', 'docs'], cb);
 });

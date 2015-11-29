@@ -21,8 +21,8 @@
     '<div ng-mouseleave="ctrl.reset()" ng-keydown="ctrl.onKeydown($event)" tabindex="0" role="slider"' +
       'aria-valuemin="0" aria-valuemax="{{ctrl.range.length}}" aria-valuenow="{{ctrl.value}}"' +
       'class="ui rating" ng-class="ctrl.hoverValue > -1 && (ctrl.stateHoverParent || \'selected\')">' +
-      '<i ng-repeat="r in ctrl.range track by $index" ng-mouseenter="ctrl.enter($index + 1)" ng-click="ctrl.rate($index + 1)"' +
-        'class="icon" ng-class="[' +
+      '<i ng-repeat="r in ctrl.range track by $index" ng-mouseenter="ctrl.enter($index + 1)"' +
+        'ng-click="ctrl.rate($index + 1)" class="icon" ng-class="[' +
           '($index < ctrl.value && (r.stateActive || \'active\')) || \'\',' +
           '($index < ctrl.hoverValue && (r.stateHover || \'selected\')) || \'\']">' +
       '</i>' +
@@ -70,7 +70,7 @@
     };
 
     this.ngModelCtrl.$formatters.push(function(value) {
-      if (angular.isNumber(value) && value << 0 !== value) {
+      if (angular.isNumber(value) && value < 0 !== value) {
         value = Math.round(value);
       }
       return value;
@@ -87,7 +87,11 @@
   smRatingController.prototype.buildTemplateObjects = function() {
     var states = this.ratingStates;
     for (var i = 0, n = states.length; i < n; i++) {
-      states[i] = angular.extend({ index: i }, { stateActive: this.stateActive, stateHover: this.stateHover }, states[i]);
+      states[i] = angular.extend({ index: i }, {
+        stateActive: this.stateActive,
+        stateHover: this.stateHover
+      },
+      states[i]);
     }
     return states;
   };
@@ -124,7 +128,8 @@
   };
 
   smRatingController.prototype.evalAttribute = function(name, defaultValue) {
-    return angular.isDefined(this.$attrs[name]) ? this.$scope.$parent.$eval(this.$attrs[name]) : this.ratingConfig[name] || defaultValue;
+    return angular.isDefined(
+      this.$attrs[name]) ? this.$scope.$parent.$eval(this.$attrs[name]) : this.ratingConfig[name] || defaultValue;
   };
 
 })();

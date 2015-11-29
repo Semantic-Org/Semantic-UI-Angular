@@ -1,5 +1,5 @@
 describe('Semantic-UI: Elements - smButton', function() {
-'use strict';
+  'use strict';
 
   var $scope, $compile;
 
