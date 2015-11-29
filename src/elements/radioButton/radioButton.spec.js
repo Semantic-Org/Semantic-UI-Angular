@@ -13,9 +13,9 @@ describe('Semantic-UI: Elements - smRadioButton', function() {
   function renderRadioBtns($scope) {
     html = angular.element([
       '<sm-radio-group ng-model="radio.value">',
-        '<sm-radio-button value="1">One</sm-radio-button>',
-        '<sm-radio-button value="2">Two</sm-radio-button>',
-        '<sm-radio-button value="3">Three</sm-radio-button>',
+      '<sm-radio-button value="1">One</sm-radio-button>',
+      '<sm-radio-button value="2">Two</sm-radio-button>',
+      '<sm-radio-button value="3">Three</sm-radio-button>',
       '</sm-radio-group>'].join('')
     );
 

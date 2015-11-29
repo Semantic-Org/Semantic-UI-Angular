@@ -1,10 +1,10 @@
 (function() {
-'use strict';
+  'use strict';
 
-angular
-  .module('semantic.ui.elements.button', [])
+  angular
+    .module('semantic.ui.elements.button', [])
 
-  .directive('smButton', smButton);
+    .directive('smButton', smButton);
 
   smButton.$inject = ['$animate'];
 

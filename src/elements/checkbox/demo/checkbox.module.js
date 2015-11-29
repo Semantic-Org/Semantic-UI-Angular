@@ -1,17 +1,16 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('semantic.ui.angular.checkbox',[
-            'semantic.ui.elements.checkbox',
-            'ngAria'
-        ]).run(function($rootScope) {
+  angular
+    .module('semantic.ui.angular.checkbox',[
+      'semantic.ui.elements.checkbox',
+      'ngAria'
+    ]).run(function($rootScope) {
 
-          $rootScope.opts = { 
-            disabled: true, 
-            checked: true
-          };
-
-        });
+      $rootScope.opts = {
+        disabled: true,
+        checked: true
+      };
+    });
 
 })();

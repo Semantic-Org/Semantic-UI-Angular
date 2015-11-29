@@ -221,14 +221,17 @@ describe('Semantic-UI: Elements - smRating', function() {
       $rootScope.classActive = 'foo-active';
       $rootScope.classHover = 'foo-hover';
       $rootScope.classHoverParent = 'foo-hover-parent';
-      element = $compile('<sm-rating ng-model="rate" state-active="classActive" state-hover="classHover" state-hover-parent="classHoverParent"></sm-rating>')($rootScope);
+      var ratingTemplate = '<sm-rating ng-model="rate" state-active="classActive" ' +
+      'state-hover="classHover" state-hover-parent="classHoverParent"></sm-rating>';
+      element = $compile(ratingTemplate)($rootScope);
       $rootScope.$digest();
     }));
 
     it('changes the default icons', function() {
       expect(getStateActive($rootScope.classActive)).toEqual([true, true, true, false, false]);
       getStar(3).trigger('mouseover');
-      expect(getStateHover($rootScope.classHover, $rootScope.classHoverParent)).toEqual([true, true, true, false, false, true]);
+      var expectedState = [true, true, true, false, false, true];
+      expect(getStateHover($rootScope.classHover, $rootScope.classHoverParent)).toEqual(expectedState);
     });
   });
 
@@ -244,7 +247,7 @@ describe('Semantic-UI: Elements - smRating', function() {
       $rootScope.$digest();
     }));
 
-    it('should define number of icon elements', function () {
+    it('should define number of icon elements', function() {
       expect(getStars().length).toBe(4);
       expect(element.attr('aria-valuemax')).toBe('4');
     });
@@ -285,14 +288,14 @@ describe('Semantic-UI: Elements - smRating', function() {
       angular.extend(ratingConfig, originalConfig);
     }));
 
-    it('should change number of icon elements', function () {
+    it('should change number of icon elements', function() {
       expect(getStars().length).toBe(10);
     });
 
     it('should change icon states', function() {
       expect(getStateActive('on')).toEqual([true, true, true, true, true, false, false, false, false, false]);
-
-      expect(getStateHover('float', 'float-parent')).toEqual([true, true, true, true, true, true, true, false, false, false, true]);
+      var expectedStateHover = [true, true, true, true, true, true, true, false, false, false, true];
+      expect(getStateHover('float', 'float-parent')).toEqual(expectedStateHover);
     });
 
     it('should update rating type', function() {

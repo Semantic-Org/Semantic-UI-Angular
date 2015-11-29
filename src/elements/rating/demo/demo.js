@@ -1,5 +1,5 @@
 (function() {
-    'use strict';
+  'use strict';
 
   angular
     .module('demo', ['semantic.ui.elements.rating'])

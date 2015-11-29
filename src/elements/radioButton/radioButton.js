@@ -1,10 +1,10 @@
 (function() {
-'use strict';
+  'use strict';
 
-angular
-  .module('semantic.ui.elements.radioButton', [])
-  .directive('smRadioGroup', smRadioGroup)
-  .directive('smRadioButton', smRadioButton);
+  angular
+    .module('semantic.ui.elements.radioButton', [])
+    .directive('smRadioGroup', smRadioGroup)
+    .directive('smRadioButton', smRadioButton);
 
   smRadioButton.$inject = ['$animate'];
 
@@ -100,11 +100,11 @@ angular
         function render() {
           var checked = (scope.$eval(attrs.value) === smRadioGroupCtrl.getViewValue());
 
-          if(isChecked === checked) { return; }
+          if (isChecked === checked) { return; }
 
           isChecked = checked;
 
-          if(checked) {
+          if (checked) {
             $animate.addClass(element, 'active');
           } else {
             $animate.removeClass(element, 'active');

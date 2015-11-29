@@ -1,10 +1,10 @@
 (function() {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('semantic.ui.angular.buttons',[
-            'ngAria',
-            'semantic.ui.elements.button'
-        ]);
+  angular
+    .module('semantic.ui.angular.buttons',[
+      'ngAria',
+      'semantic.ui.elements.button'
+    ]);
 
 })();
