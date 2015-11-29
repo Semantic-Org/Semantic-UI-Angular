@@ -70,12 +70,15 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
 
     $newScope.$digest();
 
+    // trigger a click
     angular.element(smCheckbox[0].children[0]).click();
 
     $newScope.$digest();
 
+    // inner checkbox should be disabled
     expect(smCheckbox[0].children[0].disabled).toBeTruthy();
 
+    // ...and thus still checked
     expect(smCheckbox[0].children[0].checked).toBeTruthy();
 
   });
