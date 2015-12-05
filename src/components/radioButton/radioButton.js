@@ -2,7 +2,7 @@
 'use strict';
 
 angular
-  .module('semantic.ui.elements.radioButton', [])
+  .module('semantic.ui.components.radioButton', [])
   .directive('smRadioGroup', smRadioGroup)
   .directive('smRadioButton', smRadioButton);
 

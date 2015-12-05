@@ -1,9 +1,9 @@
-describe('Semantic-UI: Elements - smButton', function() {
+describe('Semantic-UI: Components - smButton', function() {
 'use strict';
 
   var $scope, $compile;
 
-  beforeEach(module('semantic.ui.elements.button'));
+  beforeEach(module('semantic.ui.components.button'));
 
   beforeEach(inject(function($rootScope, _$compile_) {
     $scope = $rootScope.$new();

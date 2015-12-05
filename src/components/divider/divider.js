@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('semantic.ui.elements.divider', [])
+    .module('semantic.ui.components.divider', [])
 
     .directive('smDivider', smDivider);
 

@@ -4,7 +4,7 @@
     angular
       .module('semantic.ui.angular.radioButtons',[
           'ngAria',
-          'semantic.ui.elements.radioButton'
+          'semantic.ui.components.radioButton'
       ])
       .controller('RadioButtonsCtrl', function($scope) {
         $scope.radio = {

@@ -3,12 +3,12 @@
 
     angular
         .module('semantic.ui.angular.checkbox',[
-            'semantic.ui.elements.checkbox',
+            'semantic.ui.components.checkbox',
             'ngAria'
         ]).run(function($rootScope) {
 
-          $rootScope.opts = { 
-            disabled: true, 
+          $rootScope.opts = {
+            disabled: true,
             checked: true
           };
 
