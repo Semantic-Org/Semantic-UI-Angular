@@ -1,9 +1,9 @@
-describe('Semantic-UI: Elements - smDivider', function() {
+describe('Semantic-UI: Components - smDivider', function() {
   'use strict';
 
   var $scope, $compile;
 
-  beforeEach(module('semantic.ui.elements.divider'));
+  beforeEach(module('semantic.ui.components.divider'));
 
   beforeEach(inject(function($rootScope, _$compile_) {
     $scope = $rootScope.$new();

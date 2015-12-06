@@ -1,9 +1,9 @@
-describe('Semantic-UI: Elements - smRadioButton', function() {
+describe('Semantic-UI: Components - smRadioButton', function() {
   'use strict';
 
   var $scope, $compile, html;
 
-  beforeEach(module('semantic.ui.elements.radioButton'));
+  beforeEach(module('semantic.ui.components.radioButton'));
 
   beforeEach(inject(function($rootScope, _$compile_) {
     $scope = $rootScope.$new();

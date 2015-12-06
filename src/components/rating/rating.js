@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('semantic.ui.elements.rating', [])
+    .module('semantic.ui.components.rating', [])
     .constant('ratingConfig', {
       max: 5,
       stateActive: null,

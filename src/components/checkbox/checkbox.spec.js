@@ -1,9 +1,9 @@
-describe('Semantic-UI: Elements - smCheckbox', function() {
+describe('Semantic-UI: Components - smCheckbox', function() {
   'use strict';
 
   var $scope, $compile, $rootScope;
 
-  beforeEach(module('semantic.ui.elements.checkbox'));
+  beforeEach(module('semantic.ui.components.checkbox'));
 
   beforeEach(inject(function(_$rootScope_, _$compile_) {
     $rootScope = _$rootScope_;
@@ -53,7 +53,7 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
   it('should honour ng-disabled', function() {
     var $newScope = $rootScope.$new();
 
-    $newScope.opts = { 
+    $newScope.opts = {
       checked: true,
       disabled: false
     };
@@ -86,7 +86,7 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
   it('should honour ng-model', function() {
     var $newScope = $rootScope.$new();
 
-    $newScope.opts = { 
+    $newScope.opts = {
       checked: false
     };
 
@@ -118,9 +118,9 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
 
   it('should tranclude an element transclusion directive', function() {
     var $newScope = $rootScope.$new();
-    
+
     $newScope.opts = { checked: true };
-    
+
     var smCheckbox = $compile('<sm-checkbox ng-model="opts.checked">' +
       '<div ng-if="opts.checked">Checked</div></sm-checkbox>')($newScope);
 
@@ -131,10 +131,10 @@ describe('Semantic-UI: Elements - smCheckbox', function() {
 
   it('should honour ng-repeat', function() {
     var $newScope = $rootScope.$new();
-    
+
     $newScope.opts = { checked: true };
     $newScope.repeatLabels = ['first', 'second'];
-    
+
     var smCheckbox = $compile('<div><sm-checkbox ng-repeat="label in repeatLabels" ng-model="opts.checked">' +
       '<div ng-if="opts.checked">{{label}}</div></sm-checkbox></div>')($newScope);
 

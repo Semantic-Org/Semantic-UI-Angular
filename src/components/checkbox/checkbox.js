@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('semantic.ui.elements.checkbox', [])
+    .module('semantic.ui.components.checkbox', [])
 
     .directive('smCheckbox', smCheckbox);
 

@@ -1,9 +1,9 @@
-describe('Semantic-UI: Elements - smRating', function() {
+describe('Semantic-UI: Components - smRating', function() {
   'use strict';
 
   var $rootScope, $compile, element;
 
-  beforeEach(module('semantic.ui.elements.rating'));
+  beforeEach(module('semantic.ui.components.rating'));
 
   beforeEach(inject(function(_$rootScope_, _$compile_) {
     $rootScope = _$rootScope_.$new();

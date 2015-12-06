@@ -2,7 +2,7 @@
     'use strict';
 
   angular
-    .module('demo', ['semantic.ui.elements.rating'])
+    .module('demo', ['semantic.ui.components.rating'])
     .controller('RatingDemoCtrl', function($scope) {
       $scope.rate = 7;
       $scope.max = 10;
