@@ -53,7 +53,7 @@ gulp.task('clean-build', function(done) {
 });
 
 gulp.task('test', ['jshint'], function(done) {
-  karma.start({
+  karma.server.start({
     configFile: __dirname + '/karma.conf.js',
     autoWatch: false,
     singleRun: true
@@ -61,7 +61,7 @@ gulp.task('test', ['jshint'], function(done) {
 });
 
 gulp.task('test-dev', ['jshint'], function(done) {
-  karma.start({
+  karma.server.start({
     configFile: __dirname + '/karma.conf.js',
     autoWatch: true,
     singleRun: false
