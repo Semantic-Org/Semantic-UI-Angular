@@ -19,7 +19,8 @@ At this moment we have following directives:
  - sm-checkbox;
  - sm-divider;
  - sm-radio-group and sm-radio-button;
- - sm-rating.
+ - sm-rating;
+ - sm-flag.
 
 TODOs:
 -----
