@@ -8,8 +8,7 @@ Semantic-UI-Angular
 
 Status
 ------
-
-**Work in Progress**
+Working to open the first release.
 
 Current progress:
 -----------------
@@ -21,9 +20,6 @@ At this moment we have following directives:
  - sm-radio-group and sm-radio-button;
  - sm-rating.
 
-TODOs:
------
+## To do:
+All tasks for the release of the first release are the issues. https://github.com/Semantic-Org/Semantic-UI-Angular/issues
 
- - Create generic directives to cover common use cases.
- - Create a documentation generation.
- - Update project up to Angular 1.4 (ES6/TS - under discussion)
