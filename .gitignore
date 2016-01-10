@@ -6,3 +6,4 @@
 /dist
 *-SNAPSHOT*
 typings
+npm-debug.log

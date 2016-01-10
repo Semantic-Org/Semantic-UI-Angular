@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "node_modules/.bin/tsd install",
-    "test": "karma start",
+    "test": "node_modules/karma/bin/karma start",
+    "test-dev": "./node_modules/karma/bin/karma start --auto-watch --no-single-run",
     "build": "rm -rf dist && node_modules/.bin/webpack"
   },
   "repository": {
@@ -27,9 +28,19 @@
   "homepage": "https://github.com/Semantic-Org/Semantic-UI-Angular#readme",
   "devDependencies": {
     "angular": "1.4.8",
+    "angular-mocks": "1.4.8",
+    "jasmine-core": "2.4.1",
+    "jquery": "2.2.0",
     "jscs": "2.8.0",
     "jscs-loader": "0.2.0",
     "json-loader": "0.5.4",
+    "karma": "0.13.19",
+    "karma-jasmine": "0.3.6",
+    "karma-phantomjs-launcher": "0.2.3",
+    "karma-sourcemap-loader": "0.3.6",
+    "karma-webpack": "1.7.0",
+    "phantomjs": "1.9.19",
+    "phantomjs-polyfill": "0.0.1",
     "ts-loader": "0.7.2",
     "tsd": "0.6.5",
     "tslint": "3.2.1",

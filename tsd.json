@@ -10,6 +10,21 @@
     },
     "jquery/jquery.d.ts": {
       "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
+    },
+    "webpack/webpack-env.d.ts": {
+      "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
+    },
+    "webpack/webpack.d.ts": {
+      "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
+    },
+    "jasmine/jasmine.d.ts": {
+      "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
+    },
+    "angularjs/angular-mocks.d.ts": {
+      "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
+    },
+    "angularjs/angular-animate.d.ts": {
+      "commit": "6eebd5e90a1cbd6b47b0705ba72dbcd5baf846f3"
     }
   }
 }
