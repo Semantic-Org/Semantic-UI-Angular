@@ -1,11 +1,12 @@
 ///<reference path="../../../typings/angularjs/angular.d.ts"/>
+///<reference path="../../../typings/angularjs/angular-animate.d.ts"/>
 
 'use strict';
 
 class SmButtonController {
   static $inject = ['$animate'];
 
-  constructor(public $animate: ng.IAnimateProvider) { }
+  constructor(public $animate: ng.IAnimateCallbackObject) { }
 
 }
 
