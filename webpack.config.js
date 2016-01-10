@@ -29,10 +29,16 @@ module.exports = {
      new webpack.BannerPlugin(banner, {raw: true})
   ],
   module: {
+    preLoaders: [
+      { test: /\.ts$/, exclude: /node_modules/, loader: 'tslint' }
+    ],
     loaders: [
       { test: /\.ts?$/, exclude: /node_modules/, loader: 'ts-loader' },
       { test: /\.json?$/, exclude: /node_modules/, loader: 'json-loader' }
     ]
+  },
+  tslint: {
+    configuration: require('./tslint.json')
   },
   resolve: {
     extensions: ['', '.ts', '.js']
