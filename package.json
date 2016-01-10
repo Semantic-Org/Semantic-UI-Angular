@@ -27,6 +27,8 @@
   "homepage": "https://github.com/Semantic-Org/Semantic-UI-Angular#readme",
   "devDependencies": {
     "angular": "1.4.8",
+    "jscs": "2.8.0",
+    "jscs-loader": "0.2.0",
     "json-loader": "0.5.4",
     "ts-loader": "0.7.2",
     "tsd": "0.6.5",

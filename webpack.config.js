@@ -30,7 +30,8 @@ module.exports = {
   ],
   module: {
     preLoaders: [
-      { test: /\.ts$/, exclude: /node_modules/, loader: 'tslint' }
+      { test: /\.ts$/, exclude: /node_modules/, loader: 'tslint-loader' },
+      { test: /\.ts$/, exclude: /node_modules/, loader: 'jscs-loader' }
     ],
     loaders: [
       { test: /\.ts?$/, exclude: /node_modules/, loader: 'ts-loader' },
