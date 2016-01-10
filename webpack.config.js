@@ -31,7 +31,8 @@ module.exports = {
   module: {
     preLoaders: [
       { test: /\.ts$/, exclude: /node_modules/, loader: 'tslint-loader' },
-      { test: /\.ts$/, exclude: /node_modules/, loader: 'jscs-loader' }
+      // TODO: JSCS complains on TS code, decide if we actually can/need make it work
+      //{ test: /\.ts$/, exclude: /node_modules/, loader: 'jscs-loader' }
     ],
     loaders: [
       { test: /\.ts?$/, exclude: /node_modules/, loader: 'ts-loader' },
