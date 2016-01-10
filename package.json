@@ -1,0 +1,37 @@
+{
+  "name": "semantic-ui-angular",
+  "version": "0.0.1",
+  "description": "Pure AngularJS directives to support Semantic-UI components",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start",
+    "build": "rm -rf dist && node_modules/.bin/webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Semantic-Org/Semantic-UI-Angular"
+  },
+  "keywords": [
+    "angularjs",
+    "semantic-ui",
+    "directives",
+    "components",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Semantic-Org/Semantic-UI-Angular/issues"
+  },
+  "homepage": "https://github.com/Semantic-Org/Semantic-UI-Angular#readme",
+  "devDependencies": {
+    "angular": "1.4.8",
+    "json-loader": "0.5.4",
+    "ts-loader": "0.7.2",
+    "tsd": "0.6.5",
+    "tslint": "3.2.1",
+    "tslint-loader": "2.1.0",
+    "typescript": "1.7.5",
+    "webpack": "1.12.10"
+  }
+}
