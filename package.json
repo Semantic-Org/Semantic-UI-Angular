@@ -4,6 +4,7 @@
   "description": "Pure AngularJS directives to support Semantic-UI components",
   "main": "index.js",
   "scripts": {
+    "postinstall": "node_modules/.bin/tsd install",
     "test": "karma start",
     "build": "rm -rf dist && node_modules/.bin/webpack"
   },
