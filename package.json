@@ -1,6 +1,6 @@
 {
   "name": "semantic-ui-angular",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Pure AngularJS directives to support Semantic-UI components",
   "main": "index.js",
   "scripts": {

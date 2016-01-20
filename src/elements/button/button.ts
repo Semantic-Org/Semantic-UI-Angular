@@ -6,7 +6,7 @@
 class SmButtonController {
   static $inject = ['$animate'];
 
-  constructor(public $animate: ng.IAnimateCallbackObject) { }
+  constructor(public $animate: ng.IAnimateProvider) { }
 
 }
 

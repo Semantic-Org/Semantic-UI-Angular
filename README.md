@@ -7,8 +7,7 @@ Semantic-UI-Angular
 [![devDependency Status](https://david-dm.org/Semantic-Org/Semantic-UI-Angular/dev-status.svg)](https://david-dm.org/Semantic-Org/Semantic-UI-Angular#info=devDependencies)
 
 **Semantic-UI-Angular** is a pure AngularJS 1.x set of directives for Semantic-UI components.
-As soon as Angular 2 will get better animations support, we will consider creating (or merging some existing project if there will be one) Angular 2 components as well.
-We've decided to use TypeScript as a step to Angular 2 friendly environment.
+We are considering Angular 2 support in the future. We've decided to use TypeScript as a step to Angular 2 friendly environment.
 
 Status
 ------
