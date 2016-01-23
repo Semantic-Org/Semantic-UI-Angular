@@ -5,3 +5,6 @@
 /node_modules
 /dist
 *-SNAPSHOT*
+typings
+npm-debug.log
+.vscode

@@ -12,12 +12,11 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'node_modules/jquery/dist/jquery.js',
-      'node_modules/angular/angular.js',
-      'node_modules/angular-mocks/angular-mocks.js',
-      'misc/helpers/matchers.js',
-      'src/**/*.js',
-      'src/**/*.spec.js'
+      './node_modules/jquery/dist/jquery.js',
+      './node_modules/phantomjs-polyfill/bind-polyfill.js',
+      './node_modules/angular/angular.js',
+      './node_modules/angular-mocks/angular-mocks.js',
+      { pattern: 'spec.bundle.js', watched: false }
     ],
 
 
@@ -25,12 +24,37 @@ module.exports = function(config) {
     exclude: [
     ],
 
+    plugins: [
+      require("karma-phantomjs-launcher"),
+      require("karma-sourcemap-loader"),
+      require('karma-jasmine'),
+      require('karma-webpack')
+    ],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'spec.bundle.js': ['webpack', 'sourcemap']
     },
 
+    webpack: {
+      devtools: 'inline-source-map',
+      module: {
+        preLoaders: [
+          { test: /\.ts$/, exclude: /node_modules/, loader: 'tslint-loader' }
+        ],
+        loaders: [
+          { test: /\.ts?$/, exclude: /node_modules/, loader: 'ts-loader' },
+          { test: /\.json?$/, exclude: /node_modules/, loader: 'json-loader' }
+        ]
+      },
+      tslint: {
+        configuration: require('./tslint.json')
+      },
+      resolve: {
+        extensions: ['', '.ts', '.js']
+      }
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -62,6 +86,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: true
   });
 };

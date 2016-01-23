@@ -6,20 +6,41 @@ Semantic-UI-Angular
 [![Dependency Status](https://david-dm.org/Semantic-Org/Semantic-UI-Angular.svg)](https://david-dm.org/Semantic-Org/Semantic-UI-Angular)
 [![devDependency Status](https://david-dm.org/Semantic-Org/Semantic-UI-Angular/dev-status.svg)](https://david-dm.org/Semantic-Org/Semantic-UI-Angular#info=devDependencies)
 
+**Semantic-UI-Angular** is a pure AngularJS 1.x set of directives for Semantic-UI components.
+We are considering Angular 2 support in the future. We've decided to use TypeScript as a step to Angular 2 friendly environment.
+
 Status
 ------
-Working to open the first release.
+**Work in progress**
 
-Current progress:
------------------
-At this moment we have following directives:
+We are working on setting up proper environment, contribution guidelines and everything else for comfortable community contributions.
+Once we release first `alpha.0` we are happy to get community help.
 
- - sm-button;
- - sm-checkbox;
- - sm-divider;
- - sm-radio-group and sm-radio-button;
- - sm-rating.
 
-## To do:
-All tasks for the release of the first release are the issues. https://github.com/Semantic-Org/Semantic-UI-Angular/issues
+Support
+-------
+We support AngularJS 1.4.8 version.
 
+
+Building Semantic-UI-Angular
+----------------------------
+You have to have `nodejs` installed before running following commands.
+
+```
+npm install
+npm run build
+```
+
+The distribution packages will be stored in `dist` folder.
+
+Running tests
+-------------
+Single run:
+```
+npm test
+```
+
+Dev mode:
+```
+npm run test-dev
+```

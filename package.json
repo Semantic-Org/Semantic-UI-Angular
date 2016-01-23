@@ -1,54 +1,51 @@
 {
-  "name": "Semantic-UI-Angular",
-  "version": "0.0.1",
-  "description": "AngularJS directives to support Semantic-UI modules",
+  "name": "semantic-ui-angular",
+  "version": "0.0.0",
+  "description": "Pure AngularJS directives to support Semantic-UI components",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "node_modules/.bin/tsd install",
+    "test": "node_modules/karma/bin/karma start",
+    "test-dev": "./node_modules/karma/bin/karma start --auto-watch --no-single-run",
+    "build": "rm -rf dist && node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Semantic-Org/Semantic-UI-Angular.git"
+    "url": "git+https://github.com/Semantic-Org/Semantic-UI-Angular"
   },
   "keywords": [
     "angularjs",
+    "semantic-ui",
     "directives",
-    "semantic-ui"
+    "components",
+    "typescript"
   ],
   "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Semantic-Org/Semantic-UI-Angular/issues"
   },
-  "homepage": "https://github.com/Semantic-Org/Semantic-UI-Angular",
+  "homepage": "https://github.com/Semantic-Org/Semantic-UI-Angular#readme",
   "devDependencies": {
-    "babel-core": "^6.3.15",
-    "babel-preset-es2015": "^6.3.13",
-    "canonical-path": "^0.0.2",
-    "del": "^2.1.0",
-    "dgeni": "^0.4.1",
-    "dgeni-packages": "^0.11.1",
-    "event-stream": "^3.3.2",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.1",
-    "gulp-jshint": "^2.0.0",
-    "gulp-load-plugins": "^1.1.0",
-    "jasmine-core": "^2.2.0",
-    "jshint-stylish": "^2.0.1",
-    "karma": "^0.13.15",
-    "karma-chrome-launcher": "^0.2.0",
-    "karma-jasmine": "^0.3.5",
-    "karma-phantomjs-launcher": "^0.2.0",
-    "lodash": "^3.6.0",
-    "run-sequence": "^1.0.2"
-  },
-  "dependencies": {
-    "angular": "^1.4.2",
-    "angular-animate": "^1.4.2",
-    "angular-aria": "^1.4.2",
-    "angular-mocks": "^1.4.2",
-    "jquery": "^2.1.3",
-    "npm": "^3.5.1",
-    "semantic-ui-css": "^2.0.3"
+    "angular": "1.4.8",
+    "angular-mocks": "1.4.8",
+    "jasmine-core": "2.4.1",
+    "jquery": "2.2.0",
+    "jscs": "2.8.0",
+    "jscs-loader": "0.2.0",
+    "json-loader": "0.5.4",
+    "karma": "0.13.19",
+    "karma-jasmine": "0.3.6",
+    "karma-phantomjs-launcher": "0.2.3",
+    "karma-sourcemap-loader": "0.3.6",
+    "karma-webpack": "1.7.0",
+    "phantomjs": "1.9.19",
+    "phantomjs-polyfill": "0.0.1",
+    "ts-loader": "0.7.2",
+    "tsd": "0.6.5",
+    "tslint": "3.2.1",
+    "tslint-loader": "2.1.0",
+    "typescript": "1.7.5",
+    "webpack": "1.12.10"
   }
 }
