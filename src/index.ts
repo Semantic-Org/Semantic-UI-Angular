@@ -2,6 +2,7 @@
 
 import { smButtonModule } from './elements/button/button';
 import { smRatingModule } from './modules/rating/rating';
+import { smDividerModule } from './elements/divider/divider';
 
 ((): void => {
   'use strict';
@@ -9,7 +10,8 @@ import { smRatingModule } from './modules/rating/rating';
   angular
     .module('semantic.ui', [
       smButtonModule.name,
-      smRatingModule.name
+      smRatingModule.name,
+      smDividerModule.name
     ]);
 
 })();
