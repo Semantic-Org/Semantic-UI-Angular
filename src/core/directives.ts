@@ -27,6 +27,10 @@ export class ComponentDirective implements ng.IDirective {
         element.append(nodes);
       });
     }
+
+    element.on('$destroy', function() {
+      scope.$destroy();
+    });
   };
 }
 
