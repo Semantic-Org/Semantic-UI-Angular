@@ -1,16 +1,21 @@
+///<reference path="../../../typings/jasmine/jasmine.d.ts"/>
+///<reference path="../../../typings/angularjs/angular-mocks.d.ts"/>
+
+import { smRatingModule } from './rating';
+
 describe('Semantic-UI: Components - smRating', function() {
   'use strict';
 
-  var $rootScope, $compile, element;
+  let $scope, $compile, element;
 
-  beforeEach(module('semantic.ui.components.rating'));
+  beforeEach(angular.mock.module(smRatingModule.name));
 
-  beforeEach(inject(function(_$rootScope_, _$compile_) {
-    $rootScope = _$rootScope_.$new();
-    $compile = _$compile_;
-    $rootScope.rate = 3;
-    element = $compile('<sm-rating ng-model="rate"></sm-rating>')($rootScope);
-    $rootScope.$digest();
+  beforeEach(inject(function($rootScope, $injector) {
+    $scope = $rootScope.$new();
+    $compile = $injector.get('$compile');
+    $scope.rate = 3;
+    element = $compile('<sm-rating ng-model="rate"></sm-rating>')($scope);
+    $scope.$digest();
   }));
 
   function getStars() {
@@ -22,25 +27,25 @@ describe('Semantic-UI: Components - smRating', function() {
   }
 
   function getState(className, classDefault) {
-    var stars = getStars();
-    var state = [];
-    for (var i = 0, n = stars.length; i < n; i++) {
+    let stars = getStars();
+    let state = [];
+    for (let i = 0, n = stars.length; i < n; i++) {
       state.push(stars.eq(i).hasClass(className || classDefault));
     }
     return state;
   }
 
-  function getStateActive(classActive) {
+  function getStateActive(classActive?) {
     return getState(classActive, 'active');
   }
 
-  function getStateHover(classHover, classHoverParent) {
-    var classDefault = 'selected';
+  function getStateHover(classHover?, classHoverParent?) {
+    let classDefault = 'selected';
     return getState(classHover, classDefault).concat([element.hasClass(classHoverParent || classDefault)]);
   }
 
   function triggerKeyDown(keyCode) {
-    var e = $.Event('keydown');
+    let e = $.Event('keydown');
     e.which = keyCode;
     element.trigger(e);
   }
@@ -61,187 +66,190 @@ describe('Semantic-UI: Components - smRating', function() {
 
   it('handles correctly the click event', function() {
     getStar(2).click();
-    $rootScope.$digest();
+    $scope.$digest();
     expect(getStateActive()).toEqual([true, true, false, false, false]);
-    expect($rootScope.rate).toBe(2);
+    expect($scope.rate).toBe(2);
     expect(element.attr('aria-valuenow')).toBe('2');
 
     getStar(5).click();
-    $rootScope.$digest();
+    $scope.$digest();
     expect(getStateActive()).toEqual([true, true, true, true, true]);
-    expect($rootScope.rate).toBe(5);
+    expect($scope.rate).toBe(5);
     expect(element.attr('aria-valuenow')).toBe('5');
   });
 
   it('handles correctly the hover event', function() {
     getStar(2).trigger('mouseover');
-    $rootScope.$digest();
+    $scope.$digest();
     expect(getStateHover()).toEqual([true, true, false, false, false, true]);
-    expect($rootScope.rate).toBe(3);
+    expect($scope.rate).toBe(3);
 
     getStar(5).trigger('mouseover');
-    $rootScope.$digest();
+    $scope.$digest();
     expect(getStateHover()).toEqual([true, true, true, true, true, true]);
-    expect($rootScope.rate).toBe(3);
+    expect($scope.rate).toBe(3);
 
     element.trigger('mouseout');
     expect(getStateHover()).toEqual([false, false, false, false, false, false]);
-    expect($rootScope.rate).toBe(3);
+    expect($scope.rate).toBe(3);
   });
 
   it('rounds off the number of stars shown with decimal values', function() {
-    $rootScope.rate = 2.1;
-    $rootScope.$digest();
+    $scope.rate = 2.1;
+    $scope.$digest();
 
     expect(getStateActive()).toEqual([true, true, false, false, false]);
     expect(element.attr('aria-valuenow')).toBe('2');
 
-    $rootScope.rate = 2.5;
-    $rootScope.$digest();
+    $scope.rate = 2.5;
+    $scope.$digest();
 
     expect(getStateActive()).toEqual([true, true, true, false, false]);
     expect(element.attr('aria-valuenow')).toBe('3');
   });
 
   it('changes the number of selected icons when value changes', function() {
-    $rootScope.rate = 2;
-    $rootScope.$digest();
+    $scope.rate = 2;
+    $scope.$digest();
 
     expect(getStateActive()).toEqual([true, true, false, false, false]);
     expect(element.attr('aria-valuenow')).toBe('2');
   });
 
   it('shows different number of icons when `max` attribute is set', function() {
-    element = $compile('<sm-rating ng-model="rate" max="7"></sm-rating>')($rootScope);
-    $rootScope.$digest();
+    element = $compile('<sm-rating ng-model="rate" max="7"></sm-rating>')($scope);
+    $scope.$digest();
 
     expect(getStars().length).toBe(7);
     expect(element.attr('aria-valuemax')).toBe('7');
   });
 
   it('shows different number of icons when `max` attribute is from scope variable', function() {
-    $rootScope.max = 15;
-    element = $compile('<sm-rating ng-model="rate" max="max"></sm-rating>')($rootScope);
-    $rootScope.$digest();
+    $scope.max = 15;
+    element = $compile('<sm-rating ng-model="rate" max="max"></sm-rating>')($scope);
+    $scope.$digest();
     expect(getStars().length).toBe(15);
     expect(element.attr('aria-valuemax')).toBe('15');
   });
 
   it('handles readonly attribute', function() {
-    $rootScope.isReadonly = true;
-    element = $compile('<sm-rating ng-model="rate" readonly="isReadonly"></sm-rating>')($rootScope);
-    $rootScope.$digest();
+    $scope.isReadonly = true;
+    element = $compile('<sm-rating ng-model="rate" readonly="isReadonly"></sm-rating>')($scope);
+    $scope.$digest();
 
     expect(getStateActive()).toEqual([true, true, true, false, false]);
 
-    var star5 = getStar(5);
+    let star5 = getStar(5);
     star5.trigger('mouseover');
-    $rootScope.$digest();
+    $scope.$digest();
     expect(getStateActive()).toEqual([true, true, true, false, false]);
     expect(getStateHover()).toEqual([false, false, false, false, false, false]);
 
-    $rootScope.isReadonly = false;
-    $rootScope.$digest();
+    $scope.isReadonly = false;
+    $scope.$digest();
 
     star5.trigger('mouseover');
-    $rootScope.$digest();
+    $scope.$digest();
     expect(getStateHover()).toEqual([true, true, true, true, true, true]);
   });
 
   it('should fire onHover', function() {
-    $rootScope.hoveringOver = jasmine.createSpy('hoveringOver');
-    element = $compile('<sm-rating ng-model="rate" on-hover="hoveringOver(value)"></sm-rating>')($rootScope);
-    $rootScope.$digest();
+    $scope.hoveringOver = jasmine.createSpy('hoveringOver');
+    element = $compile('<sm-rating ng-model="rate" on-hover="hoveringOver(value)"></sm-rating>')($scope);
+    $scope.$digest();
 
     getStar(3).trigger('mouseover');
-    $rootScope.$digest();
-    expect($rootScope.hoveringOver).toHaveBeenCalledWith(3);
+    $scope.$digest();
+    expect($scope.hoveringOver).toHaveBeenCalledWith(3);
   });
 
   it('should fire onLeave', function() {
-    $rootScope.leaving = jasmine.createSpy('leaving');
-    element = $compile('<sm-rating ng-model="rate" on-leave="leaving()"></sm-rating>')($rootScope);
-    $rootScope.$digest();
+    $scope.leaving = jasmine.createSpy('leaving');
+    element = $compile('<sm-rating ng-model="rate" on-leave="leaving()"></sm-rating>')($scope);
+    $scope.$digest();
 
     element.trigger('mouseleave');
-    $rootScope.$digest();
-    expect($rootScope.leaving).toHaveBeenCalled();
+    $scope.$digest();
+    expect($scope.leaving).toHaveBeenCalled();
   });
 
   describe('keyboard navigation', function() {
     it('supports arrow keys', function() {
       triggerKeyDown(38);
-      expect($rootScope.rate).toBe(4);
+      expect($scope.rate).toBe(4);
 
       triggerKeyDown(37);
-      expect($rootScope.rate).toBe(3);
+      expect($scope.rate).toBe(3);
       triggerKeyDown(40);
-      expect($rootScope.rate).toBe(2);
+      expect($scope.rate).toBe(2);
 
       triggerKeyDown(39);
-      expect($rootScope.rate).toBe(3);
+      expect($scope.rate).toBe(3);
     });
 
     it('supports only arrow keys', function() {
-      $rootScope.rate = undefined;
-      $rootScope.$digest();
+      $scope.rate = undefined;
+      $scope.$digest();
 
       triggerKeyDown(36);
-      expect($rootScope.rate).toBe(undefined);
+      expect($scope.rate).toBe(undefined);
 
       triggerKeyDown(41);
-      expect($rootScope.rate).toBe(undefined);
+      expect($scope.rate).toBe(undefined);
     });
 
     it('can get zero value but not negative', function() {
-      $rootScope.rate = 1;
-      $rootScope.$digest();
+      $scope.rate = 1;
+      $scope.$digest();
 
       triggerKeyDown(37);
-      expect($rootScope.rate).toBe(0);
+      expect($scope.rate).toBe(0);
 
       triggerKeyDown(37);
-      expect($rootScope.rate).toBe(0);
+      expect($scope.rate).toBe(0);
     });
 
     it('cannot get value above max', function() {
-      $rootScope.rate = 4;
-      $rootScope.$digest();
+      $scope.rate = 4;
+      $scope.$digest();
 
       triggerKeyDown(38);
-      expect($rootScope.rate).toBe(5);
+      expect($scope.rate).toBe(5);
 
       triggerKeyDown(38);
-      expect($rootScope.rate).toBe(5);
+      expect($scope.rate).toBe(5);
     });
   });
 
   describe('custom states', function() {
     beforeEach(inject(function() {
-      $rootScope.classActive = 'foo-active';
-      $rootScope.classHover = 'foo-hover';
-      $rootScope.classHoverParent = 'foo-hover-parent';
-      element = $compile('<sm-rating ng-model="rate" state-active="classActive" state-hover="classHover" state-hover-parent="classHoverParent"></sm-rating>')($rootScope);
-      $rootScope.$digest();
+      $scope.classActive = 'foo-active';
+      $scope.classHover = 'foo-hover';
+      $scope.classHoverParent = 'foo-hover-parent';
+      element = $compile(`
+        <sm-rating ng-model="rate" state-active="classActive" state-hover="classHover" state-hover-parent="classHoverParent">
+        </sm-rating>
+      `)($scope);
+      $scope.$digest();
     }));
 
     it('changes the default icons', function() {
-      expect(getStateActive($rootScope.classActive)).toEqual([true, true, true, false, false]);
+      expect(getStateActive($scope.classActive)).toEqual([true, true, true, false, false]);
       getStar(3).trigger('mouseover');
-      expect(getStateHover($rootScope.classHover, $rootScope.classHoverParent)).toEqual([true, true, true, false, false, true]);
+      expect(getStateHover($scope.classHover, $scope.classHoverParent)).toEqual([true, true, true, false, false, true]);
     });
   });
 
   describe('`rating-states`', function() {
     beforeEach(inject(function() {
-      $rootScope.states = [
+      $scope.states = [
         {stateActive: 'sign', stateHover: 'circle'},
         {stateActive: 'heart', stateHover: 'ban'},
         {stateActive: 'heart', stateHover: 'fly'},
         {stateHover: 'float'}
       ];
-      element = $compile('<sm-rating ng-model="rate" rating-states="states"></sm-rating>')($rootScope);
-      $rootScope.$digest();
+      element = $compile('<sm-rating ng-model="rate" rating-states="states"></sm-rating>')($scope);
+      $scope.$digest();
     }));
 
     it('should define number of icon elements', function () {
@@ -250,14 +258,16 @@ describe('Semantic-UI: Components - smRating', function() {
     });
 
     it('handles each icon', function() {
-      var stars = getStars();
-      getStars(3).trigger('mouseover');
+      let stars = getStars();
 
-      for (var i = 0; i < stars.length; i++) {
-        var star = stars.eq(i);
-        var state = $rootScope.states[i];
-        var isOn = i < $rootScope.rate;
-        var isHover = i <= 3;
+      for (let i = 0; i < stars.length; i++) {
+        let star = stars.eq(i);
+        let state = $scope.states[i];
+        let isOn = i < $scope.rate;
+        let isHover = i < 2;
+        if (isHover) {
+          star.trigger('mouseover');
+        }
 
         expect(star.hasClass(state.stateActive)).toBe(isOn);
         expect(star.hasClass(state.stateHover)).toBe(isHover);
@@ -266,9 +276,9 @@ describe('Semantic-UI: Components - smRating', function() {
   });
 
   describe('setting ratingConfig', function() {
-    var originalConfig = {};
+    let originalConfig = {};
     beforeEach(inject(function(ratingConfig) {
-      $rootScope.rate = 5;
+      $scope.rate = 5;
       angular.extend(originalConfig, ratingConfig);
       ratingConfig.max = 10;
       ratingConfig.stateActive = 'on';
@@ -276,8 +286,8 @@ describe('Semantic-UI: Components - smRating', function() {
       ratingConfig.stateHoverParent = 'float-parent';
       ratingConfig.type = 'heart';
       ratingConfig.size = 'massive';
-      element = $compile('<sm-rating ng-model="rate"></sm-rating>')($rootScope);
-      $rootScope.$digest();
+      element = $compile('<sm-rating ng-model="rate"></sm-rating>')($scope);
+      $scope.$digest();
       getStar(7).trigger('mouseover');
     }));
     afterEach(inject(function(ratingConfig) {
@@ -306,29 +316,29 @@ describe('Semantic-UI: Components - smRating', function() {
   });
 
   it('shows star icon when attribute type is invalid', function() {
-    element = $compile('<sm-rating ng-model="rate"></sm-rating>')($rootScope);
-    $rootScope.$digest();
+    element = $compile('<sm-rating ng-model="rate"></sm-rating>')($scope);
+    $scope.$digest();
 
     expect(element.hasClass('star')).toBe(true);
   });
 
   it('shows icon type when attribute type is specified', function() {
-    element = $compile('<sm-rating ng-model="rate" type="potato"></sm-rating>')($rootScope);
-    $rootScope.$digest();
+    element = $compile('<sm-rating ng-model="rate" type="potato"></sm-rating>')($scope);
+    $scope.$digest();
 
     expect(element.hasClass('potato')).toBe(true);
   });
 
   it('change size when attribute size is set', function() {
-    element = $compile('<sm-rating ng-model="rate" size="massive"></sm-rating>')($rootScope);
-    $rootScope.$digest();
+    element = $compile('<sm-rating ng-model="rate" size="massive"></sm-rating>')($scope);
+    $scope.$digest();
 
     expect(element.hasClass('massive')).toBe(true);
   });
 
   it('should change size when attribute size is specified', function() {
-    element = $compile('<sm-rating ng-model="rate" size="huge"></sm-rating>')($rootScope);
-    $rootScope.$digest();
+    element = $compile('<sm-rating ng-model="rate" size="huge"></sm-rating>')($scope);
+    $scope.$digest();
 
     expect(element.hasClass('huge')).toBe(true);
   });
