@@ -29,6 +29,7 @@
   "devDependencies": {
     "angular": "1.4.8",
     "angular-mocks": "1.4.8",
+    "cz-conventional-changelog": "^1.1.5",
     "jasmine-core": "2.4.1",
     "jquery": "2.2.0",
     "jscs": "2.8.0",
@@ -47,5 +48,10 @@
     "tslint-loader": "2.1.0",
     "typescript": "1.7.5",
     "webpack": "1.12.10"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
