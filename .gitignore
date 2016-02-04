@@ -8,3 +8,5 @@
 typings
 npm-debug.log
 .vscode
+src/**/*.js
+src/**/*.map
