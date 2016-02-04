@@ -45,3 +45,8 @@ Dev mode:
 ```
 npm run test-dev
 ```
+
+Contributing
+------------
+
+Please read the [contribution guidelines](https://github.com/Semantic-Org/Semantic-UI-Angular/blob/master/CONTRIBUTING.md).
