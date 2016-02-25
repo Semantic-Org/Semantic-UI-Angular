@@ -28,6 +28,7 @@
   "homepage": "https://github.com/Semantic-Org/Semantic-UI-Angular#readme",
   "devDependencies": {
     "angular": "1.4.8",
+    "angular-aria": "^1.5.0",
     "angular-mocks": "1.4.8",
     "cz-conventional-changelog": "^1.1.5",
     "jasmine-core": "2.4.1",
@@ -42,6 +43,7 @@
     "karma-webpack": "1.7.0",
     "phantomjs": "1.9.19",
     "phantomjs-polyfill": "0.0.1",
+    "semantic-ui-css": "2.1.8",
     "ts-loader": "0.7.2",
     "tsd": "0.6.5",
     "tslint": "3.2.1",
