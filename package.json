@@ -7,7 +7,8 @@
     "postinstall": "node_modules/.bin/tsd install",
     "test": "node_modules/karma/bin/karma start",
     "test-dev": "./node_modules/karma/bin/karma start --auto-watch --no-single-run",
-    "build": "rm -rf dist && node_modules/.bin/webpack"
+    "build": "rimraf dist && webpack",
+    "start": "webpack-dev-server --inline --progress --port 8080"
   },
   "repository": {
     "type": "git",
@@ -42,12 +43,14 @@
     "karma-webpack": "1.7.0",
     "phantomjs": "1.9.19",
     "phantomjs-polyfill": "0.0.1",
+    "rimraf": "^2.5.4",
     "ts-loader": "0.7.2",
     "tsd": "0.6.5",
     "tslint": "3.2.1",
     "tslint-loader": "2.1.0",
     "typescript": "1.7.5",
-    "webpack": "1.12.10"
+    "webpack": "1.12.10",
+    "webpack-dev-server": "^1.16.2"
   },
   "config": {
     "commitizen": {
