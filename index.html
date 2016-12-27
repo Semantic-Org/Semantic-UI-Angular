@@ -13,33 +13,76 @@
 </head>
 
 <body ng-app="example">
-
-   <div class="ui styled accordion">
-        <div class="active title">
-            <i class="dropdown icon"></i> Level 1
-        </div>
-        <div class="active content">
-            Welcome to level 1
-        </div>
-        <div class="title">
-            <i class="dropdown icon"></i> Level 2
-        </div>
-        <div class="content">
-            <p>Welcome to level 2</p>
-        </div>
-    </div>
-
     <sm-accordion>
-            <sm-accordion-title>
-                Level 1
-            </sm-accordion-title>
-            <sm-accordion-content>
-                <p>Welcome to level 2</p>
-            </sm-accordion-content>
+        <sm-accordion-title>
+            Level 1
+        </sm-accordion-title>
+        <sm-accordion-content>
+            <p>Welcome to level 1</p>
+
+            <sm-accordion>
+                <sm-accordion-title>
+                    Level 1A
+                </sm-accordion-title>
+
+                <sm-accordion-content>
+                    Level 1A Contents
+
+
+                    <sm-accordion>
+                        <sm-accordion-title>
+                            Level 1A-A
+                        </sm-accordion-title>
+                        <sm-accordion-content>
+                            Level 1A-A Contents
+                        </sm-accordion-content>
+
+                        <sm-accordion-title>
+                            Level 1A-B
+                        </sm-accordion-title>
+                        <sm-accordion-content>
+                            Level 1A-B Contents
+                        </sm-accordion-content>
+                    </sm-accordion>
+                </sm-accordion-content>
+
+
+                <sm-accordion-title>
+                    Level 1B
+                </sm-accordion-title>
+                <sm-accordion-content>
+                    Level 1B Contents
+                </sm-accordion-content>
+
+                <sm-accordion-title>
+                    Level 1C
+                </sm-accordion-title>
+                <sm-accordion-content>
+                    Level 1C Contents
+                </sm-accordion-content>
+            </sm-accordion>
+
+        </sm-accordion-content>
+
+        <sm-accordion-title>
+            Level 2
+        </sm-accordion-title>
+        <sm-accordion-content>
+            <p>Welcome to level 2</p>
+        </sm-accordion-content>
+
+        <sm-accordion-title>
+            Level 3
+        </sm-accordion-title>
+        <sm-accordion-content>
+            <p>Welcome to level 3</p>
+        </sm-accordion-content>
     </sm-accordion>
 
+    <hr>
 
-    <div class="ui styled accordion">
+
+    <sm-accordion>
         <div class="active title">
             <i class="dropdown icon"></i> Level 1
         </div>
@@ -120,12 +163,12 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 
 
-    <script>
-        angular.module('example', ['semantic.ui']);
-    </script>
+        <script>
+            angular.module('example', ['semantic.ui']);
+        </script>
 
 </body>
 

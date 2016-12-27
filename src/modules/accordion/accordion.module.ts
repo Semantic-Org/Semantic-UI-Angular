@@ -3,16 +3,16 @@
 'use strict';
 
 interface ISmAccordionSettings {
-    exclusive: Boolean,
-    on: String,
-    animateChildren: Boolean,
-    closeNested: Boolean,
-    collapsible: Boolean,
-    duration: Number,
-    easing: String
+  exclusive: Boolean,
+  on: String,
+  animateChildren: Boolean,
+  closeNested: Boolean,
+  collapsible: Boolean,
+  duration: Number,
+  easing: String
 }
 
-const accordionSettings : ISmAccordionSettings = {
+const accordionSettings: ISmAccordionSettings = {
   exclusive: true,
   on: 'click',
   animateChildren: true,
@@ -26,11 +26,30 @@ class SmAccordionController {
   static $inject = ['$scope', '$element', '$attrs'];
 
   ngModel: ng.INgModelController;
+  accordionGroups = [];
 
   constructor(public $scope: ng.IScope, public $element: ng.IAugmentedJQuery, public $attrs) {
-    $element
-      .addClass('ui styled accordion');
-     
+
+  }
+  
+  addGroup = function (element) {
+    this.accordionGroups.push(element);
+  }
+  setActive = function (title) {
+    
+    var content = this.accordionGroups[this.accordionGroups.indexOf(title) + 1];
+
+    if (content && content.hasClass('content')) {      
+      content.toggleClass('active');
+    }
+    title.toggleClass('active');
+
+    if (accordionSettings.exclusive) {
+      this.accordionGroups.forEach(e => {
+        if (e != title && e != content)
+          e.removeClass('active')
+      });
+    }
   }
 }
 
@@ -41,13 +60,16 @@ class SmAccordionDirective implements ng.IDirective {
 
   restrict = 'E';
   controller = SmAccordionController;
+  controllerAs = 'accordion';
+  replace = true;
+  transclude = true;
+  template = '<div class="ui styled accordion"><div ng-transclude></div></div>';
   link = (
     scope: ng.IScope,
     element: ng.IAugmentedJQuery,
     attrs
   ) => {
-    // const [controller, ngModel] = ctrls;
-    // controller.init(ngModel);
+    
   };
 }
 
@@ -57,13 +79,24 @@ class SmAccordionTitleDirective implements ng.IDirective {
   }
 
   restrict = 'E';
+  replace = true;
+  transclude = true;
+  require = '^smAccordion';
+
+  template = '<div class="title"><i class="dropdown icon"></i><span ng-transclude></span></div>';
+
   link = (
     scope: ng.IScope,
     element: ng.IAugmentedJQuery,
-    attrs
+    attrs,
+    ctrl
   ) => {
-      element.addClass('title');
-      // element.bind('click', () => element.toggleClass('active'))
+    ctrl.addGroup(element);
+
+    element.bind('click', () => {
+      ctrl.setActive(element);
+    });
+
   };
 }
 
@@ -73,12 +106,18 @@ class SmAccordionContentDirective implements ng.IDirective {
   }
 
   restrict = 'E';
+  replace = true;
+  transclude = true;
+  require = '^smAccordion';
+
+  template = '<div class="content"><div ng-transclude></div></div>';
   link = (
     scope: ng.IScope,
     element: ng.IAugmentedJQuery,
-    attrs
+    attrs,
+    ctrl
   ) => {
-      element.addClass('content');
+    ctrl.addGroup(element);
   };
 }
 
@@ -86,7 +125,6 @@ class SmAccordionContentDirective implements ng.IDirective {
 export const smAccordionModule = angular
   .module('semantic.ui.modules.accordion', [])
   .directive('smAccordion', SmAccordionDirective.instance)
-  .directive('smAccordionItem', SmAccordionDirective.instance)
   .directive('smAccordionTitle', SmAccordionTitleDirective.instance)
   .directive('smAccordionContent', SmAccordionContentDirective.instance)
   .constant('smAccordionSettings', accordionSettings);
